@@ -4,4 +4,5 @@
 
 ## Wireframes
 
-![image](https://github.com/user-attachments/assets/460a66f5-3046-4523-966c-90b19f331d80)
+![image](https://github.com/user-attachments/assets/21eeea6a-e21f-4bbb-a1ca-bf72876d2029)
+
