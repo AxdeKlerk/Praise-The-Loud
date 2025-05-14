@@ -1,0 +1,1 @@
+web: gunicorn praise_the_loud.wsgi
