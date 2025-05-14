@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-u807$ib1-dnsl!b=dy^sqvykne_0ui_83mejp8_i2d4f2qy*1a
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1',]
 
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gig_reviews.apps.GigReviewsConfig',
+    # 'artist.apps.ArtistConfig',
+    # 'venue.apps.VenueConfig',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +91,8 @@ WSGI_APPLICATION = 'praise_the_loud.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
+CSRF_TRUSTED_ORIGINS = ['https://*.herokuapp.com']
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
