@@ -54,7 +54,9 @@ The colours chosen from [coolors.co](https://coolors.co/) were:
 
 #### 7.7.1 The Contact Modal
 
-## 8. Testing and Debugging
+## 8. Debugging
+
+## 9. Testing
 
 ## 9. Deployment
 
