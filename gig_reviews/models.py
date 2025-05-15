@@ -16,3 +16,12 @@ class GigReview(models.Model):
     review_date = models.DateField(auto_now_add=True)
     slug = models.SlugField(max_length=100, unique=True)
     status = models.IntegerField(choices=STATUS, default=0)
+
+    class Meta:
+        ordering = ['-gig_date']
+    
+    def __str__(self):
+        return f"{self.photo} - {self.slug} - {self.gig_date} - {self.status}"
+    # add {self.artist} - {self.venue} - {self.author} to the return string once apps are set up
+   
+
