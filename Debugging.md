@@ -21,3 +21,34 @@ Below are the various bugs that I encountered along the way and how I fixed them
   
     This will help to avoid errors such as this one in the future by creating different classes for the singular and plural forms of the model name. More importantly to make sure that I use different names for the app name and the class name to avoid confusion.
 
+### 8.2 Logic Errors
+
+- **Bug:**
+- **Fix:**
+- **Lesson Learned:**
+
+### 8.3 Runtime Errors
+
+- **Bug:**
+- **Fix:**
+- **Lesson Learned:**
+
+### 8.4 Semantic Errors
+
+- **Bug:**
+- **Fix:**
+- **Lesson Learned:**
+
+### 8.5 Design Errors
+
+- **Bug:**
+- **Fix:**
+- **Lesson Learned:**
+
+### 8.6 Other Bugs
+
+- **Bug:**
+- **Fix:**
+- **Lesson Learned:**
+
+
