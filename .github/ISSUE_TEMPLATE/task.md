@@ -1,4 +1,4 @@
-As a [user] I can [action] so that [benefit].
+As a **user** I can **action** so that **benefit**.
 
 Acceptance Criteria:
 
