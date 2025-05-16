@@ -17,7 +17,7 @@
 ### 6.1 ERD (Entity Relationship Diagram)
 The ERD was designed using [draw.io](https://app.diagrams.net/) to show the relationship between the different entities in the database.
 
-![image](https://github.com/user-attachments/assets/7e449190-8130-4ba4-8d39-9e2be1782b66)
+![image](https://github.com/user-attachments/assets/1af79206-59d2-4762-8de9-dcd21d638399)
 
 
 ### 6.2 Wireframes
