@@ -18,9 +18,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from gig_reviews import views as index_views
+from gig_reviews.views import submit_review  # 🔑 import directly from the app
+
 
 urlpatterns = [
-    path('gig_reviews/', include('gig_reviews.urls')),
+    path('submit-review/', submit_review, name='submit_review'),
     path('admin/', admin.site.urls),
 ]
