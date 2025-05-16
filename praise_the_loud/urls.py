@@ -21,6 +21,6 @@ from django.urls import path, include
 from gig_reviews import views as index_views
 
 urlpatterns = [
-    path('', include('gig_reviews.urls')),
+    path('gig_reviews/', include('gig_reviews.urls')),
     path('admin/', admin.site.urls),
 ]
