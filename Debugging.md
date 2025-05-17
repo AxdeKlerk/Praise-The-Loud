@@ -11,7 +11,7 @@ Below are the various bugs that I encountered along the way and how I fixed them
 
 #### 8.1 Syntax Errors
 
-  - **Bug:** SyntaxError: incorrect spelling of module name. 
+  - **Bug:** Incorrect spelling of module name. 
   
     The error occured when I was importing the first module in the project. The module name was misspelled in the import statement. What had happened was that I had pluralised the app name (gig_reviews) and then created the class  name (GigReview) using the singular form of the model name. This caused the error when trying to migrate the module to the database.
   
@@ -23,9 +23,13 @@ Below are the various bugs that I encountered along the way and how I fixed them
 
 ### 8.2 Logic Errors
 
-- **Bug:**
-- **Fix:**
-- **Lesson Learned:**
+- **Bug:** Sign-up, login and logout templates not loading on server.
+
+  After checking my template structure multiplue times I could not understand why the templates were not loading. I had checked the urls.py file and the views.py file and they were both correct. I then realised that I had created the template and registration folders at the wrong level. This was a simple mistake but it took me a while to figure out.
+
+- **Fix:** Moved template and registration folders to the root level of the project and left the signup html file in the app level templates folder
+- 
+- **Lesson Learned:** Double check everything I do and make sure that I am using the correct logic and placement of my template folders
 
 ### 8.3 Runtime Errors
 
