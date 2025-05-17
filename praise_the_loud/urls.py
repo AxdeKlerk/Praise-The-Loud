@@ -17,11 +17,16 @@ Including another URLconf
 ## Global (praise_the_loud/urls.py)
 
 from django.contrib import admin
-from django.urls import path, include
-from gig_reviews.views import submit_review  # import directly from the app
+from django.urls import path
+from gig_reviews.views import home, review, artist, venue, profile  # import directly from the app
 
 
 urlpatterns = [
-    path('submit-review/', submit_review, name='submit_review'), # Route for submitting a gig review
+    path('', home, name='home'),  # Loads the Home page
+    path('home/', home, name='home'),  # Route back to the Home page
+    path('review/', review, name='review'), # Route for submitting a gig review
+    path('artist/', artist, name='artist'),  # Route for artist details
+    path('venue/', venue, name='venue'),  # Route for venue details
+    path('profile/', profile, name='profile'),  # Route for user profile
     path('admin/', admin.site.urls),
 ]

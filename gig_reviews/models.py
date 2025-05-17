@@ -7,8 +7,8 @@ STATUS = ((0, "Draft"), (1, "Published"))
 class GigReview(models.Model):
     # Fields
     # author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="gig_reviews")
-    artist = models.ForeignKey("artist.Artist", related_name="gig_reviews")
-    venue = models.ForeignKey("venue.Venue", related_name="gig_reviews")
+    artist = models.ForeignKey("Artist",on_delete=models.CASCADE, related_name="gig_reviews")
+    venue = models.ForeignKey("Venue",on_delete=models.CASCADE, related_name="gig_reviews")
     gig_date = models.DateField(null=False, blank=False)
     highlight = models.CharField(max_length=100, null=False, blank=False)
     photo = models.ImageField(upload_to='gig_photos/')
@@ -21,8 +21,8 @@ class GigReview(models.Model):
         ordering = ['-gig_date']
     
     def __str__(self):
-        return f"{self.venue} | {self.author} - {self.gig_date} - {self.status} - {self.slug}"
-    # add "{self.artist} @"" to the return string once user model is set up
+        return f"{self.venue} - {self.gig_date} - {self.status} - {self.slug}"
+    # add "{self.artist} @ {self.venue} | {self.author} to the return string once user model is set up
    
 class Artist(models.Model):
     # Fields
@@ -51,7 +51,7 @@ class Venue(models.Model):
     def __str__(self):
         return f"{self.name}- {self.logo}- {self.town} - {self.post_code} - {self.slug}"
     
-class UserProfile(models.Model):
+class Profile(models.Model):
     # Fields
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=2000, null=False, blank=False)
