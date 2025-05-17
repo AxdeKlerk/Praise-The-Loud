@@ -1,5 +1,5 @@
 from django import forms
-from .models import GigReview
+from .models import GigReview, Profile, Artist, Venue
 
 class GigReviewForm(forms.ModelForm):
     class Meta:
@@ -16,3 +16,13 @@ class GigReviewForm(forms.ModelForm):
         widgets = {
             'gig_date': forms.DateInput(attrs={'type': 'date'}),
         }
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = [
+            'profile_photo',
+            'bio',
+            'location',
+            'website',
+        ]

@@ -56,10 +56,12 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=2000, null=False, blank=False)
     profile_photo = models.ImageField(upload_to='profile_photos/')
+    location = models.CharField(max_length=100, default='UK')
+    website = models.URLField(max_length=200, default='https://www.example.com')
     slug = models.SlugField(max_length=100, unique=True)
 
     class Meta:
         ordering = ['user']
     
     def __str__(self):
-        return f"{self.user} - {self.profile_photo} {self.bio} - {self.slug}"
+        return f"{self.user.username}'s Profile"

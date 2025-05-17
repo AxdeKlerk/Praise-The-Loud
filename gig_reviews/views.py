@@ -1,9 +1,11 @@
-from .forms import GigReviewForm
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from .forms import GigReviewForm
 from django.utils.text import slugify
+from .models import Profile
+
 
 
 # Create your views here.
@@ -33,8 +35,20 @@ def venue(request): #, slug):
 
 @login_required
 def profile(request): #, slug):
-    return render(request, 'gig_reviews/profile.html') #,{'slug': slug})
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        profile = Profile(user=request.user, slug=slugify(request.user.username))
 
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfileForm(instance=profile)
+
+    return render(request, 'gig_reviews/profile.html', {'form': form})
 
 def signup(request):
     if request.method == 'POST':
