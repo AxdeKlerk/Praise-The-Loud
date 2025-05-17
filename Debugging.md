@@ -33,9 +33,15 @@ Below are the various bugs that I encountered along the way and how I fixed them
 
 ### 8.3 Runtime Errors
 
-- **Bug:**
-- **Fix:**
-- **Lesson Learned:**
+- **Bug:** Runtime error when trying to migrate the database.
+  Django's migration history didn’t match the actual state of the database. It tried to create a table that already existed after I had added the fields 'location' and 'website' to the profile model and change the field's name from 'highlight' to 'title'. I got the following error message:
+  psycopg2.errors.DuplicateTable: relation "gig_reviews_gigreview" already exists
+  psycopg2.errors.UndefinedColumn: column "highlight" does not exist
+
+- **Fix:** I used the following command to python manage.py migrate gig_reviews --fake 0001
+  This command faked the first migration where the table has all ready migrated and skipped the migration history. This allowed me to make the changes to the database and then run the migrations again. I had to repeat this process for the other two migrations (0002 for the change to the field 'highlight' to 'title'and 0003 for the addition of the 'location' and 'website' fields).
+
+- **Lesson Learned:** Always check the migration history before making changes to the database.
 
 ### 8.4 Semantic Errors
 
