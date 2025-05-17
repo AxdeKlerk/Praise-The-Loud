@@ -10,7 +10,7 @@ class GigReview(models.Model):
     artist = models.ForeignKey("Artist",on_delete=models.CASCADE, related_name="gig_reviews", null=True, blank=True)
     venue = models.ForeignKey("Venue",on_delete=models.CASCADE, related_name="gig_reviews", null=True, blank=True)
     gig_date = models.DateField(null=False, blank=False)
-    highlight = models.CharField(max_length=100, null=False, blank=False)
+    title = models.CharField(max_length=100, null=False, blank=False)
     photo = models.ImageField(upload_to='gig_photos/')
     review = models.TextField(max_length=2000, null=False, blank=False)
     review_date = models.DateField(auto_now_add=True)

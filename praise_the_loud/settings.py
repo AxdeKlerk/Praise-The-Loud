@@ -144,4 +144,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/fan/login/'        # login_required redirects here
 LOGIN_REDIRECT_URL = '/'         # after successful login go to home
-LOGOUT_REDIRECT_URL = '/'        # after logout go to home
