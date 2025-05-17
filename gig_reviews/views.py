@@ -1,11 +1,12 @@
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
+from .forms import GigReviewForm
+from .models import Profile
+from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .forms import GigReviewForm
-from .forms import ProfileForm
 from django.utils.text import slugify
-from .models import Profile
+
 
 
 # Create your views here.
@@ -34,21 +35,31 @@ def venue(request): #, slug):
     return render(request, 'gig_reviews/venue.html') #,{'slug': slug})
 
 @login_required
-def profile(request): #, slug):
+def profile(request):
     try:
         profile = request.user.profile
+        profile_exists = True
     except Profile.DoesNotExist:
-        profile = Profile(user=request.user, slug=slugify(request.user.username))
+        profile = Profile(user=request.user)
+        profile_exists = False
 
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
-            form.save()
+            profile = form.save(commit=False)
+            profile.user = request.user
+            profile.save()
             return redirect('profile')
     else:
-        form = ProfileForm(instance=profile)
+        form = ProfileForm(instance=profile if profile_exists else None)
 
-    return render(request, 'gig_reviews/profile.html', {'form': form})
+    context = {
+        'form': form,
+        'profile': profile if profile_exists else None,
+        'profile_exists': profile_exists,
+    }
+
+    return render(request, 'gig_reviews/profile.html', context)
 
 def signup(request):
     if request.method == 'POST':

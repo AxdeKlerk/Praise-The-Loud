@@ -1,10 +1,28 @@
 {% extends "base.html" %}
-
 {% block content %}
-<h1>Your Profile</h1>
-<form method="post" enctype="multipart/form-data">
+
+  <h1>Your Profile</h1>
+
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Save Profile</button>
+    <button type="submit">
+      {% if profile_exists %}Update Profile{% else %}Create Profile{% endif %}
+    </button>
   </form>
+
+  {% if profile_exists %}
+    <hr>
+    <h2>Your Saved Profile Info:</h2>
+    <p><strong>Username:</strong> {{ profile.user.username }}</p>
+    <p><strong>Bio:</strong> {{ profile.bio }}</p>
+    <p><strong>Location:</strong> {{ profile.location }}</p>
+    <p><strong>Website:</strong> <a href="{{ profile.website }}">{{ profile.website }}</a></p>
+    {% if profile.profile_photo %}
+      <img src="{{ profile.profile_photo.url }}" alt="Your Profile Photo" width="200">
+    {% else %}
+      <p>No photo uploaded.</p>
+    {% endif %}
+  {% endif %}
+
 {% endblock %}
