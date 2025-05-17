@@ -3,12 +3,12 @@ from django.contrib.auth.models import User
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
-# Create your models here.
+# Create your models here. 
 class GigReview(models.Model):
     # Fields
-    # author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="gig_reviews")
-    artist = models.ForeignKey("Artist",on_delete=models.CASCADE, related_name="gig_reviews")
-    venue = models.ForeignKey("Venue",on_delete=models.CASCADE, related_name="gig_reviews")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="gig_reviews", null=True, blank=True)
+    artist = models.ForeignKey("Artist",on_delete=models.CASCADE, related_name="gig_reviews", null=True, blank=True)
+    venue = models.ForeignKey("Venue",on_delete=models.CASCADE, related_name="gig_reviews", null=True, blank=True)
     gig_date = models.DateField(null=False, blank=False)
     highlight = models.CharField(max_length=100, null=False, blank=False)
     photo = models.ImageField(upload_to='gig_photos/')

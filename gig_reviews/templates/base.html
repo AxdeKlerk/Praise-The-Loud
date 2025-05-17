@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praise The Loud</title>
+</head>
+<body>
+    
+<nav>
+  <a href="{% url 'home' %}">Home</a> |
+  {% if user.is_authenticated %}
+    Hello {{ user.username }} |
+    <a href="{% url 'logout' %}">Logout</a>
+  {% else %}
+    <a href="{% url 'login' %}">Login</a> |
+    <a href="{% url 'signup' %}">Sign Up</a>
+  {% endif %}
+</nav>
+
+ <!-- HERE is where page-specific content appears -->
+  <div class="content">
+    {% block content %}{% endblock %}
+  </div>
+
+<footer>
+    <p>&copy; 2025 /*axdesigns*/</p>
+</body>
+</html>

@@ -17,8 +17,10 @@ Including another URLconf
 ## Global (praise_the_loud/urls.py)
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from gig_reviews.views import home, review, artist, venue, profile  # import directly from the app
+from gig_reviews.views import signup
+
 
 
 urlpatterns = [
@@ -28,5 +30,13 @@ urlpatterns = [
     path('artist/', artist, name='artist'),  # Route for artist details
     path('venue/', venue, name='venue'),  # Route for venue details
     path('profile/', profile, name='profile'),  # Route for user profile
+
+    # Built-in login/logout views at /fan/
+    path('fan/', include('django.contrib.auth.urls')),
+    
+    # Your custom signup view at /fan/signup/
+    path('fan/signup/', signup, name='signup'),
+
+
     path('admin/', admin.site.urls),
 ]
