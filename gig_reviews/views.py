@@ -26,7 +26,7 @@ def review(request):
             return redirect('home')
     else:
         form = GigReviewForm()
-    return render(request, 'gig_reviews/review.html', {'form': form})
+    return render(request, 'gig_reviews/new_review.html', {'form': form})
 
     
 def artist(request): #, slug):

@@ -12,28 +12,41 @@
   {% endfor %}
 {% endif %}
 
+<!-- Show form when editing or creating -->
 {% if editing %}
-  <!-- Show form when editing or creating -->
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">{% if profile_exists %}Update{% else %}Create{% endif %} Profile</button>
   </form>
+
+<!-- Show profile details when NOT editing -->
 {% elif profile_exists %}
-  <!-- Show profile details when NOT editing -->
-  <hr>
+    {% if profile.profile_photo %}
+      <p><img src="{{ profile.profile_photo.url }}" alt="Profile Photo" width="200"></p>
+    {% else %}
+      <p>No profile photo uploaded.</p>
+    {% endif %}
   <p><strong>Username:</strong> {{ profile.user.username }}</p>
   <p><strong>Bio:</strong> {{ profile.bio }}</p>
   <p><strong>Location:</strong> {{ profile.location }}</p>
-  <p><strong>Website:</strong> <a href="{{ profile.website }}">{{ profile.website }}</a></p>
-
-  {% if profile.profile_photo %}
-    <p><img src="{{ profile.profile_photo.url }}" alt="Profile Photo" width="200"></p>
+  <p><strong>Facebook:</strong> 
+  {% if profile.facebook %}
+    <a href="{{ profile.facebook }}" target="_blank">{{ profile.facebook }}</a>
   {% else %}
-    <p>No profile photo uploaded.</p>
+    Not provided.
   {% endif %}
+  </p>
 
-  <!-- Buttons -->
+  <p><strong>Instagram:</strong> 
+    {% if profile.instagram %}
+      <a href="{{ profile.instagram }}" target="_blank">{{ profile.instagram }}</a>
+    {% else %}
+      Not provided.
+    {% endif %}
+  </p>
+
+<!-- Buttons -->
   <a href="?edit=true"><button type="button">Update Profile</button></a>
 
   <form method="post" action="{% url 'delete_profile' %}" style="display:inline;" onsubmit="return confirmDelete();">

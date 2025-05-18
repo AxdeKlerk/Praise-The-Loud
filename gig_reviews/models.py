@@ -57,7 +57,8 @@ class Profile(models.Model):
     bio = models.TextField(max_length=2000, null=False, blank=False)
     profile_photo = models.ImageField(upload_to='profile_photos/')
     location = models.CharField(max_length=100, default='UK')
-    website = models.URLField(max_length=200, default='https://www.example.com')
+    facebook = models.URLField(blank=True)
+    instagram = models.URLField(blank=True)
     slug = models.SlugField(max_length=100, unique=True)
 
     class Meta:
