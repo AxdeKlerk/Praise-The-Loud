@@ -1,3 +1,5 @@
+console.log("script.js loaded!");
+
 // This file contains JavaScript code for the Gig Reviews application.
 
 // This function is called when the user clicks the "Delete Profile" button.
