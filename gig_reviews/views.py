@@ -6,7 +6,8 @@ from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.text import slugify
-
+from django.shortcuts import get_object_or_404
+from django.contrib import messages
 
 
 # Create your views here.
@@ -49,6 +50,7 @@ def profile(request):
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
+            messages.success(request, 'Your profile has been updated successfully!')
             return redirect('profile')
     else:
         form = ProfileForm(instance=profile if profile_exists else None)
@@ -74,3 +76,11 @@ def signup(request):
 
 def logout(request):
     return render(request, 'gig_reviews/logout.html')
+
+@login_required
+def delete_profile(request):
+    profile = get_object_or_404(Profile, user=request.user)
+    if request.method == 'POST':
+        profile.delete()
+        messages.success(request, "Your profile has been deleted.")
+        return redirect('profile')

@@ -18,13 +18,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from gig_reviews.views import home, review, artist, venue, profile  # import directly from the app
-from gig_reviews.views import signup
-
+from gig_reviews.views import home, artist, venue, profile, review, signup, logout, delete_profile
+from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
-    path('', home, name='home'),  # Loads the Home page
+    path('', include('gig_reviews.urls')),  # Include app-specific URLs
     path('home/', home, name='home'),  # Route back to the Home page
     path('review/', review, name='review'), # Route for submitting a gig review
     path('artist/', artist, name='artist'),  # Route for artist details
@@ -37,6 +36,12 @@ urlpatterns = [
     # Your custom signup view at /fan/signup/
     path('fan/signup/', signup, name='signup'),
 
-
+    # Your custom logout view at /fan/logout/
+    path('fan/logout/', LogoutView.as_view(), name='logout'),
+    
+    # Route for deleting a profile
+    path('profile/delete/', delete_profile, name='delete_profile'),
+    
+    # Admin site
     path('admin/', admin.site.urls),
 ]

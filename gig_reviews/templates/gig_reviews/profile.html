@@ -3,11 +3,21 @@
 
   <h1>Your Profile</h1>
 
+  {% if messages %}
+  {% for message in messages %}
+    <div style="color: red;">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">
-      {% if profile_exists %}Update Profile{% else %}Create Profile{% endif %}
+      {% if profile_exists %}Update Profile
+      {% else %}Create Profile
+      {% endif %}
     </button>
   </form>
 
@@ -24,5 +34,14 @@
       <p>No photo uploaded.</p>
     {% endif %}
   {% endif %}
+
+  <button type="submit">
+    {% if profile_exists %}Update Profile{% else %}Create Profile{% endif %}
+  </button>
+
+  <form method="post" action="{% url 'delete_profile' %}">
+    {% csrf_token %}
+    <button type="submit" style="color: red;">Delete Profile</button>
+  </form>
 
 {% endblock %}
