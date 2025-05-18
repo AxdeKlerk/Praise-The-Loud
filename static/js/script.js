@@ -28,3 +28,11 @@ function showSelectedForm() {
         document.getElementById("venueForm").style.display = "block";
     }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const dropdown = document.getElementById("user_type");
+
+    if (dropdown) {
+        dropdown.addEventListener("change", showSelectedForm);
+    }
+});
