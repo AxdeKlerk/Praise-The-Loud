@@ -31,10 +31,12 @@
     {% block content %}{% endblock %}
   </div>
 
-<footer>
-    <p>&copy; 2025 /*axdesigns*/</p>
+<footer style="text-align: center; margin-top: 40px;">
+  <a href="{% url 'contact' %}">Contact</a>
+  <p>&copy; 2025 /*axdesigns*/</p>
 </footer>
 
+<!-- Include JavaScript files -->
 <script src="{% static '/js/script.js' %}"></script>
 
 </body>

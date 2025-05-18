@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>Contact Us</h2>
+
+<!-- Show Django messages -->
+{% if messages %}
+  {% for message in messages %}
+    <p style="color: green;">{{ message }}</p>
+  {% endfor %}
+{% endif %}
+
+<!-- Role selector -->
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <label for="user_type">Who are you?</label>
+  <select name="user_type" id="user_type" onchange="showSelectedForm()">
+    <option value="">-- Select --</option>
+    <option value="fan">Fan</option>
+    <option value="artist">Artist</option>
+    <option value="venue">Venue</option>
+  </select>
+
+  <!-- Fan Form -->
+  <div id="fanForm" class="contact-form" style="display:none; margin-top: 20px;">
+    <h3>Fan Contact Form</h3>
+    {{ fan_form.as_p }}
+  </div>
+
+  <!-- Artist Form -->
+  <div id="artistForm" class="contact-form" style="display:none; margin-top: 20px;">
+    <h3>Artist Contact Form</h3>
+    {{ artist_form.as_p }}
+  </div>
+
+  <!-- Venue Form -->
+  <div id="venueForm" class="contact-form" style="display:none; margin-top: 20px;">
+    <h3>Venue Contact Form</h3>
+    {{ venue_form.as_p }}
+  </div>
+
+  <button type="submit" style="margin-top: 20px;">Send Message</button>
+</form>
+{% endblock %}

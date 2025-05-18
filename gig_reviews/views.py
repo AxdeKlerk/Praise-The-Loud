@@ -1,13 +1,15 @@
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
-from .forms import GigReviewForm
+from .forms import GigReviewForm, ProfileForm, FanContactForm, ArtistContactForm, VenueContactForm
 from .models import Profile
-from .forms import ProfileForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.text import slugify
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 # Create your views here.
@@ -86,3 +88,35 @@ def delete_profile(request):
         profile.delete()
         messages.success(request, "Your profile has been deleted.")
         return redirect('profile')
+
+def contact_view(request):
+    fan_form = FanContactForm()
+    artist_form = ArtistContactForm()
+    venue_form = VenueContactForm()
+
+    if request.method == "POST":
+        user_type = request.POST.get("user_type")
+
+        if user_type == "fan":
+            fan_form = FanContactForm(request.POST)
+            if fan_form.is_valid():
+                messages.success(request, "Thanks for your message, fan!")
+                return redirect("home")
+
+        elif user_type == "artist":
+            artist_form = ArtistContactForm(request.POST, request.FILES)
+            if artist_form.is_valid():
+                messages.success(request, "Thanks for your message, artist!")
+                return redirect("home")
+
+        elif user_type == "venue":
+            venue_form = VenueContactForm(request.POST, request.FILES)
+            if venue_form.is_valid():
+                messages.success(request, "Thanks for your message, venue!")
+                return redirect("home")
+
+    return render(request, "gig_reviews/contact_modal.html", {
+        "fan_form": fan_form,
+        "artist_form": artist_form,
+        "venue_form": venue_form
+    })
