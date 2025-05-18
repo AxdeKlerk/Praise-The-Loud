@@ -113,3 +113,6 @@ def contact_view(request):
         "artist_form": artist_form,
         "venue_form": venue_form
     })
+
+def thank_you(request):
+    return render(request, "gig_reviews/thank_you.html")
