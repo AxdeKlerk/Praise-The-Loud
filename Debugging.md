@@ -27,9 +27,9 @@ Below are the various bugs that I encountered along the way and how I fixed them
 
   After checking my template structure multiplue times I could not understand why the templates were not loading. I had checked the urls.py file and the views.py file and they were both correct. I then realised that I had created the template and registration folders at the wrong level. This was a simple mistake but it took me a while to figure out.
 
-- **Fix:** Moved template and registration folders to the root level of the project and left the signup html file in the app level templates folder
+- **Fix:** Moved template and registration folders to the root level of the project and left the signup html file in the app level templates folder.
 - 
-- **Lesson Learned:** Double check everything I do and make sure that I am using the correct logic and placement of my template folders
+- **Lesson Learned:** Double check everything I do and make sure that I am using the correct logic and placement of my template folders.
 
 ### 8.3 Runtime Errors
 
@@ -38,16 +38,24 @@ Below are the various bugs that I encountered along the way and how I fixed them
   psycopg2.errors.DuplicateTable: relation "gig_reviews_gigreview" already exists
   psycopg2.errors.UndefinedColumn: column "highlight" does not exist
 
-- **Fix:** I used the following command to python manage.py migrate gig_reviews --fake 0001
+- **Fix:** I used the following command to python manage.py migrate gig_reviews --fake 0001.
   This command faked the first migration where the table has all ready migrated and skipped the migration history. This allowed me to make the changes to the database and then run the migrations again. I had to repeat this process for the other two migrations (0002 for the change to the field 'highlight' to 'title'and 0003 for the addition of the 'location' and 'website' fields).
 
 - **Lesson Learned:** Always check the migration history before making changes to the database.
 
+- **Bug:** JS delete confirmation not triggering when clicking the "Delete Profile" button. The issue was created when I moved my static file location from my app to my global settings. However, there were no errors in the Django server output. So in order to diagnose why the JS was not working, I a console log to the top on my js file to say "script.js loaded!". As this was not appearing in the console in DevTools, I knew that the JS was not being loaded.
+  
+- **Fix:** I retraced my steps and found that I had not rerouted my script src in my base.html. I moved the static file location from 'my app/' and changed the path in the html file to the global location.
+  
+- **Lesson Learned:** Always check the console for errors and make sure that the JS is being loaded correctly before moving on with the project assuming that the error is not in the JS. I left the console.log at the top of my Js file as a reminder to check the console for errors at each step of the way.
+
 ### 8.4 Semantic Errors
 
-- **Bug:**
-- **Fix:**
-- **Lesson Learned:**
+- **Bug:** This bug continued throughout my project: spelling mistakes in the HTML, CSS, Js and Python code. I had to spend a lot of time debugging and fixing these errors.
+  
+- **Fix:** I used the following command to python manage.py check --deploy. This command checks for common errors in the project. It also checks for spelling mistakes in the HTML, CSS, Js and Python code.
+
+- **Lesson Learned:** ALWAYS check the spelling of everything as you go along. This will save you a lot of time in the long run.
 
 ### 8.5 Design Errors
 
