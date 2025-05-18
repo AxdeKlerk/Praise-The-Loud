@@ -9,7 +9,7 @@ urlpatterns = [
    path('artist/', artist, name='artist'), # add '<slug:slug>/' to the path if you want to pass a slug
    path('venue/', venue, name='venue'), # add '<slug:slug>/' to the path if you want to pass a slug
    path('profile/', profile, name='profile'), # add '<slug:slug>/' to the path if you want to pass a slug
-   path('new_review/', review, name='new-review'), # add '<slug:slug>/' to the path if you want to pass a slug
+   path('new_review/', review, name='new_review'), # add '<slug:slug>/' to the path if you want to pass a slug
    path('fan/', include('django.contrib.auth.urls')), # Built-in login/logout views at /fan/
    path('fan/signup/', signup, name='signup'),  # Route for user signup
    path('fan/logout/', logout, name='logout'), # Route for user logout

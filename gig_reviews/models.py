@@ -21,8 +21,7 @@ class GigReview(models.Model):
         ordering = ['-gig_date']
     
     def __str__(self):
-        return f"{self.venue} - {self.gig_date} - {self.status} - {self.slug}"
-    # add "{self.artist} @ {self.venue} | {self.author} to the return string once user model is set up
+        return f"{self.artist} @ {self.venue} | {self.author} - {self.gig_date} - {self.status} - {self.slug}"
    
 class Artist(models.Model):
     # Fields
