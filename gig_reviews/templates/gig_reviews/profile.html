@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
 {% block content %}
 
 <h1>Your Profile</h1>
@@ -33,10 +36,11 @@
   <!-- Buttons -->
   <a href="?edit=true"><button type="button">Update Profile</button></a>
 
-  <form method="post" action="{% url 'delete_profile' %}" style="display:inline;">
-    {% csrf_token %}
+  <form method="post" action="{% url 'delete_profile' %}" style="display:inline;" onsubmit="return confirmDelete();">
+  {% csrf_token %}
     <button type="submit" style="color: red;">Delete Profile</button>
   </form>
+
 {% else %}
   <p>You have no profile yet. <a href="?edit=true">Create one now</a>.</p>
 {% endif %}

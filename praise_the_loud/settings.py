@@ -62,7 +62,7 @@ ROOT_URLCONF = 'praise_the_loud.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'templates' ],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -133,14 +133,16 @@ DATETIME_INPUT_FORMATS = ['%d-%m-%Y %H:%M']
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_URL = '/fan/login/'        # login_required redirects here
-LOGIN_REDIRECT_URL = '/'         # after successful login go to home
+# login_required redirects here
+LOGIN_URL = '/fan/login/' 
+
+# after successful login go to home
+LOGIN_REDIRECT_URL = '/'
