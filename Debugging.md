@@ -31,6 +31,12 @@ Below are the various bugs that I encountered along the way and how I fixed them
 - 
 - **Lesson Learned:** Double check everything I do and make sure that I am using the correct logic and placement of my template folders.
 
+- **Bug:** When I selected "Fan", "Artist", or "Venue" from the dropdown on my contact page, nothing happened. The correct form didn’t appear. I expected that choosing a contact type (e.g. "Fan") would show only the fan form and hide the other two, like it was doing earlier in testing.
+
+  - **Fix:** The JavaScript function existed and didn’t crash, but it ran at the wrong time — before the dropdown element was ready. That meant the logic didn’t produce the expected result (the form showing), even though the code had no syntax errors. Thus, I wrapped it using DOMContentLoaded to ensure it ran only after the page was loaded.
+
+  - **Lesson Learned:** I learned that it’s important to test my code thoroughly, even if it seems to work. I also learned that it’s important to understand the logic of my code and how it interacts with the DOM, and that JavaScript can’t find or interact with HTML elements unless the page is fully loaded first.
+
 ### 8.3 Runtime Errors
 
 - **Bug:** Runtime error when trying to migrate the database.
