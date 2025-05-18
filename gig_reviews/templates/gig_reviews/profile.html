@@ -4,44 +4,44 @@
   <h1>Your Profile</h1>
 
   {% if messages %}
-  {% for message in messages %}
-    <div style="color: red;">
-      {{ message }}
-    </div>
-  {% endfor %}
-{% endif %}
+    {% for message in messages %}
+      <div style="color: red;">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
 
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">
-      {% if profile_exists %}Update Profile
-      {% else %}Create Profile
-      {% endif %}
-    </button>
+
+    {% if profile_exists %}
+      <button type="submit">Update Profile</button>
+    {% else %}
+      <button type="submit">Create Profile</button>
+    {% endif %}
   </form>
 
   {% if profile_exists %}
     <hr>
     <h2>Your Saved Profile Info:</h2>
-    <p><strong>Username:</strong> {{ profile.user.username }}</p>
-    <p><strong>Bio:</strong> {{ profile.bio }}</p>
-    <p><strong>Location:</strong> {{ profile.location }}</p>
-    <p><strong>Website:</strong> <a href="{{ profile.website }}">{{ profile.website }}</a></p>
+      <p><strong>Username:</strong> {{ profile.user.username }}</p>
+      <p><strong>Bio:</strong> {{ profile.bio }}</p>
+      <p><strong>Location:</strong> {{ profile.location }}</p>
+      <p><strong>Website:</strong> <a href="{{ profile.website }}">{{ profile.website }}</a></p>
+    
     {% if profile.profile_photo %}
       <img src="{{ profile.profile_photo.url }}" alt="Your Profile Photo" width="200">
-    {% else %}
+    
+      {% else %}
       <p>No photo uploaded.</p>
     {% endif %}
+
+    <form method="post" action="{% url 'delete_profile' %}">
+      {% csrf_token %}
+      <button type="submit" style="color: red;">Delete Profile</button>
+   </form>
+
   {% endif %}
-
-  <button type="submit">
-    {% if profile_exists %}Update Profile{% else %}Create Profile{% endif %}
-  </button>
-
-  <form method="post" action="{% url 'delete_profile' %}">
-    {% csrf_token %}
-    <button type="submit" style="color: red;">Delete Profile</button>
-  </form>
 
 {% endblock %}
