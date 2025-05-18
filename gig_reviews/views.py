@@ -7,10 +7,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.utils.text import slugify
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-
-
 
 # Create your views here.
 def home(request):
@@ -100,20 +96,17 @@ def contact_view(request):
         if user_type == "fan":
             fan_form = FanContactForm(request.POST)
             if fan_form.is_valid():
-                messages.success(request, "Thanks for your message, fan!")
-                return redirect("home")
+                return redirect("thank_you")
 
         elif user_type == "artist":
             artist_form = ArtistContactForm(request.POST, request.FILES)
             if artist_form.is_valid():
-                messages.success(request, "Thanks for your message, artist!")
-                return redirect("home")
+                return redirect("thank_you")
 
         elif user_type == "venue":
             venue_form = VenueContactForm(request.POST, request.FILES)
             if venue_form.is_valid():
-                messages.success(request, "Thanks for your message, venue!")
-                return redirect("home")
+                return redirect("thank_you")
 
     return render(request, "gig_reviews/contact_modal.html", {
         "fan_form": fan_form,

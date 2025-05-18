@@ -2,6 +2,8 @@
 
 from django.urls import path, include
 from .views import home, artist, venue, profile, review, signup, logout, delete_profile, contact_view
+from django.views.generic import TemplateView
+
 
 # Add URL patterns for other views as needed
 urlpatterns = [
@@ -9,13 +11,13 @@ urlpatterns = [
    path('artist/', artist, name='artist'), # add '<slug:slug>/' to the path if you want to pass a slug
    path('venue/', venue, name='venue'), # add '<slug:slug>/' to the path if you want to pass a slug
    path('profile/', profile, name='profile'), # add '<slug:slug>/' to the path if you want to pass a slug
-   path('new_review/', review, name='new_review'), # add '<slug:slug>/' to the path if you want to pass a slug
+   path('new-review/', review, name='new_review'), # add '<slug:slug>/' to the path if you want to pass a slug
    path('fan/', include('django.contrib.auth.urls')), # Built-in login/logout views at /fan/
    path('fan/signup/', signup, name='signup'),  # Route for user signup
    path('fan/logout/', logout, name='logout'), # Route for user logout
    path('profile/delete/', delete_profile, name='delete_profile'), # Route for deleting user profile
    path('contact/', contact_view, name='contact'), # Route for contact form
-
+   path("thank-you/", TemplateView.as_view(template_name="gig_reviews/thank_you.html"), name="thank_you"),
 
 ]
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
