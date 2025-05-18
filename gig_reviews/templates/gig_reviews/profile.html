@@ -1,47 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <h1>Your Profile</h1>
+<h1>Your Profile</h1>
 
-  {% if messages %}
-    {% for message in messages %}
-      <div style="color: red;">
-        {{ message }}
-      </div>
-    {% endfor %}
-  {% endif %}
+{% if messages %}
+  {% for message in messages %}
+    <div style="color: cyan;">{{ message }}</div>
+  {% endfor %}
+{% endif %}
 
+{% if editing %}
+  <!-- Show form when editing or creating -->
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-
-    {% if profile_exists %}
-      <button type="submit">Update Profile</button>
-    {% else %}
-      <button type="submit">Create Profile</button>
-    {% endif %}
+    <button type="submit">{% if profile_exists %}Update{% else %}Create{% endif %} Profile</button>
   </form>
+{% elif profile_exists %}
+  <!-- Show profile details when NOT editing -->
+  <hr>
+  <p><strong>Username:</strong> {{ profile.user.username }}</p>
+  <p><strong>Bio:</strong> {{ profile.bio }}</p>
+  <p><strong>Location:</strong> {{ profile.location }}</p>
+  <p><strong>Website:</strong> <a href="{{ profile.website }}">{{ profile.website }}</a></p>
 
-  {% if profile_exists %}
-    <hr>
-    <h2>Your Saved Profile Info:</h2>
-      <p><strong>Username:</strong> {{ profile.user.username }}</p>
-      <p><strong>Bio:</strong> {{ profile.bio }}</p>
-      <p><strong>Location:</strong> {{ profile.location }}</p>
-      <p><strong>Website:</strong> <a href="{{ profile.website }}">{{ profile.website }}</a></p>
-    
-    {% if profile.profile_photo %}
-      <img src="{{ profile.profile_photo.url }}" alt="Your Profile Photo" width="200">
-    
-      {% else %}
-      <p>No photo uploaded.</p>
-    {% endif %}
-
-    <form method="post" action="{% url 'delete_profile' %}">
-      {% csrf_token %}
-      <button type="submit" style="color: red;">Delete Profile</button>
-   </form>
-
+  {% if profile.profile_photo %}
+    <p><img src="{{ profile.profile_photo.url }}" alt="Profile Photo" width="200"></p>
+  {% else %}
+    <p>No profile photo uploaded.</p>
   {% endif %}
 
+  <!-- Buttons -->
+  <a href="?edit=true"><button type="button">Update Profile</button></a>
+
+  <form method="post" action="{% url 'delete_profile' %}" style="display:inline;">
+    {% csrf_token %}
+    <button type="submit" style="color: red;">Delete Profile</button>
+  </form>
+{% else %}
+  <p>You have no profile yet. <a href="?edit=true">Create one now</a>.</p>
+{% endif %}
+
 {% endblock %}
+

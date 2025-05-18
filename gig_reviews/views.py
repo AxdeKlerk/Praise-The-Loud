@@ -44,23 +44,25 @@ def profile(request):
         profile = Profile(user=request.user)
         profile_exists = False
 
+    editing = request.GET.get('edit') == 'true' or not profile_exists
+
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = request.user
             profile.save()
-            messages.success(request, 'Your profile has been updated successfully!')
-            return redirect('profile')
+            messages.success(request, 'Profile updated successfully.')
+            return redirect('profile')  # redirect to view mode
     else:
-        form = ProfileForm(instance=profile if profile_exists else None)
+        form = ProfileForm(instance=profile)
 
     context = {
         'form': form,
-        'profile': profile if profile_exists else None,
+        'profile': profile,
         'profile_exists': profile_exists,
+        'editing': editing,
     }
-
     return render(request, 'gig_reviews/profile.html', context)
 
 def signup(request):
