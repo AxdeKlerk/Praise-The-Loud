@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -11,7 +12,7 @@ class GigReview(models.Model):
     venue = models.ForeignKey("Venue",on_delete=models.CASCADE, related_name="gig_reviews", null=True, blank=True)
     gig_date = models.DateField(null=False, blank=False)
     title = models.CharField(max_length=100, null=False, blank=False)
-    photo = models.ImageField(upload_to='gig_photos/')
+    photo = CloudinaryField('image', default='placeholder')
     review = models.TextField(max_length=2000, null=False, blank=False)
     review_date = models.DateField(auto_now_add=True)
     slug = models.SlugField(max_length=100, unique=True)
@@ -26,7 +27,7 @@ class GigReview(models.Model):
 class Artist(models.Model):
     # Fields
     name = models.CharField(max_length=100, null=False, blank=False)
-    logo = models.ImageField(upload_to='artist_photos/')
+    logo = CloudinaryField('image', default='placeholder', blank=True, null=True)
     bio = models.TextField(max_length=2000, null=False, blank=False)
     slug = models.SlugField(max_length=100, unique=True)
 
@@ -39,7 +40,7 @@ class Artist(models.Model):
 class Venue(models.Model):
     # Fields
     name = models.CharField(max_length=100, null=False, blank=False)
-    logo = models.ImageField(upload_to='venue_photos/')
+    logo = CloudinaryField('image', default='placeholder', blank=True, null=True)
     town = models.CharField(max_length=100, null=False, blank=False)    
     post_code = models.CharField(max_length=20, null=False, blank=False)
     slug = models.SlugField(max_length=100, unique=True)
@@ -54,7 +55,7 @@ class Profile(models.Model):
     # Fields
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=2000, null=False, blank=False)
-    profile_photo = models.ImageField(upload_to='profile_photos/')
+    profile_photo = CloudinaryField('image', default='placeholder', blank=True, null=True)
     location = models.CharField(max_length=100, default='UK')
     facebook = models.URLField(blank=True)
     instagram = models.URLField(blank=True)

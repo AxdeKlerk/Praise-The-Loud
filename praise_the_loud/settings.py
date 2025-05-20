@@ -15,6 +15,8 @@ import os
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
+import cloudinary
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +30,7 @@ SECRET_KEY = 'django-insecure-u807$ib1-dnsl!b=dy^sqvykne_0ui_83mejp8_i2d4f2qy*1a
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1',]
 
@@ -42,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'gig_reviews.apps.GigReviewsConfig',
 ]
 
@@ -133,6 +137,13 @@ DATETIME_INPUT_FORMATS = ['%d-%m-%Y %H:%M']
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
+cloudinary.config(
+  cloud_name = 'dqde3a83z',
+  api_key = '445625969339627',
+  api_secret = 'X4JgGzIrzdWd6QoE26I9a0Zm6Vw'
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
