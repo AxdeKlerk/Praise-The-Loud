@@ -11,6 +11,9 @@
 
         {% if item.logo %}
           <img src="{{ item.logo.url }}" alt="{{ item.name }} logo">
+
+        {% if item.website %}
+          <p><a href="{{ item.website }}" target="_blank">Visit Website</a></p>
         {% endif %}
 
         {% if item.bio %}

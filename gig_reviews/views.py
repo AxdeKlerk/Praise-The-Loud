@@ -59,11 +59,14 @@ def profile(request):
     else:
         form = ProfileForm(instance=profile)
 
+    reviews = GigReview.objects.filter(author=request.user).order_by('-created_at')
+
     context = {
         'form': form,
         'profile': profile,
         'profile_exists': profile_exists,
         'editing': editing,
+        'reviews': reviews
     }
     return render(request, 'gig_reviews/profile.html', context)
 

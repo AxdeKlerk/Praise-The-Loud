@@ -58,5 +58,28 @@
   <p>You have no profile yet. <a href="?edit=true">Create one now</a>.</p>
 {% endif %}
 
+<hr>
+<h2>Your Gig Reviews</h2>
+
+  {% if reviews %}
+    <ul>
+      {% for review in reviews %}
+        <li>
+          <h3>{{ review.title }}</h3>
+          <p>Date: {{ review.gig_date }}</p>
+          <p>Artist: {{ review.artist }}</p>
+          <p>Venue: {{ review.venue }}</p>
+          <p>{{ review.review }}</p>
+
+          {% if review.photo %}
+            <img src="{{ review.photo.url }}" alt="Review photo">
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>You haven’t posted any gig reviews yet.</p>
+  {% endif %}
+
 {% endblock %}
 
