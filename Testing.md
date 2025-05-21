@@ -37,7 +37,7 @@ As a **fan**, I can **register an account** so that I can **create a profile**.
 - [x] Added input fields for Facebook and Instagram links
 
 **Notes**
-Initial Cloudinary image uploads failed due to incorrect environment variable setup. This was resolved by configuring `env.py` and using `CloudinaryField` in the model. Also ran into an issue where the JS for delete confirmation didn't work due to broken static file paths — this was fixed by correcting the path with `{% static %}` and ensuring static files were served via `urls.py`.
+Initial Cloudinary image uploads failed due to incorrect environment variable setup. This was resolved by configuring *'env.py'* and using *'CloudinaryField'* in the model. Also ran into an issue where the JS for delete confirmation didn't work due to broken static file paths — this was fixed by correcting the path with *'{% static %}'* and ensuring static files were served via *'urls.py'*.
 
 **Screenshots**
 
@@ -83,7 +83,7 @@ As a **Fan**, I want to **be able to update or delete my profile** so that **I c
 
 **Notes**
 
-The delete confirmation popup initially failed to appear after static files were moved to a global directory. This was resolved by fixing the path to `script.js` in `base.html` using `{% static %}` and confirming the file was being loaded by checking for a `console.log()` message in the browser console.
+The delete confirmation popup initially failed to appear after static files were moved to a global directory. This was resolved by fixing the path to *'scripts.js'* in *'base.html'* using *'{% static %}'* and confirming the file was being loaded by checking for a *'console.log'* message in the browser console.
 
 **Screenshots**
 
@@ -114,8 +114,8 @@ As a **fan**, I can **login** so that I can **view my profile and leave a review
 
 **Tasks Completed**
 
-- [x] Created navigation bar with 'Profile' and 'Gig Review' links in `base.html`  
-- [x] Used Django’s template inheritance to extend `base.html` across all pages  
+- [x] Created navigation bar with 'Profile' and 'Gig Review' links in *'base.html'*  
+- [x] Used Django’s template inheritance to extend *'base.html'* across all pages  
 - [x] Ensured navigation links only appear to logged-in users using template logic  
 
 **Notes**
