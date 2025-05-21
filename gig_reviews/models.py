@@ -21,7 +21,7 @@ class GigReview(models.Model):
         ordering = ['-gig_date']
     
     def __str__(self):
-        return f"{self.artist} @ {self.venue} | {self.author} - {self.gig_date} - {self.status} - {self.slug}"
+        return f"{self.artist} @ {self.venue} | {self.author} - {self.gig_date} - {self.status}"
    
 class Artist(models.Model):
     # Fields
@@ -33,7 +33,7 @@ class Artist(models.Model):
         ordering = ['name']
     
     def __str__(self):
-        return f"{self.name}- {self.logo}- {self.bio} - {self.slug}"
+        return f"{self.name}"
 
 class Venue(models.Model):
     # Fields
@@ -46,7 +46,7 @@ class Venue(models.Model):
         ordering = ['name']
     
     def __str__(self):
-        return f"{self.name}- {self.logo}- {self.town} - {self.post_code} - {self.slug}"
+        return f"{self.name}"
     
 class Profile(models.Model):
     # Fields
