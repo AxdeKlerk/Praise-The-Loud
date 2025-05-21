@@ -16,8 +16,8 @@ urlpatterns = [
    path('fan/logout/', logout, name='logout'), # Route for user logout
    path('profile/delete/', delete_profile, name='delete_profile'), # Route for deleting user profile
    path('contact/', contact_view, name='contact'), # Route for contact form
-   path("thank-you/", thank_you, name="thank_you"), # Route for thank you page
-   path('search/', search_view, name='search'), # Route for search view
+   path("thank-you/", thank_you, name='thank_you'), # Route for thank you page
+   path('search/', search_view, name='search_view'), # Route for search view
 
 ]
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

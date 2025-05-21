@@ -1,36 +1,48 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Search Results</h1>
+<h2>Search Results for {{ form.cleaned_data.search_type|title }}</h2>
 
   {% if results %}
-    {% for result in results %}
-        <h2>{{ result.name }}</h2>
-            {% if result.logo %}
-                <img src="{{ result.logo.url }}" alt="{{ result.name }}" style="height:100px;">
-            {% endif %}
+  <ul>
+    {% for item in results %}
+      <li>
+        <h3>{{ item.name }}</h3>
 
-            {% if result.bio %}
-                <p>{{ result.bio }}</p>
+        {% if item.logo %}
+          <img src="{{ item.logo.url }}" alt="{{ item.name }} logo">
+        {% endif %}
 
-            {% elif result.town %}
-                <p>{{ result.town }}, {{ result.post_code }}</p>
-            {% endif %}
+        {% if item.bio %}
+          <p>{{ item.bio }}</p>
+        {% endif %}
+
+        {% if item.town %}
+          <p>{{ item.town }}, {{ item.post_code }}</p>
+        {% endif %}
+      </li>
     {% endfor %}
-
-  <hr>
-<h3>Reviews:</h3>
-    {% for review in reviews %}
-        <div>
-            <h4>{{ review.title }}</h4>
-            <p>{{ review.review }}</p>
-        </div>
-  
-        {% empty %}
-            <p>No reviews yet.</p>
-    {% endfor %}
+  </ul>
 {% else %}
-  <p>Enter a name and search above.</p>
+  <p>No matching results found.</p>
+{% endif %}
+
+{% if reviews %}
+  <h3>Reviews</h3>
+    <ul>
+        {% for review in reviews %}
+        <li>
+            <h4>{{ review.title }}</h4>
+            <p>{{ review.gig_date }}</p>
+            <p>{{ review.review }}</p>
+            {% if review.photo %}
+            <img src="{{ review.photo.url }}" alt="Gig photo" style="max-width: 200px;">
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+  <p>No reviews for this {{ form.cleaned_data.search_type }} yet.</p>
 {% endif %}
 
 {% endblock %}

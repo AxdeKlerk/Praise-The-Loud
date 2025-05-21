@@ -18,7 +18,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from gig_reviews.views import home, about, artist, venue, profile, review, signup, logout, delete_profile
+from gig_reviews.views import home, about, artist, venue, profile, review, signup, logout, delete_profile, search_view
 from django.contrib.auth.views import LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -32,6 +32,7 @@ urlpatterns = [
     path('artist/', artist, name='artist'),  # Route for artist details
     path('venue/', venue, name='venue'),  # Route for venue details
     path('profile/', profile, name='profile'),  # Route for user profile
+    path('search/', search_view, name='search_view'), # Route for search view
 
     # Built-in login/logout views at /fan/
     path('fan/', include('django.contrib.auth.urls')),
