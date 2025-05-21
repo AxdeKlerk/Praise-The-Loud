@@ -9,10 +9,12 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    return render(request, 'gig_reviews/index.html')
+    form = SearchForm()
+    return render(request, 'gig_reviews/index.html', {'form': form})
 
 def about(request):
-    return render(request, 'gig_reviews/about.html')
+    form = SearchForm()
+    return render(request, 'gig_reviews/about.html', {'form': form})
 
 @login_required
 def review(request):
@@ -126,7 +128,7 @@ def search_view(request):
 
     if form.is_valid():
         search_type = form.cleaned_data['search_type']
-        query = form.cleaned_data['query']
+        query = form.cleaned_data['search_term']
 
         if search_type == 'artist':
             results = Artist.objects.filter(name__icontains=query)

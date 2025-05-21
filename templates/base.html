@@ -24,11 +24,12 @@
     <a href="{% url 'login' %}">Login</a> |
     <a href="{% url 'signup' %}">Sign Up</a>
   {% endif %}
-  <form method="get" action="{% url 'search' %}">
+  <form method="get" action="{% url 'search_view' %}">
     {{ form.search_type }}
-    {{ form.query }}
+    {{ form.search_term }}
     <button type="submit">Search</button>
   </form>
+
 </nav>
 
 
