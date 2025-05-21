@@ -21,6 +21,12 @@ Below are the various bugs that I encountered along the way and how I fixed them
   
     This will help to avoid errors such as this one in the future by creating different classes for the singular and plural forms of the model name. More importantly to make sure that I use different names for the app name and the class name to avoid confusion.
 
+    - **Bug:** While integrating Cloudinary into my Django project, I encountered a TypeError when using os.environ.setdefault() in my env.py file. I had mistakenly passed only one argument instead of the required key-value pair. After correcting that, a second issue appeared — an IndentationError in settings.py. I had written an if statement to check for the presence of env.py but forgot to indent the import env line beneath it, which prevented the project from running.
+  
+    - **Fix:**  I resolved the TypeError by replacing setdefault() with a direct environment variable assignment. I then resolved the IndentationError by indenting the import env line so it sat within the if block.
+
+    - **Lesson Learned:** Syntax errors like these can completely stop Django from running, even if the actual mistake is minor. I was reminded to pay close attention to indentation, especially in conditional blocks, and to always check that function calls are written with the correct number of arguments. Stepping through each issue methodically helped isolate and fix the problems without getting overwhelmed by the complexity of the project.
+  
 ### 8.2 Logic Errors
 
 - **Bug:** Sign-up, login and logout templates not loading on server.
@@ -37,10 +43,20 @@ Below are the various bugs that I encountered along the way and how I fixed them
 
   - **Lesson Learned:** I learned that it’s important to test my code thoroughly, even if it seems to work. I also learned that it’s important to understand the logic of my code and how it interacts with the DOM, and that JavaScript can’t find or interact with HTML elements unless the page is fully loaded first.
 
+  - **Bug:** The delete confirmation popup stopped appearing when I clicked the “Delete Profile” button. This happened after I moved my static files to a global directory. There were no errors in the Django server output, so I initially assumed the problem was with the JavaScript logic itself.
+
+  - **Fix:**  I reviewed my base.html template and found that I hadn’t updated the path to the JS file after moving it. I had been using a hardcoded path like /static/js/script.js, but Django wasn’t recognizing it. I replaced it with the correct {% static %} tag:
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+  - **Leason Learned:** If JavaScript code isn’t running, always verify whether the script is actually being loaded by checking the console. A console.log() at the top of the file is a quick way to test this. Also, whenever static file paths are changed or files are moved, it's important to update all related template references using {% static %} rather than hardcoded paths, especially when working within Django.
+
+
 ### 8.3 Runtime Errors
 
 - **Bug:** Runtime error when trying to migrate the database.
   Django's migration history didn’t match the actual state of the database. It tried to create a table that already existed after I had added the fields 'location' and 'website' to the profile model and change the field's name from 'highlight' to 'title'. I got the following error message:
+
   psycopg2.errors.DuplicateTable: relation "gig_reviews_gigreview" already exists
   psycopg2.errors.UndefinedColumn: column "highlight" does not exist
 
@@ -54,6 +70,23 @@ Below are the various bugs that I encountered along the way and how I fixed them
 - **Fix:** I retraced my steps and found that I had not rerouted my script src in my base.html. I moved the static file location from 'my app/' and changed the path in the html file to the global location.
   
 - **Lesson Learned:** Always check the console for errors and make sure that the JS is being loaded correctly before moving on with the project assuming that the error is not in the JS. I left the console.log at the top of my Js file as a reminder to check the console for errors at each step of the way.
+
+- **Bug:** After moving my static files (CSS and JavaScript) from an app-level directory to a global static/ folder, the browser console reported MIME type errors and 404 responses for both style.css and script.js. Despite the files existing in the correct location, Django was returning HTML instead of the expected static file content. There were no errors in the Django server log, which made the issue harder to diagnose. The CSS and JS files were not being applied or executed at all.
+
+![static file error message in console](image.png)
+
+- **Fix:** I first confirmed that my file structure and template paths were correct using {% static %}. Then I ran python manage.py findstatic css/style.css, which confirmed Django could locate the file. This pointed to the fact that Django simply wasn’t serving the static files during development. To fix this, I updated urls.py to explicitly serve static files by adding the following block at the bottom of the file:
+
+    from django.conf import settings
+    from django.conf.urls.static import static
+
+    if settings.DEBUG:
+        urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
+
+- **Lesson Learned:** Always check the console for errors and make sure that the JS is being loaded correctly before moving on with the project assuming that the error is not in the JS. I left the console.log at the top of my Js file as a reminder to check the console for errors at each step of the way.
+
+Even when static files exist and are referenced correctly in templates, Django won’t serve them during development unless explicitly told to. It’s important to use findstatic to confirm the path and then make sure the urls.py is properly configured. MIME errors in the browser usually indicate that something is being returned with the wrong content type — often a 404 HTML page — so checking the browser’s DevTools network tab is an essential part of debugging static file issues.
+
 
 ### 8.4 Semantic Errors
 
