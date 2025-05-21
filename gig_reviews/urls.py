@@ -1,7 +1,7 @@
 ## APP (gig_reviews) URLS
 
 from django.urls import path, include
-from .views import home, about, artist, venue, profile, review, signup, logout, delete_profile, contact_view, thank_you
+from .views import home, about, artist, venue, profile, review, signup, logout, delete_profile, contact_view, thank_you, search_view
 
 # Add URL patterns for other views as needed
 urlpatterns = [
@@ -16,7 +16,8 @@ urlpatterns = [
    path('fan/logout/', logout, name='logout'), # Route for user logout
    path('profile/delete/', delete_profile, name='delete_profile'), # Route for deleting user profile
    path('contact/', contact_view, name='contact'), # Route for contact form
-   path("thank-you/", thank_you, name="thank_you"),
+   path("thank-you/", thank_you, name="thank_you"), # Route for thank you page
+   path('search/', search_view, name='search'), # Route for search view
 
 ]
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

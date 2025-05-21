@@ -135,7 +135,7 @@ def search_view(request):
             results = Venue.objects.filter(name__icontains=query)
             reviews = GigReview.objects.filter(venue__in=results)
 
-    return render(request, 'search_results.html', {
+    return render(request, 'gig_reviews/search_results.html', {
         'form': form,
         'results': results,
         'reviews': reviews,
