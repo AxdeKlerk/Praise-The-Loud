@@ -4,7 +4,6 @@ from .forms import GigReviewForm, ProfileForm, FanContactForm, ArtistContactForm
 from .models import Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.utils.text import slugify
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
 
@@ -21,7 +20,7 @@ def review(request):
         form = GigReviewForm(request.POST, request.FILES)
         if form.is_valid():
             gig = form.save(commit=False)
-            gig.author = request.user      # set the logged-in user
+            gig.author = request.user      
             gig.slug = slugify(f"{gig.artist}-{gig.gig_date}")
             gig.save()
             return redirect('home')
@@ -30,11 +29,11 @@ def review(request):
     return render(request, 'gig_reviews/new_review.html', {'form': form})
 
     
-def artist(request): #, slug):
-    return render(request, 'gig_reviews/artist.html') #,{'slug': slug})
+def artist(request):
+    return render(request, 'gig_reviews/artist.html')
 
-def venue(request): #, slug):
-    return render(request, 'gig_reviews/venue.html') #,{'slug': slug})
+def venue(request):
+    return render(request, 'gig_reviews/venue.html')
 
 @login_required
 def profile(request):

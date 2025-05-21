@@ -10,13 +10,13 @@ This user story covers the full flow of registration, profile creation, and soci
 As a **fan**, I can **register an account** so that I can **create a profile**.
 
 **Acceptance Criteria 1: Register an account**
-- [x] Register page loads without errors
+- [x] Register page loads without errors and shows a *Hello User* message in navbar
 - [x] All required fields (username, email, password) are present
 - [x] Password confirmation matches check is working
 - [x] Error messages appear for duplicate usernames or mismatched passwords
 
 **Acceptance Criteria 2: Create a profile**
-- [x] After registering, the user is directed to a profile form
+- [x] After registering, the user can navigate to a profile form
 - [x] The form includes fields for bio, photo upload, and social links
 - [x] Submitting the profile form creates a new Fan Profile linked to the user
 - [x] Validation prevents submission of incomplete or empty required fields
@@ -65,7 +65,7 @@ As a **Fan**, I want to **be able to update or delete my profile** so that **I c
 
 - [x] All profile fields pre-fill with the user's current data  
 - [x] Edited data persists after refresh  
-- [ ] Updated information is visible on the public-facing profile  
+- [ ] Updated information is visible on the public-facing profile *(This was tested later in development, but included here as it part of this user story)*  
 
 **Acceptance Criteria 4: Form deletion shows a pop-up warning before confirming deletion**
 

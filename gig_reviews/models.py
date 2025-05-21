@@ -15,7 +15,6 @@ class GigReview(models.Model):
     photo = CloudinaryField('image', default='placeholder')
     review = models.TextField(max_length=2000, null=False, blank=False)
     review_date = models.DateField(auto_now_add=True)
-    slug = models.SlugField(max_length=100, unique=True)
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
@@ -29,7 +28,6 @@ class Artist(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
     logo = CloudinaryField('image', default='placeholder', blank=True, null=True)
     bio = models.TextField(max_length=2000, null=False, blank=False)
-    slug = models.SlugField(max_length=100, unique=True)
 
     class Meta:
         ordering = ['name']
@@ -43,7 +41,6 @@ class Venue(models.Model):
     logo = CloudinaryField('image', default='placeholder', blank=True, null=True)
     town = models.CharField(max_length=100, null=False, blank=False)    
     post_code = models.CharField(max_length=20, null=False, blank=False)
-    slug = models.SlugField(max_length=100, unique=True)
 
     class Meta:
         ordering = ['name']
@@ -59,7 +56,6 @@ class Profile(models.Model):
     location = models.CharField(max_length=100, default='UK')
     facebook = models.URLField(blank=True)
     instagram = models.URLField(blank=True)
-    slug = models.SlugField(max_length=100, unique=True)
 
     class Meta:
         ordering = ['user']
