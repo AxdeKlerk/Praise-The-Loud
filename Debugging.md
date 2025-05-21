@@ -91,10 +91,17 @@ Even when static files exist and are referenced correctly in templates, Django w
 
   ImportError: cannot import name 'SearchForm' from 'gig_reviews.models' (C:\Users\axdek\Documents\vscode-projects\Project 3\Praise-The-Loud\gig_reviews\models.py)
 
-
 - **Fix:** I fixed the bug by importing the SearchForm class from forms.py instead of models.py by updating the import statement in views.py.
 
 - **Lesson Learnes:** Always import classes from the correct file. This was a simple mistake but it took me a while to figure out what was causing the error, but I used the trace back to identify the issue.
+
+- **Bug:** Django threw a TemplateDoesNotExist error when loading the search results page. I had already created the search_results template in the templates folder, but I had not routed it in the views correctly.
+
+- **Fix:** I fixed the render call in the view to point th the correct folder.
+
+- **Leason Learned:** Always check the render call in the view to make sure that the template is being rendered correctly, like this:
+
+    return render(request, *'gig_reviews/search_results.html'*, {'form': form, 'results': results})
 
 ### 8.4 Semantic Errors
 
