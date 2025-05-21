@@ -65,7 +65,7 @@ Below are the various bugs that I encountered along the way and how I fixed them
 
 - **Lesson Learned:** Always check the migration history before making changes to the database.
 
-- **Bug:** JS delete confirmation not triggering when clicking the "Delete Profile" button. The issue was created when I moved my static file location from my app to my global settings. However, there were no errors in the Django server output. So in order to diagnose why the JS was not working, I a console log to the top on my js file to say "script.js loaded!". As this was not appearing in the console in DevTools, I knew that the JS was not being loaded.
+- **Bug:** JS delete confirmation not triggering when clicking the "Delete Profile" button. The issue was created when I moved my static    file location from my app to my global settings. However, there were no errors in the Django server output. So in order to diagnose why the JS was not working, I a console log to the top on my js file to say "script.js loaded!". As this was not appearing in the console in DevTools, I knew that the JS was not being loaded.
   
 - **Fix:** I retraced my steps and found that I had not rerouted my script src in my base.html. I moved the static file location from 'my app/' and changed the path in the html file to the global location.
   
@@ -87,6 +87,14 @@ Below are the various bugs that I encountered along the way and how I fixed them
 
 Even when static files exist and are referenced correctly in templates, Django won’t serve them during development unless explicitly told to. It’s important to use findstatic to confirm the path and then make sure the urls.py is properly configured. MIME errors in the browser usually indicate that something is being returned with the wrong content type — often a 404 HTML page — so checking the browser’s DevTools network tab is an essential part of debugging static file issues.
 
+- **Bug:** I had written the SearchForm class in forms.py but mistakenly tried to import it from models.py and got an ImportError caused by trying to import SearchForm from the wrong file.
+
+  ImportError: cannot import name 'SearchForm' from 'gig_reviews.models' (C:\Users\axdek\Documents\vscode-projects\Project 3\Praise-The-Loud\gig_reviews\models.py)
+
+
+- **Fix:** I fixed the bug by importing the SearchForm class from forms.py instead of models.py by updating the import statement in views.py.
+
+- **Lesson Learnes:** Always import classes from the correct file. This was a simple mistake but it took me a while to figure out what was causing the error, but I used the trace back to identify the issue.
 
 ### 8.4 Semantic Errors
 

@@ -1,7 +1,7 @@
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
-from .forms import GigReviewForm, ProfileForm, FanContactForm, ArtistContactForm, VenueContactForm
-from .models import Profile, SearchForm
+from .forms import GigReviewForm, ProfileForm, FanContactForm, ArtistContactForm, VenueContactForm, SearchForm
+from .models import Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import get_object_or_404
