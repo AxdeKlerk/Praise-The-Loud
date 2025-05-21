@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Search Results</h1>
+
+  {% if results %}
+    {% for result in results %}
+        <h2>{{ result.name }}</h2>
+            {% if result.logo %}
+                <img src="{{ result.logo.url }}" alt="{{ result.name }}" style="height:100px;">
+            {% endif %}
+
+            {% if result.bio %}
+                <p>{{ result.bio }}</p>
+
+            {% elif result.town %}
+                <p>{{ result.town }}, {{ result.post_code }}</p>
+            {% endif %}
+    {% endfor %}
+
+  <hr>
+<h3>Reviews:</h3>
+    {% for review in reviews %}
+        <div>
+            <h4>{{ review.title }}</h4>
+            <p>{{ review.review }}</p>
+        </div>
+  
+        {% empty %}
+            <p>No reviews yet.</p>
+    {% endfor %}
+{% else %}
+  <p>Enter a name and search above.</p>
+{% endif %}
+
+{% endblock %}

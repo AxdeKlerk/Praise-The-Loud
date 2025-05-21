@@ -32,3 +32,11 @@ class VenueContactForm(forms.Form):
     town = forms.CharField(max_length=100)
     post_code = forms.CharField(max_length=20)
     message = forms.CharField(widget=forms.Textarea)
+
+class SearchForm(forms.Form):
+    SEARCH_TYPE_CHOICES = [
+        ('artist', 'Artist'),
+        ('venue', 'Venue'),
+    ]
+    search_type = forms.ChoiceField(choices=SEARCH_TYPE_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
+    search_term = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Search by name...'}))

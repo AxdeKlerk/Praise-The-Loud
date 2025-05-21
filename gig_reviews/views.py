@@ -1,7 +1,7 @@
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from .forms import GigReviewForm, ProfileForm, FanContactForm, ArtistContactForm, VenueContactForm
-from .models import Profile
+from .models import Profile, SearchForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import get_object_or_404
@@ -118,3 +118,25 @@ def contact_view(request):
 
 def thank_you(request):
     return render(request, "gig_reviews/thank_you.html")
+
+def search_view(request):
+    form = SearchForm(request.GET or None)
+    results = []
+    reviews = []
+
+    if form.is_valid():
+        search_type = form.cleaned_data['search_type']
+        query = form.cleaned_data['query']
+
+        if search_type == 'artist':
+            results = Artist.objects.filter(name__icontains=query)
+            reviews = GigReview.objects.filter(artist__in=results)
+        elif search_type == 'venue':
+            results = Venue.objects.filter(name__icontains=query)
+            reviews = GigReview.objects.filter(venue__in=results)
+
+    return render(request, 'search_results.html', {
+        'form': form,
+        'results': results,
+        'reviews': reviews,
+    })
