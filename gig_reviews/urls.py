@@ -1,11 +1,12 @@
 ## APP (gig_reviews) URLS
 
 from django.urls import path, include
-from .views import home, artist, venue, profile, review, signup, logout, delete_profile, contact_view, thank_you
+from .views import home, about, artist, venue, profile, review, signup, logout, delete_profile, contact_view, thank_you
 
 # Add URL patterns for other views as needed
 urlpatterns = [
    path('', home, name='home'), # Loads the Home page
+   path('about/', about, name='about'),  # Route to the About page
    path('artist/', artist, name='artist'), # add '<slug:slug>/' to the path if you want to pass a slug
    path('venue/', venue, name='venue'), # add '<slug:slug>/' to the path if you want to pass a slug
    path('profile/', profile, name='profile'), # add '<slug:slug>/' to the path if you want to pass a slug

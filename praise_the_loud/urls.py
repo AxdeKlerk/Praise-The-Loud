@@ -18,13 +18,16 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
-from gig_reviews.views import home, artist, venue, profile, review, signup, logout, delete_profile
+from gig_reviews.views import home, about, artist, venue, profile, review, signup, logout, delete_profile
 from django.contrib.auth.views import LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
     path('', include('gig_reviews.urls')),  # Include app-specific URLs
     path('home/', home, name='home'),  # Route back to the Home page
+    path('about/', about, name='about'),  # Route to the About page
     path('review/', review, name='review'), # Route for submitting a gig review
     path('artist/', artist, name='artist'),  # Route for artist details
     path('venue/', venue, name='venue'),  # Route for venue details
@@ -44,4 +47,9 @@ urlpatterns = [
     
     # Admin site
     path('admin/', admin.site.urls),
+
 ]
+
+# ✅ Serve static files during development
+if settings.DEBUG:
+        urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])

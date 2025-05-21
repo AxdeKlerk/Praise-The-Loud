@@ -76,3 +76,4 @@ Below are the various bugs that I encountered along the way and how I fixed them
 - **Lesson Learned:**
 
 
+![static file error message in console](image.png)

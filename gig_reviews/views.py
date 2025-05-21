@@ -12,6 +12,9 @@ from django.contrib import messages
 def home(request):
     return render(request, 'gig_reviews/index.html')
 
+def about(request):
+    return render(request, 'gig_reviews/about.html')
+
 @login_required
 def review(request):
     if request.method == 'POST':
