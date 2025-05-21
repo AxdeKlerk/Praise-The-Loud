@@ -16,6 +16,8 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -137,6 +139,8 @@ DATETIME_INPUT_FORMATS = ['%d-%m-%Y %H:%M']
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static",]
+
+# Media storage
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 cloudinary.config(

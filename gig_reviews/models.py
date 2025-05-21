@@ -12,7 +12,7 @@ class GigReview(models.Model):
     venue = models.ForeignKey("Venue",on_delete=models.CASCADE, related_name="gig_reviews", null=True, blank=True)
     gig_date = models.DateField(null=False, blank=False)
     title = models.CharField(max_length=100, null=False, blank=False)
-    photo = CloudinaryField('image', default='placeholder')
+    photo = CloudinaryField('image', default='placeholder', blank=True, null=True)
     review = models.TextField(max_length=2000, null=False, blank=False)
     review_date = models.DateField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
