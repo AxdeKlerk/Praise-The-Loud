@@ -11,6 +11,7 @@
 
         {% if item.logo %}
           <img src="{{ item.logo.url }}" alt="{{ item.name }} logo">
+        {% endif %}
 
         {% if item.website %}
           <p><a href="{{ item.website }}" target="_blank">Visit Website</a></p>
@@ -26,13 +27,13 @@
       </li>
     {% endfor %}
   </ul>
-{% else %}
-  <p>No matching results found.</p>
-{% endif %}
+  {% else %}
+    <p>No matching results found.</p>
+  {% endif %}
 
-{% if reviews %}
-  <h3>Reviews</h3>
-    <ul>
+  {% if reviews %}
+    <h3>Reviews</h3>
+      <ul>
         {% for review in reviews %}
         <li>
             <h4>{{ review.title }}</h4>
@@ -44,8 +45,8 @@
         </li>
         {% endfor %}
     </ul>
-{% else %}
+  {% else %}
   <p>No reviews for this {{ form.cleaned_data.search_type }} yet.</p>
-{% endif %}
+  {% endif %}
 
 {% endblock %}

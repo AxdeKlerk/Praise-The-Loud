@@ -28,7 +28,7 @@ class Artist(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
     logo = CloudinaryField('image', default='placeholder', blank=True, null=True)
     bio = models.TextField(max_length=2000, null=False, blank=False)
-    webbsite = models.URLField(blank=True)
+    website = models.URLField(blank=True)
 
     class Meta:
         ordering = ['name']
@@ -42,7 +42,7 @@ class Venue(models.Model):
     logo = CloudinaryField('image', default='placeholder', blank=True, null=True)
     town = models.CharField(max_length=100, null=False, blank=False)    
     post_code = models.CharField(max_length=20, null=False, blank=False)
-    webbsite = models.URLField(blank=True)
+    website = models.URLField(blank=True)
 
     class Meta:
         ordering = ['name']

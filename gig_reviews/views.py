@@ -59,7 +59,7 @@ def profile(request):
     else:
         form = ProfileForm(instance=profile)
 
-    reviews = GigReview.objects.filter(author=request.user).order_by('-created_at')
+    reviews = GigReview.objects.filter(author=request.user).order_by('-review_date')
 
     context = {
         'form': form,
