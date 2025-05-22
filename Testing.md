@@ -124,6 +124,41 @@ No major issues were encountered during testing. The login, profile access, and 
 
 **Screenshots**
 
+**9.1.4 What Was Tested**
+
+This user story covers the fan's ability to log in, navigate to the review form, write a review for an artist, and see the review immediately appear on their profile page after submission.
+
+As a **fan**, I can **log in** so that **I can leave a review for the artist**.
+
+**Acceptance Criteria 1: Navigate to the gig review form**
+
+- [x] 'Gig Review' link appears in the navigation bar after login  
+- [x] Clicking the link loads the review form  
+- [x] Form is only accessible to logged-in users  
+
+**Acceptance Criteria 2: Write review**
+
+- [x] Form contains fields for artist, venue, date, title, photo and review text
+- [x] Date field uses a browser-native calendar picker 
+- [x] User can select a gig date without typing manually  
+
+**Acceptance Criteria 3: Submit review and view it on profile**
+
+- [x] Review is saved to the database  
+- [x] User is redirected to their profile page after submission  
+- [x] Submitted review appears immediately on the profile page  
+
+**Tasks Completed**
+
+- [x] Created form using Django's *'ModelForm'* for the *'GigReview'* model  
+- [x] Set *'type="data"'* for the gig date widget  
+- [x] Added *'imput_formats'* to match browser submission format  
+- [x] Ensured review appears on profile page after submission  
+
+**Notes**
+
+The review form initially rejected valid dates with a *“Enter a valid date”* error because the input format was incorrectly set. This was corrected to to match the format sent by the browser's calendar picker. After this fix, the form submitted successfully and the review appeared immediately on the profile page.
+
 #### 9.2 Manual Testing
 
 #### 9.3 Automated Testing

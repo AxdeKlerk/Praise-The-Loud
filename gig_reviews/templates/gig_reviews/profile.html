@@ -64,16 +64,15 @@
   {% if reviews %}
     <ul>
       {% for review in reviews %}
-        <li>
+      <li>
+          {% if review.photo %}
+          <img src="{{ review.photo.url }}" alt="Review photo">
+          {% endif %}
           <h3>{{ review.title }}</h3>
-          <p>Date: {{ review.gig_date }}</p>
           <p>Artist: {{ review.artist }}</p>
+          <p>Date: {{ review.gig_date|date:"d-m-Y" }}</p>
           <p>Venue: {{ review.venue }}</p>
           <p>{{ review.review }}</p>
-
-          {% if review.photo %}
-            <img src="{{ review.photo.url }}" alt="Review photo">
-          {% endif %}
         </li>
       {% endfor %}
     </ul>

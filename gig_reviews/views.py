@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import get_object_or_404
 from django.contrib import messages
+from django.utils.text import slugify
 
 # Create your views here.
 def home(request):
@@ -25,7 +26,7 @@ def review(request):
             gig.author = request.user      
             gig.slug = slugify(f"{gig.artist}-{gig.gig_date}")
             gig.save()
-            return redirect('home')
+            return redirect('profile')  # redirect to profile page after saving review
     else:
         form = GigReviewForm()
     return render(request, 'gig_reviews/new_review.html', {'form': form})

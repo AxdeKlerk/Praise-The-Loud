@@ -37,7 +37,7 @@
         {% for review in reviews %}
         <li>
             <h4>{{ review.title }}</h4>
-            <p>{{ review.gig_date }}</p>
+            <p>{{ review.gig_date|date:"d-m-Y" }}</p>
             <p>{{ review.review }}</p>
             {% if review.photo %}
             <img src="{{ review.photo.url }}" alt="Gig photo" style="max-width: 200px;">

@@ -119,11 +119,21 @@ Even when static files exist and are referenced correctly in templates, Django w
 
 ### 8.6 Other Bugs
 
-- **Bug:** Field error - The website links weren't showing up in the search results, even though the template had the correct code and the values were entered via the admin panel.
+**Field error**
+
+- **Bug:** The website links weren't showing up in the search results, even though the template had the correct code and the values were entered via the admin panel.
   
 - **Fix:** I descovered that the field in both the Artist and Venue models were misspelled 'webbsite' instead of 'website'. I corrected the spelling in both models and then ran 'makemigrations' and 'migrate' to update the database.
   
 - **Lesson Learned:** Model field typos don’t raise obvious errors — they just silently break things in views and templates. Always double-check the spelling of everything as you go along. This will save you a lot of time in the long run.
+
+**Validation Error**
+
+- **Bug:** Submitting the gig review form gave an error saying "Enter a valid date," even though the date was selected using the calendar input. The form would not save. I had previously changed the date format in my settings file to *'DD-MM-YYYY'*, so I knew that wasn't the issue.
+  
+- **Fix:** The form was using *'<input type="date">'*, which submits dates in *'YYYY-MM-DD'* format. However, the form's *'input_formats'* was incorrectly set to expect *'DD-MM-YYYY'*. I corrected the *'input_formats'* to *'%Y-%m-%d'* and the form started working correctly, as I had previously add the init method, of the form class, as *'%d-%m-%Y'*.
+  
+- **Lesson Learned:** When using *'<input type="date">'*, in a form widget, always expect *'%Y-%m-%d'* as the input format. The browser handles formattting, but Django needs to know the exact formatting being submitted.
 
 
 ![static file error message in console](image.png)

@@ -4,11 +4,13 @@ from .models import GigReview, Profile, Artist, Venue
 class GigReviewForm(forms.ModelForm):
     class Meta:
         model = GigReview
-        # only include the fields you want the user to fill in
         fields = ['artist', 'venue', 'gig_date', 'title', 'photo', 'review', 'status']
         widgets = {
             'gig_date': forms.DateInput(attrs={'type': 'date'}),
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['gig_date'].input_formats = ['%Y-%m-%d']
 
 class ProfileForm(forms.ModelForm):
     class Meta:
