@@ -119,9 +119,11 @@ Even when static files exist and are referenced correctly in templates, Django w
 
 ### 8.6 Other Bugs
 
-- **Bug:**
-- **Fix:**
-- **Lesson Learned:**
+- **Bug:** Field error - The website links weren't showing up in the search results, even though the template had the correct code and the values were entered via the admin panel.
+  
+- **Fix:** I descovered that the field in both the Artist and Venue models were misspelled 'webbsite' instead of 'website'. I corrected the spelling in both models and then ran 'makemigrations' and 'migrate' to update the database.
+  
+- **Lesson Learned:** Model field typos don’t raise obvious errors — they just silently break things in views and templates. Always double-check the spelling of everything as you go along. This will save you a lot of time in the long run.
 
 
 ![static file error message in console](image.png)
