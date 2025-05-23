@@ -159,6 +159,8 @@ As a **fan**, I can **log in** so that **I can leave a review for the artist**.
 
 The review form initially rejected valid dates with a *“Enter a valid date”* error because the input format was incorrectly set. This was corrected to to match the format sent by the browser's calendar picker. After this fix, the form submitted successfully and the review appeared immediately on the profile page.
 
+**Screenshots**
+
 #### 9.2 Manual Testing
 
 #### 9.3 Automated Testing
