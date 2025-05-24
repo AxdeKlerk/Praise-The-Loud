@@ -34,4 +34,12 @@ body {
     font-size: 1.2em;
     margin-top: 10px;
 }
+.horns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    max-height: 50px;
+}
 
