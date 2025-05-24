@@ -1,6 +1,6 @@
 # Praise-The-Loud
 
-[insert responsive images]
+[insert responsive images] 
 
 ## 1. Introduction
 

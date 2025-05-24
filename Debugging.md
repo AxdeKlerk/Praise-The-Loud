@@ -111,6 +111,18 @@ Even when static files exist and are referenced correctly in templates, Django w
 
 - **Lesson Learned:** ALWAYS check the spelling of everything as you go along. This will save you a lot of time in the long run.
 
+- ***Bug:** After deploying to Heroku, the contact form did not appear when selecting "Fan", "Artist", or "Venue". The modal buttons were unresponsive, even though everything worked correctly in local development.
+
+- **Fix:** I Opened Chrome DevTools and saw multiple MIME type and 404 errors in the Console. Heroku was serving the JavaScript and CSS files as HTML instead of the correct MIME types because collectstatic was not running, and WhiteNoise was not configured to serve static files. These were the steps taken to fix the issue at the bottom of the settings.py file:
+
+    Added *'STATIC_ROOT = BASE_DIR / "staticfiles"'*
+    Installed *'whitenoise'* in *'MIDDLEWARE'*
+    Set *'STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"'*
+    Removed *'DISABLE_COLLECTSTATIC = 1'* from *'Heroku'*
+    Committed all changes and dep[loyed succefully after verifying *'collectstatic'* ran]
+
+ **Lesson Learned:** Heruko does nto serve static files out of the box. I need to set the *'STATIC_ROOT'* correctly, use *'whitenoise'* to handle the static assets in production, and confirm that *'{% static %}'* is linked in my CSS and JavaScript files. Using DevTools to inspect the network tab and check for MIME errors is also helpful.
+
 ### 8.5 Design Errors
 
 - **Bug:**
@@ -134,6 +146,14 @@ Even when static files exist and are referenced correctly in templates, Django w
 - **Fix:** The form was using *'<input type="date">'*, which submits dates in *'YYYY-MM-DD'* format. However, the form's *'input_formats'* was incorrectly set to expect *'DD-MM-YYYY'*. I corrected the *'input_formats'* to *'%Y-%m-%d'* and the form started working correctly, as I had previously add the init method, of the form class, as *'%d-%m-%Y'*.
   
 - **Lesson Learned:** When using *'<input type="date">'*, in a form widget, always expect *'%Y-%m-%d'* as the input format. The browser handles formattting, but Django needs to know the exact formatting being submitted.
+
+**Version Control Issue**
+
+- **Bug:** After committing several changes locally (including fixes for static files), the *'git push heroku main:main'* command returned "Everything up-to-date", but Heroku kept failing with the same STATIC_ROOT error. It became clear that Heroku was not building from the latest local code. I had made a mistake in my local git repository, which caused a merge conflict when I tried to push my changes to GitHub.
+
+- **Fix:** I had to merge the changes from the main branch into my local branch, resolve the merge conflict, and then push the changes to GitHub.
+
+- **Lesson Learned:** Always make sure your local git repository is up-to-date with the main branch before pushing changes to GitHub.
 
 
 ![static file error message in console](image.png)
