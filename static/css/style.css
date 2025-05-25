@@ -56,7 +56,6 @@ h1 {
     font-size : 20px;
     margin-bottom: 0;
 }
-
 .horns {
     max-height: 100px;
 }
@@ -85,3 +84,28 @@ h1 {
     font-size: 1.2rem;
 }
 
+/*Media Queries*/
+/*1 Extra small mobile devices (phones, 320px and above)*/
+@media screen and (min-width: 320px) {
+    .hero-image img {
+        height: 30vh;
+    }
+    .hero-image h1 {
+        font-size: 1.3rem;
+    }
+    .hero-image p {
+        font-size: 0.8rem;
+    }
+    .about {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+    .about p {
+        margin-top: 20px;
+    }
+    .footer-contact {
+        font-size: 1rem;
+    }
+    .footer-p {
+        font-size: 0.7rem;
+    }
