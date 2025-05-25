@@ -103,10 +103,13 @@
     {% block content %}{% endblock %}
   </div>
 
-<footer style="text-align: center; margin-top: 40px;">
-  <a href="{% url 'contact' %}">Contact</a>
-  <p>/*axdesigns*/</p>
-  <p>&copy; 2025</p>
+<footer>
+  <div row style="container-fluid">
+    <div class=" text-center col-md-12">
+      <a class="footer-contact" href="{% url 'contact' %}">Contact</a>
+      <p class="footer-p">&copy; /*axdesigns*/ 2025</p>
+    </div>
+  </div>
 </footer>
 
 <!-- Include JavaScript files -->
