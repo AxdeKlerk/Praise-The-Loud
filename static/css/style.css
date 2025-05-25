@@ -1,13 +1,17 @@
 /* Global settings*/
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Rock+Salt&display=swap');
+
 body {
     background-color: black;
     color: white;
     font-size: 12px;
     max-width: 1400px;
     margin: 0 auto;
+    font-family: 'Comic Neue', sans-serif;
 }
 h1 {
     color: red;
+    font-family: 'Rock Salt', sans-serif;
 }
 
 /* Navigation bar */
