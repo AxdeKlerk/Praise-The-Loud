@@ -102,9 +102,8 @@ form.d-flex select {
 
 form.d-flex input[type="text"] {
   flex: 1;
-  /*min-width: 200px;  or remove this line to let flex handle it */
+  min-width: 0;
 }
-
 
 /*Hero image and text*/
 .hero-image {
