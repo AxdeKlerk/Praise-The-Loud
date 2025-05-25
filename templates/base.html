@@ -23,7 +23,7 @@
     <a class="navbar-brand me-5" href="{% url 'home' %}">Praise the Loud</a>
 
       {% if user.is_authenticated %}
-        <span class="navbar-text text-white me-auto">Hello {{ user.username }}</span>
+        <span class="navbar-text me-auto">Hello {{ user.username }}</span>
       {% endif %}
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -66,10 +66,10 @@
 
         <!-- Search form -->
         <li class="nav-item">
-          <form class="d-flex ms-lg-3" method="get" action="{% url 'search_view' %}">
+          <form class="d-flex nav-search" method="get" action="{% url 'search_view' %}">
             {{ form.search_type }}
             {{ form.search_term }}
-            <button class="btn btn-outline-light ms-2" type="submit">Search</button>
+            <button class="btn btn-outline-light nav-btn" type="submit">Search</button>
           </form>
         </li>
       </ul>
