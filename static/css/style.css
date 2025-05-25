@@ -57,6 +57,11 @@ h1 {
     max-height: 100px;
 }
 
+/*About page*/
+.about{
+    font-size: 1.2rem;
+}
+
 /**Footer */
 .footer-contact {
     color: #B9D2C9;
