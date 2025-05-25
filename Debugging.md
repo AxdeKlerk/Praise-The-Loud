@@ -13,55 +13,52 @@ Below are the various bugs that I encountered along the way and how I fixed them
 
   - **Bug:** Incorrect spelling of module name. 
   
-    The error occured when I was importing the first module in the project. The module name was misspelled in the import statement. What had happened was that I had pluralised the app name (gig_reviews) and then created the class  name (GigReview) using the singular form of the model name. This caused the error when trying to migrate the module to the database.
+  The error occured when I was importing the first module in the project. The module name was misspelled in the import statement. What had happened was that I had pluralised the app name (gig_reviews) and then created the class  name (GigReview) using the singular form of the model name. This caused the error when trying to migrate the module to the database.
   
   - **Fix:** Corrected the spelling of the class module name in app.py, admin.py and urls.py to correspond with the app pluralisation and the class singular. 
 
   - **Lesson Learned:** It is important to be consistent with the naming conventions used in the project. 
   
-    This will help to avoid errors such as this one in the future by creating different classes for the singular and plural forms of the model name. More importantly to make sure that I use different names for the app name and the class name to avoid confusion.
+  This will help to avoid errors such as this one in the future by creating different classes for the singular and plural forms of the model name. More importantly to make sure that I use different names for the app name and the class name to avoid confusion.
 
-    - **Bug:** While integrating Cloudinary into my Django project, I encountered a TypeError when using os.environ.setdefault() in my env.py file. I had mistakenly passed only one argument instead of the required key-value pair. After correcting that, a second issue appeared — an IndentationError in settings.py. I had written an if statement to check for the presence of env.py but forgot to indent the import env line beneath it, which prevented the project from running.
+  - **Bug:** While integrating Cloudinary into my Django project, I encountered a TypeError when using os.environ.setdefault() in my env.py file. I had mistakenly passed only one argument instead of the required key-value pair. After correcting that, a second issue appeared — an IndentationError in settings.py. I had written an if statement to check for the presence of env.py but forgot to indent the import env line beneath it, which prevented the project from running.
   
-    - **Fix:**  I resolved the TypeError by replacing setdefault() with a direct environment variable assignment. I then resolved the IndentationError by indenting the import env line so it sat within the if block.
+  - **Fix:**  I resolved the TypeError by replacing setdefault() with a direct environment variable assignment. I then resolved the IndentationError by indenting the import env line so it sat within the if block.
 
-    - **Lesson Learned:** Syntax errors like these can completely stop Django from running, even if the actual mistake is minor. I was reminded to pay close attention to indentation, especially in conditional blocks, and to always check that function calls are written with the correct number of arguments. Stepping through each issue methodically helped isolate and fix the problems without getting overwhelmed by the complexity of the project.
+  - **Lesson Learned:** Syntax errors like these can completely stop Django from running, even if the actual mistake is minor. I was reminded to pay close attention to indentation, especially in conditional blocks, and to always check that function calls are written with the correct number of arguments. Stepping through each issue methodically helped isolate and fix the problems without getting overwhelmed by the complexity of the project.
   
 ### 8.2 Logic Errors
 
-- **Bug:** Sign-up, login and logout templates not loading on server.
-
-  After checking my template structure multiplue times I could not understand why the templates were not loading. I had checked the urls.py file and the views.py file and they were both correct. I then realised that I had created the template and registration folders at the wrong level. This was a simple mistake but it took me a while to figure out.
+- **Bug:** Sign-up, login and logout templates not loading on server. After checking my template structure multiplue times I could not understand why the templates were not loading. I had checked the urls.py file and the views.py file and they were both correct. I then realised that I had created the template and registration folders at the wrong level. This was a simple mistake but it took me a while to figure out.
 
 - **Fix:** Moved template and registration folders to the root level of the project and left the signup html file in the app level templates folder.
-- 
+  
 - **Lesson Learned:** Double check everything I do and make sure that I am using the correct logic and placement of my template folders.
 
 - **Bug:** When I selected "Fan", "Artist", or "Venue" from the dropdown on my contact page, nothing happened. The correct form didn’t appear. I expected that choosing a contact type (e.g. "Fan") would show only the fan form and hide the other two, like it was doing earlier in testing.
 
-  - **Fix:** The JavaScript function existed and didn’t crash, but it ran at the wrong time — before the dropdown element was ready. That meant the logic didn’t produce the expected result (the form showing), even though the code had no syntax errors. Thus, I wrapped it using DOMContentLoaded to ensure it ran only after the page was loaded.
+- **Fix:** The JavaScript function existed and didn’t crash, but it ran at the wrong time — before the dropdown element was ready. That meant the logic didn’t produce the expected result (the form showing), even though the code had no syntax errors. Thus, I wrapped it using DOMContentLoaded to ensure it ran only after the page was loaded.
 
-  - **Lesson Learned:** I learned that it’s important to test my code thoroughly, even if it seems to work. I also learned that it’s important to understand the logic of my code and how it interacts with the DOM, and that JavaScript can’t find or interact with HTML elements unless the page is fully loaded first.
+- **Lesson Learned:** I learned that it’s important to test my code thoroughly, even if it seems to work. I also learned that it’s important to understand the logic of my code and how it interacts with the DOM, and that JavaScript can’t find or interact with HTML elements unless the page is fully loaded first.
 
-  - **Bug:** The delete confirmation popup stopped appearing when I clicked the “Delete Profile” button. This happened after I moved my static files to a global directory. There were no errors in the Django server output, so I initially assumed the problem was with the JavaScript logic itself.
+- **Bug:** The delete confirmation popup stopped appearing when I clicked the “Delete Profile” button. This happened after I moved my static files to a global directory. There were no errors in the Django server output, so I initially assumed the problem was with the JavaScript logic itself.
 
-  - **Fix:**  I reviewed my base.html template and found that I hadn’t updated the path to the JS file after moving it. I had been using a hardcoded path like /static/js/script.js, but Django wasn’t recognizing it. I replaced it with the correct {% static %} tag:
+- **Fix:**  I reviewed my base.html template and found that I hadn’t updated the path to the JS file after moving it. I had been using a hardcoded path like /static/js/script.js, but Django wasn’t recognizing it. I replaced it with the correct {% static %} tag:
 
     <script src="{% static 'js/script.js' %}"></script>
 
-  - **Leason Learned:** If JavaScript code isn’t running, always verify whether the script is actually being loaded by checking the console. A console.log() at the top of the file is a quick way to test this. Also, whenever static file paths are changed or files are moved, it's important to update all related template references using {% static %} rather than hardcoded paths, especially when working within Django.
+- **Leason Learned:** If JavaScript code isn’t running, always verify whether the script is actually being loaded by checking the console. A console.log() at the top of the file is a quick way to test this. Also, whenever static file paths are changed or files are moved, it's important to update all related template references using {% static %} rather than hardcoded paths, especially when working within Django.
 
 
 ### 8.3 Runtime Errors
 
 - **Bug:** Runtime error when trying to migrate the database.
-  Django's migration history didn’t match the actual state of the database. It tried to create a table that already existed after I had added the fields 'location' and 'website' to the profile model and change the field's name from 'highlight' to 'title'. I got the following error message:
+Django's migration history didn’t match the actual state of the database. It tried to create a table that already existed after I had added the fields 'location' and 'website' to the profile model and change the field's name from 'highlight' to 'title'. I got the following error message:
 
   psycopg2.errors.DuplicateTable: relation "gig_reviews_gigreview" already exists
   psycopg2.errors.UndefinedColumn: column "highlight" does not exist
 
-- **Fix:** I used the following command to python manage.py migrate gig_reviews --fake 0001.
-  This command faked the first migration where the table has all ready migrated and skipped the migration history. This allowed me to make the changes to the database and then run the migrations again. I had to repeat this process for the other two migrations (0002 for the change to the field 'highlight' to 'title'and 0003 for the addition of the 'location' and 'website' fields).
+- **Fix:** I used the following command to python manage.py migrate gig_reviews --fake 0001. This command faked the first migration where the table has all ready migrated and skipped the migration history. This allowed me to make the changes to the database and then run the migrations again. I had to repeat this process for the other two migrations (0002 for the change to the field 'highlight' to 'title'and 0003 for the addition of the 'location' and 'website' fields).
 
 - **Lesson Learned:** Always check the migration history before making changes to the database.
 
@@ -155,5 +152,12 @@ Even when static files exist and are referenced correctly in templates, Django w
 
 - **Lesson Learned:** Always make sure your local git repository is up-to-date with the main branch before pushing changes to GitHub.
 
+**Validation Styling**
+
+- **Bug:** I wanted to replace Django's default password help text with a custom set of *'<p>'* tags so that the styling would match the entire form. I tried overring the *'self.fields["password1"].help_text'* using *'password_validators_help_texts()'*, but Django still rendered the original *'<ul><li>'* help list.
+
+- **Fix:** I discovered that Django's password validation help text is generated using *'password_validators_help_texts()'* just returns plain strings, but Django continues to apply its own default HTML structure based on the active password validators. To fully control the output, I used *'get_default_password_validators()'* to get the actual validator objects, then built my own HTML using each validator's *'get_help_text()'*. I wrapped each one in a '*<p class="helptext">'* and applied *'mark_safe()'* so that Django wouldn't escape the HTML.
+
+**Lesson Learned:** Overriding *'help_text'* isn't enough if validators are still attached. Django will always render its own validator help structure unless I intercept it and output the help text myself. Using *'get_default_password_validators()'* is the only way to get the actual validator objects and build the help text myself, which gives me control while keeping validator logic.
 
 ![static file error message in console](image.png)
