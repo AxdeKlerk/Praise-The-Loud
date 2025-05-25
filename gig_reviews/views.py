@@ -1,6 +1,6 @@
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
-from .forms import GigReviewForm, ProfileForm, FanContactForm, ArtistContactForm, VenueContactForm, SearchForm
+from .forms import GigReviewForm, ProfileForm, FanContactForm, ArtistContactForm, VenueContactForm, SearchForm, CustomUserCreationForm
 from .models import Profile, Artist, Venue, GigReview
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -73,7 +73,7 @@ def profile(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)           # log them in immediately
