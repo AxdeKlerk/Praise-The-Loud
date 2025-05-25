@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Sign Up</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Create account</button>
-  </form>
+<div class="container-fluid signup-item">
+  <div row class=" row mx-auto justify-content-center align-items-start">
+    <div class="col-12 text-center">
+        <h1>Sign Up</h1>
+        <form method="post" class="d-flex flex-column align-items-stretch gap-3">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="signup-btn">Create account</button>
+        </form>
+    </div>
+  </div>
+</div>
 {% endblock %}

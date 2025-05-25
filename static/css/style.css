@@ -128,6 +128,56 @@ form.d-flex input[type="text"] {
     font-size: 1.2rem;
 }
 
+/*Sign up page*/
+.signup-item {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+.signup-item ul,
+.signup-item ul li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.signup-item input.helptext,
+.signup-item select.helptext,
+.signup-item textarea.helptext {
+  margin-top: 0.25rem;
+  padding: 0;
+  font-size: 0.9rem;
+  color: #B9D2C9;
+}
+.signup-item input,
+.signup-item select,
+.signup-item textarea {
+  width: 100%;
+  background-color: black;
+  color: #B9D2C9;
+  border: 1px solid red;
+  font-size: 1.1rem;
+  border-radius: 4px;
+}
+.signup-item input:focus,
+.signup-item select:focus,
+.signup-item textarea:focus {
+  outline: none;
+  border-color: red;
+  box-shadow: none;
+  background-color: #111;
+}
+.signup-btn{
+    color: #B9D2C9;
+    border-color: red;
+    background-color: black;
+    font-size: 1.2rem;
+    border-radius: 7px;
+}
+.signup-btn:hover {
+    color: #ff0000;
+    background-color: black;
+    border-color: red;
+}
+
 /**Footer */
 .footer {
     position: fixed;
@@ -174,16 +224,13 @@ form.d-flex input[type="text"] {
     }
 }
 
-/* Small screens: Stack items vertically */
+/* Small screens: Stack search items vertically */
 @media (max-width: 425px) {
     .nav-search {
-        flex-direction: column;
-        align-items: center;
-    }
-    .nav-search > * {
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    max-width: 300px; /* Optional: keeps it tidy */
-  }
+    }
 }
 
 /*2 Small mobile devices (phones, 420px and above)*/
