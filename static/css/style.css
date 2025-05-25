@@ -109,3 +109,29 @@ h1 {
     .footer-p {
         font-size: 0.7rem;
     }
+}
+/*2 Small mobile devices (phones, 420px and above)*/
+@media screen and (min-width: 425px) {
+    .hero-image img {
+        height: 40vh;
+    }
+    .hero-image h1 {
+        font-size: 1.4rem;
+    }
+    .hero-image p {
+        font-size: 1rem;
+    }
+    .about {
+        font-size: 1rem;
+        margin-top: 20px;
+    }
+    .about p {
+        margin-top: 20px;
+    }
+    .footer-contact {
+        font-size: 1.3rem;
+    }
+    .footer-p {
+        font-size: 1rem;
+    }
+}
