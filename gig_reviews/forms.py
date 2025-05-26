@@ -1,8 +1,8 @@
 from django import forms
 from .models import GigReview, Profile, Artist, Venue
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.password_validation import get_default_password_validators
-from django.utils.safestring import mark_safe
+#from django.contrib.auth.password_validation import get_default_password_validators
+#from django.utils.safestring import mark_safe
 
 class GigReviewForm(forms.ModelForm):
     class Meta:
@@ -52,13 +52,13 @@ class SearchForm(forms.Form):
     search_term = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Search by name...'}))
 
 # Custom User Creation Form to manually to control help text formatting
-class CustomUserCreationForm(UserCreationForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        validators = get_default_password_validators()
-        self.fields['password1'].help_text = mark_safe(
-            ''.join(
-                f'<p class="helptext">{v.get_help_text()}</p>' for v in validators
-            )
-        )
+#class CustomUserCreationForm(UserCreationForm):
+#   def __init__(self, *args, **kwargs):
+#      super().__init__(*args, **kwargs)
+#      validators = get_default_password_validators()
+#        self.fields['password1'].help_text = mark_safe(
+#           ''.join(
+#               f'<p class="helptext">{v.get_help_text()}</p>' for v in validators
+#            )
+#        )
 
