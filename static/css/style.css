@@ -128,8 +128,8 @@ form.d-flex input[type="text"] {
     font-size: 1.2rem;
 }
 
-/*Sign up page*/
-.signup-item {
+/*Sign up / Login pages*/
+.signin-item {
     font-size: 1.2rem;
     max-width: 600px;
     color: #B9D2C9;
@@ -142,8 +142,8 @@ form.d-flex input[type="text"] {
     margin-bottom: 0.5rem;
 }
 /* Help text list elements */
-.signup-item ul,
-.signup-item ul li {
+.signin-item ul,
+.signin-item ul li {
     list-style: none;
     font-size: 1rem;
     color: #B9D2C9;
@@ -151,9 +151,9 @@ form.d-flex input[type="text"] {
     margin-bottom: 0.75rem;
 }
 /* Help text elements */
-.signup-item input,
-.signup-item select,
-.signup-item textarea {
+.signin-item input,
+.signin-item select,
+.signin-item textarea {
   width: 100%;
   background-color: black;
   color: #B9D2C9;
@@ -161,23 +161,23 @@ form.d-flex input[type="text"] {
   font-size: 1.1rem;
   border-radius: 4px;
 }
-.signup-item input:focus,
-.signup-item select:focus,
-.signup-item textarea:focus {
+.signin-item input:focus,
+.signin-item select:focus,
+.signin-item textarea:focus {
   outline: none;
   border-color: red;
   box-shadow: none;
   background-color: #111;
 }
-/* Create account button */
-.signup-btn{
+/* Create account / Login button */
+.signin-btn{
     color: #B9D2C9;
     border-color: red;
     background-color: black;
     font-size: 1.2rem;
     border-radius: 7px;
 }
-.signup-btn:hover {
+.signin-btn:hover {
     color: #ff0000;
     background-color: black;
     border-color: red;

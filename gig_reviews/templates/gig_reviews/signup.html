@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container-fluid signup-item">
-  <div row class=" row mx-auto justify-content-center align-items-start">
+<div class="container-fluid signin-item">
+  <div class=" row mx-auto justify-content-center align-items-start">
     <div class="col-12 text-center">
         <h1>Sign Up</h1>
-        <form method="post" class="d-flex flex-column align-items-stretch gap-3">
+        <form method="post" class="d-flex flex-column align-items-stretch">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="signup-btn">Create account</button>
+            <button type="submit" class="signin-btn">Create account</button>
         </form>
     </div>
   </div>
