@@ -154,10 +154,10 @@ Even when static files exist and are referenced correctly in templates, Django w
 
 **Validation Styling**
 
-- **Bug:** I wanted to replace Django's default password help text with a custom set of *'<p>'* tags so that the styling would match the entire form. I tried overring the *'self.fields["password1"].help_text'* using *'password_validators_help_texts()'*, but Django still rendered the original *'<ul><li>'* help list.
+- **Bug:** I wanted to replace Django's default password help text with a custom set of *'<p>'* tags so that the styling would match the entire he sign up form. I tried overring the *'self.fields["password1"].help_text'* using *'password_validators_help_texts()'*, but Django still rendered the original *'<ul><li>'* help list. I decided to rollback and avoid customizing the form too deeply, as the logic behind Django's password validation system felt too complex to change confidently and I started to break my code.
 
-- **Fix:** I discovered that Django's password validation help text is generated using *'password_validators_help_texts()'* just returns plain strings, but Django continues to apply its own default HTML structure based on the active password validators. To fully control the output, I used *'get_default_password_validators()'* to get the actual validator objects, then built my own HTML using each validator's *'get_help_text()'*. I wrapped each one in a '*<p class="helptext">'* and applied *'mark_safe()'* so that Django wouldn't escape the HTML.
+- **Fix:** I rolled back to using Django’s built-in *'UserCreationForm'* and left the default help text rendering untouched. Instead of replacing the HTML structure, I used CSS to remove the bullets, collapse the spacing, and visually match the default help list with the rest of the form. This gave me full control over the appearance without needing to override the form logic or validators.
 
-**Lesson Learned:** Overriding *'help_text'* isn't enough if validators are still attached. Django will always render its own validator help structure unless I intercept it and output the help text myself. Using *'get_default_password_validators()'* is the only way to get the actual validator objects and build the help text myself, which gives me control while keeping validator logic.
+**Lesson Learned:** Not every problem needs a code-level fix. Sometimes it's better to work with Django’s defaults and solve presentation issues using CSS. This approach is simpler, more maintainable, and avoids breaking built-in functionality — especially when the underlying logic is complex or abstracted away.
 
 ![static file error message in console](image.png)

@@ -141,7 +141,7 @@ form.d-flex input[type="text"] {
     /*margin-top: 0.25rem;
     margin-bottom: 0.5rem;*/
 }
-/* Help text list elements */
+/* Help text list elements to adjust spacing and remove bullet points */
 .signin-item ul,
 .signin-item ul li 
 /*.helptext,
@@ -158,8 +158,10 @@ form.d-flex input[type="text"] {
     margin-bottom: 0.5rem;
 }*/
 /* Help text elements */
-.signin-item input,
-.signin-item select,
+.signin-item input[type="text"],
+.signin-item input[type="email"],
+.signin-item input[type="password"],
+.signin-item select
 .signin-item textarea {
   width: 100%;
   background-color: black;
