@@ -5,7 +5,7 @@ All functionality was tested manually by walking through user stories. Testing w
 
 ##### 9.1.1 What Was Tested
 
-This user story covers the full flow of registration, profile creation, and social link input.
+**9.1.1.1** This user story covers the full flow of registration, profile creation, and social link input.
 
 As a **fan**, I can **register an account** so that I can **create a profile**.
 
@@ -38,6 +38,28 @@ As a **fan**, I can **register an account** so that I can **create a profile**.
 
 **Notes**
 Initial Cloudinary image uploads failed due to incorrect environment variable setup. This was resolved by configuring *'env.py'* and using *'CloudinaryField'* in the model. Also ran into an issue where the JS for delete confirmation didn't work due to broken static file paths — this was fixed by correcting the path with *'{% static %}'* and ensuring static files were served via *'urls.py'*.
+
+**9.1.1.2** As a fan, I can view consistent and clearly styled password instructions so that I feel confident when setting up my account and know exactly what is required.
+
+**Acceptance Criteria 5: Password help text styling**
+
+- [x] The password help text appears using Django’s default validation messages
+- [x] Bullet points are removed using CSS without modifying Django’s logic
+- [x] The spacing between the password input and help text matches the spacing on other fields
+- [x] Help text is styled to match the form's colour scheme and font
+- [x] No unwanted margin or list styling appears in the final rendered form
+- [x] All password validation rules still apply on form submission
+
+Tasks Completed
+
+- [x] Reverted from using CustomUserCreationForm to Django’s built-in UserCreationForm
+- [x] Applied CSS to style and space .helptext and remove list bullets
+- [x] Tested signup page to ensure visual consistency and validator functionality remained intact
+
+**Notes**
+Originally attempted to override the password help text using a custom form and <p> tags for cleaner output. This was rolled back to preserve Django’s default behavior and reduce complexity, relying instead on CSS for full visual control.
+
+
 
 **Screenshots**
 
