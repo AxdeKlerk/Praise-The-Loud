@@ -8,6 +8,7 @@ Below are the various bugs that I encountered along the way and how I fixed them
 - **Semantic Errors**
 - **Design Errors**
 - **Other Bugs**
+- **Bugs Unresolved**
 
 #### 8.1 Syntax Errors
 
@@ -159,5 +160,13 @@ Even when static files exist and are referenced correctly in templates, Django w
 - **Fix:** I rolled back to using Django’s built-in *'UserCreationForm'* and left the default help text rendering untouched. Instead of replacing the HTML structure, I used CSS to remove the bullets, collapse the spacing, and visually match the default help list with the rest of the form. This gave me full control over the appearance without needing to override the form logic or validators.
 
 **Lesson Learned:** Not every problem needs a code-level fix. Sometimes it's better to work with Django’s defaults and solve presentation issues using CSS. This approach is simpler, more maintainable, and avoids breaking built-in functionality — especially when the underlying logic is complex or abstracted away.
+
+### 8.7 Bugs Unresolved
+
+- **Bug:** I wanted to change the highlight color that appears when selecting or hovering over options in a native *'<select>'* dropdown. My goal was to make the selection styling match the custom color scheme used across the rest of the site.
+
+- **Fix:** This could not be fixed using standard CSS. Most modern browsers (especially Chrome, Safari, and Firefox) render *'<select>'* dropdowns and their option lists using native OS UI components, which are not styleable via CSS. I considered rebuilding the dropdown as a fully custom component using JavaScript and HTML, but chose not to pursue this due to the added complexity and time constraints.
+
+- **Lesson Learner** Some UI elements like native *'<select>'* options are outside the scope of CSS styling due to how browsers and operating systems render them. In these cases, it’s better to accept the default behavior or switch to a fully custom solution — which may not be worth it if the rest of the experience is consistent and functional.
 
 ![static file error message in console](image.png)
