@@ -152,19 +152,29 @@ form.d-flex input[type="text"] {
     margin-top: 0.25rem;
     margin-bottom: 0.75rem;
 }
+/* Chrome autofill override for the input fields for the login and logout pages */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  background-color: black !important;
+  color: #B9D2C9 !important;
+  -webkit-box-shadow: 0 0 0px 1000px black inset !important;
+  border: 1px solid red !important;
+}
+
 /*.signin-item ul.helptext {
     padding-left: 0;
     margin-top: 0.25rem;
     margin-bottom: 0.5rem;
 }*/
-/* Help text elements */
+/* Help text elements*/
 .signin-item input[type="text"],
 .signin-item input[type="email"],
 .signin-item input[type="password"],
-.signin-item select
+.signin-item select,
 .signin-item textarea {
   width: 100%;
-  background-color: black;
+  background-color: black !important;
   color: #B9D2C9;
   border: 1px solid red;
   font-size: 1.1rem;
@@ -176,7 +186,7 @@ form.d-flex input[type="text"] {
   outline: none;
   border-color: red;
   box-shadow: none;
-  background-color: #111;
+  background-color: #111 !important;
 }
 /* Create account / Login button */
 .signin-btn{
@@ -191,6 +201,10 @@ form.d-flex input[type="text"] {
     color: #ff0000;
     background-color: black;
     border-color: red;
+}
+.logout {
+    color: #B9D2C9;
+    font-size: 1.2rem;
 }
 
 /**Footer */
