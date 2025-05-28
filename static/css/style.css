@@ -11,25 +11,25 @@ body {
     margin: 0 auto;
 }
 h1 {
-    color: red;
+    color: #F50000;
     font-family: 'Rock Salt', sans-serif;
     margin-top: 20px;
 }
 h4 {
-    color: red;
+    color: #F50000;
     font-family: 'Rock Salt', sans-serif;
     margin-top: 20px;   
 }
 h5 {
     margin-top: 20px;
-    color: red;
+    color: #F50000;
 }
 /* Navigation bar */
 .navbar-brand {
     color: #F5F5F5;
 }
 .navbar-brand:hover {
-    color: #ff0000;
+    color: #F50000;
 }
 .navbar {
     margin-top: 1%;
@@ -37,12 +37,12 @@ h5 {
     background-color: #a9a9a9;
 }
 .navbar-text{
-    color: red;
+    color: #F50000;
     text-decoration: none;
     font-size: 1.2rem;
 }
 .nav-item:hover {
-    color: #ff0000;
+    color: #F50000;
 }
 .nav-item a {
     color: #F5F5F5;
@@ -50,23 +50,23 @@ h5 {
     font-size: 1.2rem;
 }
 .nav-item a:hover {
-    color: #ff0000;
+    color: #F50000;
 }
 .nav-search {
     color: #F5F5F5;
-    border-color: red;
+    border-color: #F50000;
     font-size: 1.2rem;
 }
 .nav-btn{
     color: #F5F5F5;
-    border-color: red;
+    border-color: #F50000;
     background-color: black;
     font-size: 1.2rem;
 }
 .nav-btn:hover {
-    color: #ff0000;
+    color: #F50000;
     background-color: black;
-    border-color: red;
+    border-color: #F50000;
 }
 /* search bar*/
 .nav-search {
@@ -78,28 +78,28 @@ h5 {
 }
 .nav-search select {
     color: #F5F5F5;
-    border-color: red;
+    border-color: #F50000;
     background-color: black;
     font-size: 1.2rem;
     text-align: center;
 }
 .nav-search select:focus {
     outline: none;
-    border-color: red;
+    border-color: #F50000;
     background-color: black;
     font-size: 1.2rem;
     box-shadow: none;
-    color: #ff0000;
+    color: #F50000;
 }
 .nav-search input {
     color: #F5F5F5;
-    border-color: red;
+    border-color: #F50000;
     background-color: black;
     font-size: 1.2rem;
     width: 100%;
 }
 .nav-search input:focus {
-    border-color: red;
+    border-color: #F50000;
     outline: none;
     box-shadow: none;
     background-color: black;
@@ -169,7 +169,7 @@ input:-webkit-autofill:focus {
   background-color: black !important;
   color: #F5F5F5 !important;
   -webkit-box-shadow: 0 0 0px 1000px black inset !important;
-  border: 1px solid red !important;
+  border: 1px solid #F50000 !important;
 }
 
 /*.page-item ul.helptext {
@@ -186,7 +186,7 @@ input:-webkit-autofill:focus {
   width: 100%;
   background-color: black !important;
   color: #F5F5F5;
-  border: 1px solid red;
+  border: 1px solid #F50000;
   font-size: 1.1rem;
   border-radius: 4px;
 }
@@ -194,23 +194,23 @@ input:-webkit-autofill:focus {
 .page-item select:focus,
 .page-item textarea:focus {
   outline: none;
-  border-color: red;
+  border-color: #F50000;
   box-shadow: none;
   background-color: #111 !important;
 }
 /* Create account / Login button */
 .page-btn{
     color: #F5F5F5;
-    border-color: red;
+    border-color: #F50000;
     background-color: black;
     font-size: 1.2rem;
     border-radius: 7px;
     margin-top: 20px;
 }
 .page-btn:hover {
-    color: #ff0000;
+    color: #F50000;
     background-color: black;
-    border-color: red;
+    border-color: #F50000;
 }
 .logout {
     color: #F5F5F5;
@@ -260,7 +260,7 @@ input:-webkit-autofill:focus {
     font-size: 1.5rem;
 }
 .footer-contact:hover {
-    color: #ff0000;
+    color: #F50000;
 }
 .footer-p {
     font-size: 1.2rem;
