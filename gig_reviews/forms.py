@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 class GigReviewForm(forms.ModelForm):
     class Meta:
         model = GigReview
-        fields = ['artist', 'venue', 'gig_date', 'title', 'photo', 'review', 'status']
+        fields = ['artist', 'venue', 'gig_date', 'title', 'photo', 'review']
         widgets = {
             'gig_date': forms.DateInput(attrs={'type': 'date'}),
         }
