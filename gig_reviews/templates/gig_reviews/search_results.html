@@ -9,41 +9,56 @@
           {% if results %}
           <ul >
             {% for item in results %}
-            <div class="result-card">>
-              <li>
-                {% if item.logo %}
-                  <img src="{{ item.logo.url }}" alt="{{ item.name }} logo">
+              <div class="result-card">
+                <li>
+                  {% if item.logo %}
+                    <img src="{{ item.logo.url }}" alt="{{ item.name }} logo">
                   {% else %}
-                  <h3>{{ item.name }}</h3>
-                {% endif %}
+                    <h3>{{ item.name }}</h3>
+                  {% endif %}
 
-                {% if item.website %}
-                  <p><a href="{{ item.website }}" target="_blank">Visit Website</a></p>
+                  {% if item.website %}
+                    <p><a href="{{ item.website }}" target="_blank">Visit Website</a></p>
                   {% else %}
-                  <p>No website available</p>
-                {% endif %}
+                    <p>No website available</p>
+                  {% endif %}
 
-                {% if item.bio %}
-                  <p>{{ item.bio }}</p>
-                {% endif %}
+                  {% if item.bio %}
+                    <p>{{ item.bio }}</p>
+                  {% endif %}
 
-                {% if item.town %}
-                  <p>{{ item.town }}, {{ item.post_code }}</p>
-                {% endif %}
-              </li>
-            </div>
+                  {% if item.town %}
+                    <p>{{ item.town }}, {{ item.post_code }}</p>
+                  {% endif %}
+                  <hr>
+                  {% if item.reviews %}
+                    <h4>Reviews</h4>
+                    <ul>
+                      {% for review in item.reviews %}
+                        <li>
+                          {% if review.photo %}
+                            <img src="{{ review.photo.url }}" class="review-photo" alt="Gig photo">
+                            {% endif %}
+                          <h5>{{ review.title }}</h5>
+                          <p>{{ review.gig_date|date:"d-m-Y" }}</p>
+                          <p>{{ review.review|truncatechars:500 }}</p>
+                        </li>
+                      {% endfor %}
+                    </ul>
+                  {% else %}
+                    <p><em>No reviews yet.</em></p>
+                  {% endif %}
+                  <hr>                
+                </li>
+              </div>
             {% endfor %}
           </ul>
-          {% else %}
-            <p>No matching results found.</p>
-          {% endif %}
-
           {% if item.reviews %}
-            <h1>Reviews</h1>
+            <h4>Reviews</h4>
               <ul>
                 {% for review in item.reviews %}
                 <li>
-                    <h4>{{ review.title }}</h4>
+                    <h5>{{ review.title }}</h5>
                     <p>{{ review.gig_date|date:"d-m-Y" }}</p>
                     <p>{{ review.review }}</p>
                     {% if review.photo %}
@@ -52,10 +67,10 @@
                 </li>
                 {% endfor %}
             </ul>
-          {% else %}
-          <p>No reviews for this {{ form.cleaned_data.search_type }} yet.</p>
           {% endif %}
+      {% endif %}
     </div>
   </div>
 </div>
+
 {% endblock %}

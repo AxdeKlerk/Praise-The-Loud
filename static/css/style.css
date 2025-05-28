@@ -8,13 +8,22 @@ body {
     max-width: 1400px;
     font-family: 'Comic Neue', sans-serif;
     padding-bottom: 75px;
+    margin: 0 auto;
 }
 h1 {
     color: red;
     font-family: 'Rock Salt', sans-serif;
     margin-top: 20px;
 }
-
+h4 {
+    color: red;
+    font-family: 'Rock Salt', sans-serif;
+    margin-top: 20px;   
+}
+h5 {
+    margin-top: 20px;
+    color: red;
+}
 /* Navigation bar */
 .navbar-brand {
     color: #B9D2C9;
@@ -229,6 +238,12 @@ input:-webkit-autofill:focus {
 .search-item a {
     color: #B9D2C9;
     font-size: 1.2rem;
+}
+.review-photo {
+    width: 300px;
+    height: auto;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 /**Footer */
