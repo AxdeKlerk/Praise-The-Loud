@@ -6,8 +6,8 @@ body {
     color: white;
     font-size: 12px;
     max-width: 1400px;
-    margin: 0 auto;
     font-family: 'Comic Neue', sans-serif;
+    padding-bottom: 75px;
 }
 h1 {
     color: red;
@@ -208,12 +208,36 @@ input:-webkit-autofill:focus {
     font-size: 1.2rem;
 }
 
+/* Search results */
+.search-item {
+    margin-top: 20px auto;
+    font-size: 1.2rem;
+    max-width: 950px;
+}
+.search-item img {
+    width: 200px;
+    height: auto;
+}
+.search-item ul,
+.search-item ul li {
+    list-style: none;
+    color: #B9D2C9;
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
+    padding: 0;
+}
+.search-item a {
+    color: #B9D2C9;
+    font-size: 1.2rem;
+}
+
 /**Footer */
 .footer {
     position: fixed;
     left: 0;
     bottom: 0;
-    width: 100%; 
+    width: 100%;
+    height: 60px;
 }
 .footer-contact {
     color: #B9D2C9;

@@ -137,9 +137,16 @@ def search_view(request):
         if search_type == 'artist':
             results = Artist.objects.filter(name__icontains=query)
             reviews = GigReview.objects.filter(artist__in=results)
+            
+            for item in results:
+                item.reviews = GigReview.objects.filter(artist=item) 
+
         elif search_type == 'venue':
             results = Venue.objects.filter(name__icontains=query)
             reviews = GigReview.objects.filter(venue__in=results)
+            
+            for item in results:
+                item.reviews = GigReview.objects.filter(venue=item)
 
     return render(request, 'gig_reviews/search_results.html', {
         'form': form,

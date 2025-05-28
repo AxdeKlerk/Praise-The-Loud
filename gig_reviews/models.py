@@ -26,7 +26,7 @@ class GigReview(models.Model):
 class Artist(models.Model):
     # Fields
     name = models.CharField(max_length=100, null=False, blank=False)
-    logo = CloudinaryField('image', default='placeholder', blank=True, null=True)
+    logo = CloudinaryField('image', blank=True, null=True)
     bio = models.TextField(max_length=2000, null=False, blank=False)
     website = models.URLField(blank=True)
 
@@ -39,7 +39,7 @@ class Artist(models.Model):
 class Venue(models.Model):
     # Fields
     name = models.CharField(max_length=100, null=False, blank=False)
-    logo = CloudinaryField('image', default='placeholder', blank=True, null=True)
+    logo = CloudinaryField('image', blank=True, null=True)
     town = models.CharField(max_length=100, null=False, blank=False)    
     post_code = models.CharField(max_length=20, null=False, blank=False)
     website = models.URLField(blank=True)
