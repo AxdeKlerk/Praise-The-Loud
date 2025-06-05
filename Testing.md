@@ -183,6 +183,40 @@ The review form initially rejected valid dates with a *“Enter a valid date”*
 
 **Screenshots**
 
+**9.1.5 What Was Tested**
+
+This user story covers the fan’s ability to view reviews associated with an artist, displayed directly beneath the artist's bio after selecting them from the search bar.
+
+As a **fan**, I can **view artist reviews** so that **I can see what others think about their performances**.
+
+**Acceptance Criteria 1: Search for artist profile**
+
+- [x] Search bar includes an option to select “artist”
+- [x] Entering a valid artist name displays the correct artist bio
+- [x] Artist details appear at the top of the results section
+
+**Acceptance Criteria 2: Display associated reviews**
+
+- [x] Reviews appear directly below the artist bio
+- [x] Only reviews linked to the selected artist are shown
+- [x] No other artists’ reviews are displayed
+
+**Acceptance Criteria 3: Responsive layout**
+
+- [x] Review section layout remains consistent across screen sizes
+- [x] Reviews remain visually grouped with the artist bio on mobile and desktop
+- [x] No overlapping or broken layout issues were found
+
+**Tasks Completed**
+
+- [x] Verified context data passed artist and related reviews correctly to the template
+- [x] Placed reviews section directly after the bio block in the HTML structure
+- [x] Checked that the reviews used the correct foreign key relationship to the artist
+
+**Notes**
+
+The reviews were initially not appearing under the artist bio due to incorrect template placement and a missing query for related reviews. After adjusting the HTML structure and passing the correct context, the reviews displayed in the right location and matched the selected artist as intended.
+
 #### 9.2 Manual Testing
 
 #### 9.3 Automated Testing

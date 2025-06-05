@@ -159,7 +159,15 @@ Even when static files exist and are referenced correctly in templates, Django w
 
 - **Fix:** I rolled back to using Django’s built-in *'UserCreationForm'* and left the default help text rendering untouched. Instead of replacing the HTML structure, I used CSS to remove the bullets, collapse the spacing, and visually match the default help list with the rest of the form. This gave me full control over the appearance without needing to override the form logic or validators.
 
-**Lesson Learned:** Not every problem needs a code-level fix. Sometimes it's better to work with Django’s defaults and solve presentation issues using CSS. This approach is simpler, more maintainable, and avoids breaking built-in functionality — especially when the underlying logic is complex or abstracted away.
+- **Lesson Learned:** Not every problem needs a code-level fix. Sometimes it's better to work with Django’s defaults and solve presentation issues using CSS. This approach is simpler, more maintainable, and avoids breaking built-in functionality — especially when the underlying logic is complex or abstracted away.
+
+**Display Issue**
+
+- **Bug:** Artist reviews were not appearing directly underneath the artist's bio section as intended. Instead, they were either not rendering at all or were appearing outside of the artist profile layout.
+
+- **Fix:** I adjusted the template logic and ensured that the artist object and related reviews were passed correctly to the context. I also confirmed that the HTML structure placed the reviews section within the same container as the bio, immediately following it.
+
+- **Lesson Learned:** Always check the HTML structure and context variables when debugging display issues. It's easy to overlook subtle changes in the template logic that can break the layout. Even if the query returns the correct data, the layout won't work unless everything is placed inside the correct blocks in the template.
 
 ### 8.7 Bugs Unresolved
 
