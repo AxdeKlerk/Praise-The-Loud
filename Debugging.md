@@ -123,9 +123,19 @@ Even when static files exist and are referenced correctly in templates, Django w
 
 ### 8.5 Design Errors
 
-- **Bug:**
-- **Fix:**
-- **Lesson Learned:**
+- **Bug:** After reopening the project folder, Bootstrap styles and interactivity broke unexpectedly. The site appeared unstyled, and navbar toggles no longer worked. No recent manual changes had been made to the *'base.html'* file.
+
+- **Fix:** I discovered that the *'bootstrap.bundle.min.js'* script tag at the bottom of *'base.html'* contained a broken *'integrity attribute (sha384-...)'*. I replaced it with the full, correct version copied from the official Bootstrap CDN, which restored all styling and JS interactivity.
+  
+- **Lesson Learned:** Closing and reopening Django project folders in VS Code without restarting the programme can cause cached or unsaved versions of files to reload incorrectly. In this case, the long integrity attribute was truncated when switching between projects, silently breaking the script load. 
+  
+- **To prevent this I must:**
+
+1. Save all files before switching folders
+
+2. Restart the editor when switching projects
+
+3. Use Git to track .html changes, even for template files
 
 ### 8.6 Other Bugs
 
