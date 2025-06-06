@@ -42,9 +42,9 @@ Below are the various bugs that I encountered along the way and how I fixed them
 
 - **Bug:** The delete confirmation popup stopped appearing when I clicked the “Delete Profile” button. This happened after I moved my static files to a global directory. There were no errors in the Django server output, so I initially assumed the problem was with the JavaScript logic itself.
 
-- **Fix:**  I reviewed my base.html template and found that I hadn’t updated the path to the JS file after moving it. I had been using a hardcoded path like /static/js/script.js, but Django wasn’t recognizing it. I replaced it with the correct {% static %} tag:
+- **Fix:**  I reviewed my base.html template and found that I hadn’t updated the path to the JS file after moving it. I had been using a hardcoded path like /static/js/script.js, but Django wasn’t recognizing it. I replaced it with the correct *'{% static %}'* tag:
 
-    <script src="{% static 'js/script.js' %}"></script>
+      <script src="{% static 'js/script.js' %}"></script>
 
 - **Leason Learned:** If JavaScript code isn’t running, always verify whether the script is actually being loaded by checking the console. A console.log() at the top of the file is a quick way to test this. Also, whenever static file paths are changed or files are moved, it's important to update all related template references using {% static %} rather than hardcoded paths, especially when working within Django.
 
@@ -71,21 +71,21 @@ Django's migration history didn’t match the actual state of the database. It t
 
 ![static file error message in console](image.png)
 
-- **Fix:** I first confirmed that my file structure and template paths were correct using {% static %}. Then I ran python manage.py findstatic css/style.css, which confirmed Django could locate the file. This pointed to the fact that Django simply wasn’t serving the static files during development. To fix this, I updated urls.py to explicitly serve static files by adding the following block at the bottom of the file:
+- **Fix:** I first confirmed that my file structure and template paths were correct using *'{% static %}'*. Then I ran python manage.py findstatic css/style.css, which confirmed Django could locate the file. This pointed to the fact that Django simply wasn’t serving the static files during development. To fix this, I updated urls.py to explicitly serve static files by adding the following block at the bottom of the file:
 
-    from django.conf import settings
-    from django.conf.urls.static import static
+      from django.conf import settings
+      from django.conf.urls.static import static
 
-    if settings.DEBUG:
-        urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
+      if settings.DEBUG:
+          urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
 
 - **Lesson Learned:** Always check the console for errors and make sure that the JS is being loaded correctly before moving on with the project assuming that the error is not in the JS. I left the console.log at the top of my Js file as a reminder to check the console for errors at each step of the way.
 
-  Even when static files exist and are referenced correctly in templates, Django won’t serve them during development unless explicitly told to. It’s important to use findstatic to confirm the path and then make sure the urls.py is properly configured. MIME errors in the browser usually indicate that something is being returned with the wrong content type — often a 404 HTML page — so checking the browser’s DevTools network tab is an essential part of debugging static file issues.
+  Even when static files exist and are referenced correctly in templates, Django won’t serve them during development unless explicitly told to. It’s important to use findstatic to confirm the path and then make sure the urls.py is properly configured. MIME errors in the browser usually indicate that something is being returned with the wrong content type — often a *'404 HTML'* page — so checking the browser’s DevTools network tab is an essential part of debugging static file issues.
 
-- **Bug:** I had written the SearchForm class in forms.py but mistakenly tried to import it from models.py and got an ImportError caused by trying to import SearchForm from the wrong file.
+- **Bug:** I had written the SearchForm class in forms.py but mistakenly tried to import it from models.py and got an *'ImportError'* caused by trying to import SearchForm from the wrong file.
 
-  ImportError: cannot import name 'SearchForm' from 'gig_reviews.models' (C:\Users\axdek\Documents\vscode-projects\Project 3\Praise-The-Loud\gig_reviews\models.py)
+      ImportError: cannot import name 'SearchForm' from 'gig_reviews.models' (C:\Users\axdek\Documents\vscode-projects\Project 3\Praise-The-Loud\gig_reviews\models.py)
 
 - **Fix:** I fixed the bug by importing the SearchForm class from forms.py instead of models.py by updating the import statement in views.py.
 
@@ -111,11 +111,11 @@ Django's migration history didn’t match the actual state of the database. It t
 
 - **Fix:** I Opened Chrome DevTools and saw multiple MIME type and 404 errors in the Console. Heroku was serving the JavaScript and CSS files as HTML instead of the correct MIME types because collectstatic was not running, and WhiteNoise was not configured to serve static files. These were the steps taken to fix the issue at the bottom of the settings.py file:
 
-    Added *'STATIC_ROOT = BASE_DIR / "staticfiles"'*
-    Installed *'whitenoise'* in *'MIDDLEWARE'*
-    Set *'STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"'*
-    Removed *'DISABLE_COLLECTSTATIC = 1'* from *'Heroku'*
-    Committed all changes and dep[loyed succefully after verifying *'collectstatic'* ran]
+      Added *'STATIC_ROOT = BASE_DIR / "staticfiles"'*
+      Installed *'whitenoise'* in *'MIDDLEWARE'*
+      Set *'STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"'*
+      Removed *'DISABLE_COLLECTSTATIC = 1'* from *'Heroku'*
+      Committed all changes and dep[loyed succefully after verifying *'collectstatic'* ran]
 
  - **Lesson Learned:** Heruko does nto serve static files out of the box. I need to set the *'STATIC_ROOT'* correctly, use *'whitenoise'* to handle the static assets in production, and confirm that *'{% static %}'* is linked in my CSS and JavaScript files. Using DevTools to inspect the network tab and check for MIME errors is also helpful.
 
@@ -137,7 +137,7 @@ Django's migration history didn’t match the actual state of the database. It t
 
 - **Fix:** I generated a new *'SECRET_KEY'* using a secure key generator and moved it into a local-only *'env.py'* file. I then made sure that *'env.py'* was included in *'.gitignore'* to prevent it from being tracked again.
 
-- **To remove the old key from GitHub’s full history, I used *'BFG Repo-Cleaner'*:**
+    To remove the old key from GitHub’s full history, I used *'BFG Repo-Cleaner'*:
 
   1. I cloned a mirror of my repo with *'git clone --mirror'*
   2. Created a *'secrets.txt'* file listing the exact secret I wanted removed
@@ -146,7 +146,7 @@ Django's migration history didn’t match the actual state of the database. It t
 
   After that, I ran *'git rm --cached env.py'* to stop Git from tracking the file, committed the change, and pushed again. I confirmed that *'env.py'* is still working locally but is no longer visible or tracked online.
 
-- **Lesson Learned:** Never commit sensitive credentials to GitHub. Always use a local-only *'env.py'* file to store them, and make sure it's excluded from Git tracking. If you accidentally commit a secret, use *'BFG Repo-Cleaner'* to remove it from the full history.
+- **Lesson Learned:** Never commit sensitive credentials to GitHub. Always use a local-only *'env.py'* file to store them, and make sure it's excluded from Git tracking. If you accidentally commit a secret, use *'BFG Repo-Cleaner'* to remove it from the full history. It is also a good idea to use a key generator to create a new key and update it in the *'env.py'* file and periodically audit my repo to check for anything that shouldn'y be tracked. This was a simple error that took over a day to fix with the help of *'Chat GPT'* after I failed over three times to try and come to grips with the documentation and help from the *'Slack'* community.
   
 
 
