@@ -10,18 +10,16 @@ Below are the various bugs that I encountered along the way and how I fixed them
 - **Other Bugs**
 - **Bugs Unresolved**
 
-#### 8.1 Syntax Errors
+### 8.1 Syntax Errors
 
   - **Bug:** Incorrect spelling of module name. 
   
-  The error occured when I was importing the first module in the project. The module name was misspelled in the import statement. What had happened was that I had pluralised the app name (gig_reviews) and then created the class  name (GigReview) using the singular form of the model name. This caused the error when trying to migrate the module to the database.
+    The error occured when I was importing the first module in the project. The module name was misspelled in the import statement. What had happened was that I had pluralised the app name (gig_reviews) and then created the class  name (GigReview) using the singular form of the model name. This caused the error when trying to migrate the module to the database.
   
   - **Fix:** Corrected the spelling of the class module name in app.py, admin.py and urls.py to correspond with the app pluralisation and the class singular. 
 
   - **Lesson Learned:** It is important to be consistent with the naming conventions used in the project. 
   
-  This will help to avoid errors such as this one in the future by creating different classes for the singular and plural forms of the model name. More importantly to make sure that I use different names for the app name and the class name to avoid confusion.
-
   - **Bug:** While integrating Cloudinary into my Django project, I encountered a TypeError when using os.environ.setdefault() in my env.py file. I had mistakenly passed only one argument instead of the required key-value pair. After correcting that, a second issue appeared — an IndentationError in settings.py. I had written an if statement to check for the presence of env.py but forgot to indent the import env line beneath it, which prevented the project from running.
   
   - **Fix:**  I resolved the TypeError by replacing setdefault() with a direct environment variable assignment. I then resolved the IndentationError by indenting the import env line so it sat within the if block.
@@ -83,7 +81,7 @@ Django's migration history didn’t match the actual state of the database. It t
 
 - **Lesson Learned:** Always check the console for errors and make sure that the JS is being loaded correctly before moving on with the project assuming that the error is not in the JS. I left the console.log at the top of my Js file as a reminder to check the console for errors at each step of the way.
 
-Even when static files exist and are referenced correctly in templates, Django won’t serve them during development unless explicitly told to. It’s important to use findstatic to confirm the path and then make sure the urls.py is properly configured. MIME errors in the browser usually indicate that something is being returned with the wrong content type — often a 404 HTML page — so checking the browser’s DevTools network tab is an essential part of debugging static file issues.
+  Even when static files exist and are referenced correctly in templates, Django won’t serve them during development unless explicitly told to. It’s important to use findstatic to confirm the path and then make sure the urls.py is properly configured. MIME errors in the browser usually indicate that something is being returned with the wrong content type — often a 404 HTML page — so checking the browser’s DevTools network tab is an essential part of debugging static file issues.
 
 - **Bug:** I had written the SearchForm class in forms.py but mistakenly tried to import it from models.py and got an ImportError caused by trying to import SearchForm from the wrong file.
 
@@ -119,23 +117,38 @@ Even when static files exist and are referenced correctly in templates, Django w
     Removed *'DISABLE_COLLECTSTATIC = 1'* from *'Heroku'*
     Committed all changes and dep[loyed succefully after verifying *'collectstatic'* ran]
 
- **Lesson Learned:** Heruko does nto serve static files out of the box. I need to set the *'STATIC_ROOT'* correctly, use *'whitenoise'* to handle the static assets in production, and confirm that *'{% static %}'* is linked in my CSS and JavaScript files. Using DevTools to inspect the network tab and check for MIME errors is also helpful.
+ - **Lesson Learned:** Heruko does nto serve static files out of the box. I need to set the *'STATIC_ROOT'* correctly, use *'whitenoise'* to handle the static assets in production, and confirm that *'{% static %}'* is linked in my CSS and JavaScript files. Using DevTools to inspect the network tab and check for MIME errors is also helpful.
 
 ### 8.5 Design Errors
 
 - **Bug:** After reopening the project folder, Bootstrap styles and interactivity broke unexpectedly. The site appeared unstyled, and navbar toggles no longer worked. No recent manual changes had been made to the *'base.html'* file.
 
 - **Fix:** I discovered that the *'bootstrap.bundle.min.js'* script tag at the bottom of *'base.html'* contained a broken *'integrity attribute (sha384-...)'*. I replaced it with the full, correct version copied from the official Bootstrap CDN, which restored all styling and JS interactivity.
-  
-- **Lesson Learned:** Closing and reopening Django project folders in VS Code without restarting the programme can cause cached or unsaved versions of files to reload incorrectly. In this case, the long integrity attribute was truncated when switching between projects, silently breaking the script load. 
-  
+
 - **To prevent this I must:**
 
-1. Save all files before switching folders
+  1. Save all files before switching folders
+  2. Restart the editor when switching projects
+  3. Use Git to track .html changes, even for template files
+  
+- **Lesson Learned:** Closing and reopening Django project folders in VS Code without restarting the programme can cause cached or unsaved versions of files to reload incorrectly. In this case, the long integrity attribute was truncated when switching between projects, silently breaking the script load.
 
-2. Restart the editor when switching projects
+- **Bug:** After a meeting with my mentor he noticed that I had accidentally committed my *'SECRET_KEY'* and *'env.py'* file to my GitHub repo, exposing sensitive credentials. I noticed that the key was still visible in the commit history even after I had removed it from the most recent version. I also saw that *'env.py'* was still being tracked by Git and visible in the online repository.
 
-3. Use Git to track .html changes, even for template files
+- **Fix:** I generated a new *'SECRET_KEY'* using a secure key generator and moved it into a local-only *'env.py'* file. I then made sure that *'env.py'* was included in *'.gitignore'* to prevent it from being tracked again.
+
+- **To remove the old key from GitHub’s full history, I used *'BFG Repo-Cleaner'*:**
+
+  1. I cloned a mirror of my repo with *'git clone --mirror'*
+  2. Created a *'secrets.txt'* file listing the exact secret I wanted removed
+  3. Ran *'BFG'* to replace it with *'REMOVED'*
+  4. Cleaned the *'reflog'* and *'force-pushed'* the cleaned history back to GitHub
+
+  After that, I ran *'git rm --cached env.py'* to stop Git from tracking the file, committed the change, and pushed again. I confirmed that *'env.py'* is still working locally but is no longer visible or tracked online.
+
+- **Lesson Learned:** Never commit sensitive credentials to GitHub. Always use a local-only *'env.py'* file to store them, and make sure it's excluded from Git tracking. If you accidentally commit a secret, use *'BFG Repo-Cleaner'* to remove it from the full history.
+  
+
 
 ### 8.6 Other Bugs
 
@@ -151,9 +164,9 @@ Even when static files exist and are referenced correctly in templates, Django w
 
 - **Bug:** Submitting the gig review form gave an error saying "Enter a valid date," even though the date was selected using the calendar input. The form would not save. I had previously changed the date format in my settings file to *'DD-MM-YYYY'*, so I knew that wasn't the issue.
   
-- **Fix:** The form was using *'<input type="date">'*, which submits dates in *'YYYY-MM-DD'* format. However, the form's *'input_formats'* was incorrectly set to expect *'DD-MM-YYYY'*. I corrected the *'input_formats'* to *'%Y-%m-%d'* and the form started working correctly, as I had previously add the init method, of the form class, as *'%d-%m-%Y'*.
+- **Fix:** The form was using <input type="date"> which submits dates in *'YYYY-MM-DD'* format. However, the form's *'input_formats'* was incorrectly set to expect *'DD-MM-YYYY'*. I corrected the *'input_formats'* to *'%Y-%m-%d'* and the form started working correctly, as I had previously add the init method, of the form class, as *'%d-%m-%Y'*.
   
-- **Lesson Learned:** When using *'<input type="date">'*, in a form widget, always expect *'%Y-%m-%d'* as the input format. The browser handles formattting, but Django needs to know the exact formatting being submitted.
+- **Lesson Learned:** When using <input type="date"> in a form widget, always expect *'%Y-%m-%d'* as the input format. The browser handles formattting, but Django needs to know the exact formatting being submitted.
 
 **Version Control Issue**
 
@@ -165,7 +178,7 @@ Even when static files exist and are referenced correctly in templates, Django w
 
 **Validation Styling**
 
-- **Bug:** I wanted to replace Django's default password help text with a custom set of *'<p>'* tags so that the styling would match the entire he sign up form. I tried overring the *'self.fields["password1"].help_text'* using *'password_validators_help_texts()'*, but Django still rendered the original *'<ul><li>'* help list. I decided to rollback and avoid customizing the form too deeply, as the logic behind Django's password validation system felt too complex to change confidently and I started to break my code.
+- **Bug:** I wanted to replace Django's default password help text with a custom set of *'p'* tags so that the styling would match the entire he sign up form. I tried overring the *'self.fields["password1"].help_text'* using *'password_validators_help_texts()'*, but Django still rendered the original *'ul & li'* help list. I decided to rollback and avoid customizing the form too deeply, as the logic behind Django's password validation system felt too complex to change confidently and I started to break my code.
 
 - **Fix:** I rolled back to using Django’s built-in *'UserCreationForm'* and left the default help text rendering untouched. Instead of replacing the HTML structure, I used CSS to remove the bullets, collapse the spacing, and visually match the default help list with the rest of the form. This gave me full control over the appearance without needing to override the form logic or validators.
 
@@ -181,10 +194,12 @@ Even when static files exist and are referenced correctly in templates, Django w
 
 ### 8.7 Bugs Unresolved
 
-- **Bug:** I wanted to change the highlight color that appears when selecting or hovering over options in a native *'<select>'* dropdown. My goal was to make the selection styling match the custom color scheme used across the rest of the site.
+- **Bug:** I wanted to change the highlight color that appears when selecting or hovering over options in a native *'select'* dropdown. My goal was to make the selection styling match the custom color scheme used across the rest of the site.
 
-- **Fix:** This could not be fixed using standard CSS. Most modern browsers (especially Chrome, Safari, and Firefox) render *'<select>'* dropdowns and their option lists using native OS UI components, which are not styleable via CSS. I considered rebuilding the dropdown as a fully custom component using JavaScript and HTML, but chose not to pursue this due to the added complexity and time constraints.
+- **Fix:** This could not be fixed using standard CSS. Most modern browsers (especially Chrome, Safari, and Firefox) render *'select'* dropdowns and their option lists using native OS UI components, which are not styleable via CSS. I considered rebuilding the dropdown as a fully custom component using JavaScript and HTML, but chose not to pursue this due to the added complexity and time constraints.
 
-- **Lesson Learner** Some UI elements like native *'<select>'* options are outside the scope of CSS styling due to how browsers and operating systems render them. In these cases, it’s better to accept the default behavior or switch to a fully custom solution — which may not be worth it if the rest of the experience is consistent and functional.
+- **Lesson Learner** Some UI elements like native *'select'* options are outside the scope of CSS styling due to how browsers and operating systems render them. In these cases, it’s better to accept the default behavior or switch to a fully custom solution — which may not be worth it if the rest of the experience is consistent and functional.
+
+
 
 ![static file error message in console](image.png)
