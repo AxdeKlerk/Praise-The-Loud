@@ -99,6 +99,13 @@ Django's migration history didn’t match the actual state of the database. It t
 
     return render(request, *'gig_reviews/search_results.html'*, {'form': form, 'results': results})
 
+- **Bug:** After deploying to *'Heroku'*, I got an *'“Internal Server Error”'* when trying to load the site. The *'Heroku'* logs showed:
+*'django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty'*.
+
+-**Fix:** I realized that *'Heroku'* didn’t have my *'SECRET_KEY'* set as a config variable. To fix this, I ran the following command in the terminal: *''heroku config:set SECRET_KEY=mysecretkey'*. This sets the *'SECRET_KEY'* environment variable in *'Heroku'*. After restarting the app, the error was fixed.
+
+- **Lesson Learned:** *'Django'* will crash if *'SECRET_KEY'* is missing or empty in production, and *'Heroku'* doesn’t use my local *'env.py'*. Any environment variables I rely on locally must also be set explicitly in *'Heroku'* using *'heroku config:set'*. I’ll now make sure all production secrets are safely configured in the *'Heroku'* environment, not hardcoded in my files.
+
 ### 8.4 Semantic Errors
 
 - **Bug:** This bug continued throughout my project: spelling mistakes in the HTML, CSS, Js and Python code. I had to spend a lot of time debugging and fixing these errors.
