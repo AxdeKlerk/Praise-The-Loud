@@ -50,6 +50,10 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'gallery' %}">Wall of Chaos</a>
+        </li>
+
 
         <!-- Only show if logged in -->
         {% if user.is_authenticated %}

@@ -4,7 +4,7 @@ from .forms import GigReviewForm, ProfileForm, FanContactForm, ArtistContactForm
 from .models import Profile, Artist, Venue, GigReview
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.contrib import messages
 from django.utils.text import slugify
 
@@ -153,3 +153,11 @@ def search_view(request):
         'results': results,
         'reviews': reviews,
     })
+
+def gallery_view(request):
+    reviews_with_photos = GigReview.objects.filter(photo__isnull=False).order_by('-gig_date')
+    return render(request, 'gig_reviews/gallery.html', {
+        'reviews': reviews_with_photos
+    })
+
+
