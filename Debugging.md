@@ -25,6 +25,17 @@ Below are the various bugs that I encountered along the way and how I fixed them
   - **Fix:**  I resolved the TypeError by replacing setdefault() with a direct environment variable assignment. I then resolved the IndentationError by indenting the import env line so it sat within the if block.
 
   - **Lesson Learned:** Syntax errors like these can completely stop Django from running, even if the actual mistake is minor. I was reminded to pay close attention to indentation, especially in conditional blocks, and to always check that function calls are written with the correct number of arguments. Stepping through each issue methodically helped isolate and fix the problems without getting overwhelmed by the complexity of the project.
+
+  - **Bug:** After deploying my project and trying to test the search functionality, I kept getting a *'500 internal server error'*. The search page had previously worked fine, so this was unexpected. The *'Heroku'* logs showed:
+    *'TemplateSyntaxError: Invalid filter: cloudinary'* which pointed to the line trying to render the image for an artist logo using a Cloudinary transformation filter.
+
+  - **Fix:** I checked the Cloudinary documentation and found that the filter syntax was incorrect because it does not exist in the *'django-cloudinary-storage'* package. It turns that the correct way to access *'Cloudinary'* image URLs from a *'CloudinaryField'* is simply: 
+  
+    *'<img src="{{ item.logo.url }}"...>'*
+
+  I updated the filter to use the new syntax and the error was resolved.
+
+  - **Lesson Learned:** The *'CloudinaryField'* in *'Django'* already provides a direct .url property, and there’s no need to apply a special filter or load a custom tag unless using a different *'Cloudinary'* library. I’ll stick with .url going forward and avoid introducing template filters that don’t exist.
   
 ### 8.2 Logic Errors
 

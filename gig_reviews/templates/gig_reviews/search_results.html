@@ -6,15 +6,17 @@
 <div class="container search-item">
   <div class=" row mx-auto justify-content-center">
     <div class="col-12 text-center">
-      <h1>Search Results 
-        <br> {{ form.cleaned_data.search_type|title }}</h1>
+      <h1>Search Results</h1>
+        {% if form.is_valid %}
+        <h2> {{ form.cleaned_data.search_type|title }}</h2>
+        {% endif %}
           {% if results %}
           <ul >
             {% for item in results %}
               <div class="result-card">
                 <li>
                   {% if item.logo %}
-                    <img src="{{ item.logo|cloudinary:'w_300,h_300,c_fill,r_max' }}" class="img-fluid mb-3" alt="{{ item.name }} logo">
+                    <img src="{{ item.logo.url }}" class="img-fluid mb-3" alt="{{ item.name }} logo">
                   {% else %}
                     <h3>{{ item.name }}</h3>
                   {% endif %}
@@ -39,7 +41,7 @@
                       {% for review in item.reviews %}
                         <li>
                           {% if review.photo %}
-                            <img src="{{ review.photo|cloudinary:'w_400,h_300,c_fit' }}" class="img-fluid rounded mb-3" alt="Gig photo">
+                            <img src="{{ review.photo.url }}" class="img-fluid rounded mb-3" alt="Gig photo">
                             {% endif %}
                           <h5>{{ review.title }}</h5>
                           <p>{{ review.gig_date|date:"d-m-Y" }}</p>
