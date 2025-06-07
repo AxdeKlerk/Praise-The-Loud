@@ -125,39 +125,47 @@ def contact_view(request):
 def thank_you(request):
     return render(request, "gig_reviews/thank_you.html")
 
+
 def search_view(request):
-    form = SearchForm(request.GET or None)
-    results = []
-    reviews = []
+    try:
+        print(request.GET)
+        form = SearchForm(request.GET or None)
+        results = []
+        reviews = []
 
-    if form.is_valid():
-        search_type = form.cleaned_data['search_type']
-        query = form.cleaned_data['search_term']
+        if form.is_valid():
+            search_type = form.cleaned_data['search_type']
+            query = form.cleaned_data['search_term']
 
-        if search_type == 'artist':
-            results = Artist.objects.filter(name__icontains=query)
-            reviews = GigReview.objects.filter(artist__in=results)
-            
-            for item in results:
-                item.reviews = GigReview.objects.filter(artist=item) 
+            if search_type == 'artist':
+                results = Artist.objects.filter(name__icontains=query)
+                reviews = GigReview.objects.filter(artist__in=results)
+                
+                for item in results:
+                    item.reviews = GigReview.objects.filter(artist=item) 
 
-        elif search_type == 'venue':
-            results = Venue.objects.filter(name__icontains=query)
-            reviews = GigReview.objects.filter(venue__in=results)
-            
-            for item in results:
-                item.reviews = GigReview.objects.filter(venue=item)
+            elif search_type == 'venue':
+                results = Venue.objects.filter(name__icontains=query)
+                reviews = GigReview.objects.filter(venue__in=results)
+                
+                for item in results:
+                    item.reviews = GigReview.objects.filter(venue=item)
 
-    return render(request, 'gig_reviews/search_results.html', {
-        'form': form,
-        'results': results,
-        'reviews': reviews,
-    })
+        return render(request, 'gig_reviews/search_results.html', {
+            'form': form,
+            'results': results,
+            'reviews': reviews,
+        })
+    except Exception as e:
+        import traceback
+        print("Search View Error:", e)
+        traceback.print_exc()
+        raise
+
 
 def gallery_view(request):
     reviews_with_photos = GigReview.objects.filter(photo__isnull=False).order_by('-gig_date')
     return render(request, 'gig_reviews/gallery.html', {
         'reviews': reviews_with_photos
     })
-
 
