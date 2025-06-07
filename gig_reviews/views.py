@@ -127,8 +127,8 @@ def thank_you(request):
 
 
 def search_view(request):
-    try:
-        print(request.GET)
+    #try:
+        #print(request.GET)
         form = SearchForm(request.GET or None)
         results = []
         reviews = []
@@ -156,11 +156,11 @@ def search_view(request):
             'results': results,
             'reviews': reviews,
         })
-    except Exception as e:
-        import traceback
-        print("Search View Error:", e)
-        traceback.print_exc()
-        raise
+    #except Exception as e:
+        #import traceback
+        #print("Search View Error:", e)
+        #traceback.print_exc()
+        #raise
 
 
 def gallery_view(request):

@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
-STATUS = ((0, "Draft"), (1, "Published"))
 
 # Create your models here. 
 class GigReview(models.Model):
@@ -13,15 +12,14 @@ class GigReview(models.Model):
     gig_date = models.DateField(null=False, blank=False)
     title = models.CharField(max_length=30, null=False, blank=False)
     photo = CloudinaryField('image', default='placeholder', blank=True, null=True)
-    review = models.TextField(max_length=500, null=False, blank=False)
+    review = models.TextField(max_length=3000, null=False, blank=False)
     review_date = models.DateField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
         ordering = ['-gig_date']
     
     def __str__(self):
-        return f"{self.artist} @ {self.venue} | {self.author} - {self.gig_date} - {self.status}"
+        return f"{self.artist} @ {self.venue} | {self.author} - {self.gig_date}"
    
 class Artist(models.Model):
     # Fields

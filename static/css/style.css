@@ -219,31 +219,36 @@ input:-webkit-autofill:focus {
 
 /* Search results */
 .search-item {
-    margin-top: 20px auto;
     font-size: 1.2rem;
-    max-width: 950px;
-}
-.search-item img {
-    width: 200px;
-    height: auto;
 }
 .search-item ul,
 .search-item ul li {
     list-style: none;
     color: #F5F5F5;
-    margin-top: 0.25rem;
-    margin-bottom: 0.75rem;
     padding: 0;
 }
 .search-item a {
     color: #F5F5F5;
     font-size: 1.2rem;
 }
-.review-photo {
-    width: 300px;
-    height: auto;
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
+.result-card {
+    background-color: black;
+    border: 1px solid #F50000;
+    border-radius: 10px;
+    padding: 0.75rem;
+}
+.result-card a {
+    color: #F50000;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.result-card a:hover {
+    color: #F5F5F5;
+}
+.result-card img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
 }
 
 /**Footer */
@@ -313,12 +318,31 @@ input:-webkit-autofill:focus {
     .hero-image p {
         font-size: 1rem;
     }
+    .result-card img {
+        width: 300px;
+        height: 300px;
+        object-fit: contain;
+    }
+}
+/*4 Medium mobile devices (phones, 576px and above)*/
+@media screen and (min-width: 576px) {
+    .hero-image h1 {
+        font-size: 1.5rem;
+    }
+    .hero-image p {
+        font-size: 1rem;
+    }
     .about {
         font-size: 1rem;
         margin-top: 20px;
     }
     .about p {
         margin-top: 20px;
+    }
+    .result-card img {
+        width: 400px;
+        height: 400px;
+        object-fit: contain;
     }
     .footer-contact {
         font-size: 1.3rem;
@@ -327,5 +351,3 @@ input:-webkit-autofill:focus {
         font-size: 1rem;
     }
 }
-/*3 Small mobile devices (phones, 420px and above)
-@media (max-width: 576px)*/

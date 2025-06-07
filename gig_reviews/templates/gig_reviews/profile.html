@@ -25,7 +25,7 @@
 <!-- Show profile details when NOT editing -->
 {% elif profile_exists %}
     {% if profile.profile_photo %}
-      <p><img src="{{ profile.profile_photo.url }}" class="img-fluid" alt="Profile Photo" width="200"></p>
+      <p><img src="{{ profile.profile_photo.url }}" class="img-fluid" alt="Profile Photo" style="width: 300px; height: 300px; object-fit: contain; border-radius: 50%;"></p>
     {% else %}
       <p>No profile photo uploaded.</p>
     {% endif %}
