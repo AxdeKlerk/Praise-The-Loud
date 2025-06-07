@@ -23,7 +23,7 @@
 <!-- Show profile details when NOT editing -->
 {% elif profile_exists %}
     {% if profile.profile_photo %}
-      <p><img src="{{ profile.profile_photo.url }}" alt="Profile Photo" width="200"></p>
+      <p><img src="{{ profile.profile_photo.url }}" class="img-fluid" alt="Profile Photo" width="200"></p>
     {% else %}
       <p>No profile photo uploaded.</p>
     {% endif %}
@@ -66,7 +66,7 @@
       {% for review in reviews %}
       <li>
           {% if review.photo %}
-          <img src="{{ review.photo.url }}" alt="Review photo">
+          <img src="{{ review.photo.url }}" class="img-fluid" alt="Review photo">
           {% endif %}
           <h3>{{ review.title }}</h3>
           <p>Artist: {{ review.artist }}</p>

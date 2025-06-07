@@ -12,7 +12,7 @@
               <div class="result-card">
                 <li>
                   {% if item.logo %}
-                    <img src="{{ item.logo.url }}" alt="{{ item.name }} logo">
+                    <img src="{{ item.logo.url }}" class="img-fluid" alt="{{ item.name }} logo">
                   {% else %}
                     <h3>{{ item.name }}</h3>
                   {% endif %}
@@ -37,7 +37,7 @@
                       {% for review in item.reviews %}
                         <li>
                           {% if review.photo %}
-                            <img src="{{ review.photo.url }}" class="review-photo" alt="Gig photo">
+                            <img src="{{ review.photo.url }}" class="img-fluid" class="review-photo" alt="Gig photo">
                             {% endif %}
                           <h5>{{ review.title }}</h5>
                           <p>{{ review.gig_date|date:"d-m-Y" }}</p>
@@ -62,7 +62,7 @@
                     <p>{{ review.gig_date|date:"d-m-Y" }}</p>
                     <p>{{ review.review }}</p>
                     {% if review.photo %}
-                    <img src="{{ review.photo.url }}" alt="Gig photo" style="max-width: 200px;">
+                    <img src="{{ review.photo.url }}" class="img-fluid" alt="Gig photo" style="max-width: 200px;">
                     {% endif %}
                 </li>
                 {% endfor %}
