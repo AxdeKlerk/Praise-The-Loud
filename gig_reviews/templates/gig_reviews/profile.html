@@ -24,10 +24,10 @@
 
 <!-- Show profile details when NOT editing -->
 {% elif profile_exists %}
-    {% if profile.profile_photo %}
-      <p><img src="{{ profile.profile_photo.url }}" class="img-fluid" alt="Profile Photo" style="width: 300px; height: 300px; object-fit: contain; border-radius: 50%;"></p>
+    {% if profile.profile_image %}
+      <p><img src="{{ profile.profile_image.url }}" class="img-fluid" alt="Profile image" style="width: 300px; height: 300px; object-fit: contain; border-radius: 50%;"></p>
     {% else %}
-      <p>No profile photo uploaded.</p>
+      <p>No profile image uploaded.</p>
     {% endif %}
   <p><strong>Username:</strong> {{ profile.user.username }}</p>
   <p><strong>Bio:</strong> {{ profile.bio }}</p>
@@ -67,8 +67,8 @@
     <ul>
       {% for review in reviews %}
       <li>
-          {% if review.photo %}
-          <img src="{{ review.photo.url }}" class="img-fluid" alt="Review photo">
+          {% if review.image %}
+          <img src="{{ review.image.url }}" class="img-fluid" alt="Review image">
           {% endif %}
           <h3>{{ review.title }}</h3>
           <p>Artist: {{ review.artist }}</p>

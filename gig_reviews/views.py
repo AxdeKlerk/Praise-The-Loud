@@ -167,7 +167,7 @@ def search_view(request):
 
 
 def gallery_view(request):
-    reviews_with_photos = GigReview.objects.filter(photo__isnull=False).order_by('-gig_date')
+    reviews_with_photos = GigReview.objects.filter(image__isnull=False).order_by('-gig_date')
     return render(request, 'gig_reviews/gallery.html', {
         'reviews': reviews_with_photos
     })

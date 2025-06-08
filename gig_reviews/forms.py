@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 class GigReviewForm(forms.ModelForm):
     class Meta:
         model = GigReview
-        fields = ['artist', 'venue', 'gig_date', 'title', 'photo', 'review']
+        fields = ['artist', 'venue', 'gig_date', 'title', 'image', 'review']
         widgets = {
             'gig_date': forms.DateInput(attrs={'type': 'date'}),
         }
@@ -51,14 +51,4 @@ class SearchForm(forms.Form):
     search_type = forms.ChoiceField(choices=SEARCH_TYPE_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
     search_term = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Search by name...'}))
 
-# Custom User Creation Form to manually to control help text formatting
-#class CustomUserCreationForm(UserCreationForm):
-#   def __init__(self, *args, **kwargs):
-#      super().__init__(*args, **kwargs)
-#      validators = get_default_password_validators()
-#        self.fields['password1'].help_text = mark_safe(
-#           ''.join(
-#               f'<p class="helptext">{v.get_help_text()}</p>' for v in validators
-#            )
-#        )
 

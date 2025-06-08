@@ -11,8 +11,8 @@
         {% for review in reviews %}
             <div class="col tilt">
                 <div class="card h-100 chaos-card">
-                    {% if review.photo and review.photo.url and "placeholder" not in review.photo.url %}
-                    <img src="{{ review.photo.url }}" class="card-img-top" alt="Fan review photo">
+                    {% if review.image and review.image.url and "placeholder" not in review.image.url %}
+                    <img src="{{ review.image.url }}" class="card-img-top" alt="Fan review image">
                     {% else %}
                     <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
                     {% endif %}

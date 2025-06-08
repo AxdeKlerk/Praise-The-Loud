@@ -40,8 +40,8 @@
                     <ul>
                       {% for review in item.reviews %}
                         <li>
-                          {% if review.photo %}
-                            <img src="{{ review.photo.url }}" class="img-fluid result-card-gig-photo" alt="Gig photo">
+                          {% if review.image %}
+                            <img src="{{ review.image.url }}" class="img-fluid result-card-gig-image" alt="Gig image">
                             {% endif %}
                           <h5>{{ review.title }}</h5>
                           <p>{{ review.gig_date|date:"d-m-Y" }}</p>
