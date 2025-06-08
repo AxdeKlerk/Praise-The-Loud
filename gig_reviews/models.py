@@ -50,7 +50,7 @@ class Venue(models.Model):
     
 class Profile(models.Model):
     # Fields
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField(max_length=2000, null=False, blank=False)
     profile_photo = CloudinaryField('image', default='placeholder', blank=True, null=True)
     location = models.CharField(max_length=100, default='UK')

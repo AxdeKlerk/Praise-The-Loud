@@ -175,9 +175,16 @@ def gallery_view(request):
 
 def author_profile(request, pk):
     author = get_object_or_404(User, pk=pk)
-    reviews = GigReview.objects.filter(author=author)
+    
+    try:
+        profile = author.profile  # this assumes you have a OneToOneField in your Profile model
+    except Profile.DoesNotExist:
+        profile = None
+
+    reviews = GigReview.objects.filter(author=author).order_by('-review_date')
+
     return render(request, 'gig_reviews/author_profile.html', {
         'author': author,
+        'profile': profile,
         'reviews': reviews,
     })
-
