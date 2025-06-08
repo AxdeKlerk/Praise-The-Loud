@@ -1,24 +1,25 @@
 ## APP (gig_reviews) URLS
 
 from django.urls import path, include
-from .views import home, about, artist, venue, profile, review, signup, logout, delete_profile, contact_view, thank_you, search_view, gallery_view
+from .views import home, about, artist, venue, profile, review, signup, logout, delete_profile, contact_view, thank_you, search_view, gallery_view, author_profile
 
 # Add URL patterns for other views as needed
 urlpatterns = [
-   path('', home, name='home'), # Loads the Home page
-   path('about/', about, name='about'),  # Route to the About page
-   path('artist/', artist, name='artist'), # add '<slug:slug>/' to the path if you want to pass a slug
-   path('venue/', venue, name='venue'), # add '<slug:slug>/' to the path if you want to pass a slug
-   path('profile/', profile, name='profile'), # add '<slug:slug>/' to the path if you want to pass a slug
-   path('new-review/', review, name='new_review'), # add '<slug:slug>/' to the path if you want to pass a slug
-   path('fan/', include('django.contrib.auth.urls')), # Built-in login/logout views at /fan/
-   path('fan/signup/', signup, name='signup'),  # Route for user signup
-   path('fan/logout/', logout, name='logout'), # Route for user logout
-   path('profile/delete/', delete_profile, name='delete_profile'), # Route for deleting user profile
-   path('contact/', contact_view, name='contact'), # Route for contact form
-   path("thank-you/", thank_you, name='thank_you'), # Route for thank you page
-   path('search/', search_view, name='search_view'), # Route for search view
-   path('gallery/', gallery_view, name='gallery'),  # Route for gallery review
+   path('', home, name='home'), 
+   path('about/', about, name='about'), 
+   path('artist/<int:pk>/', artist, name='artist_profile'), 
+   path('venue/<int:pk>/', venue, name='venue_profile'), 
+   path('author/<int:pk>/', author_profile, name='author_profile'),
+   path('profile/', profile, name='profile'), 
+   path('new-review/', review, name='new_review'),
+   path('fan/', include('django.contrib.auth.urls')), 
+   path('fan/signup/', signup, name='signup'), 
+   path('fan/logout/', logout, name='logout'),
+   path('profile/delete/', delete_profile, name='delete_profile'), 
+   path('contact/', contact_view, name='contact'), 
+   path('thank-you/', thank_you, name='thank_you'), 
+   path('search/', search_view, name='search_view'), 
+   path('gallery/', gallery_view, name='gallery'), 
 
 ]
 # urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

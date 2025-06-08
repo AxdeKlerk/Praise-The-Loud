@@ -1,9 +1,42 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Gallery{% endblock %}
+{% block title %}Wall of Chaos{% endblock %}
 
 {% block content %}
 
-{% end block %}
+<div class="container py-5">
+  <h1 class="text-center mb-4">Wall of Chaos</h1>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        {% for review in reviews %}
+            <div class="col tilt">
+                <div class="card h-100 chaos-card">
+                    {% if review.photo and review.photo.url and "placeholder" not in review.photo.url %}
+                    <img src="{{ review.photo.url }}" class="card-img-top" alt="Fan review photo">
+                    {% else %}
+                    <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
+                    {% endif %}
+                    <div class="card-body">
+                    <h5 class="card-title">{{ review.title }}</h5>
+                    <p class="card-text">
+                        {% if review.artist %}
+                            <strong>Artist:</strong>
+                            <a href="{% url 'artist_profile' review.artist.pk %}" style="color:#F50000">{{ review.artist.name }}</a><br>
+                        {% else %}
+                            <strong>Venue:</strong>
+                            <a href="{% url 'venue_profile' review.venue.pk %}" style="color:#F50000">{{ review.venue.name }}</a><br>
+                        {% endif %}
+                        <strong>Fan:</strong>
+                        <a href="{% url 'author_profile' review.author.pk %}" style="color:#F50000">{{ review.author.username }}</a><br>
+                    </p>
+                    </div>
+                    <div class="card-footer">Gig Date: {{ review.gig_date|date:"d/m/Y" }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
 

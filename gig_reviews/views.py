@@ -5,6 +5,7 @@ from .models import Profile, Artist, Venue, GigReview
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import get_object_or_404, render
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.utils.text import slugify
 
@@ -32,11 +33,15 @@ def review(request):
     return render(request, 'gig_reviews/new_review.html', {'form': form})
 
     
-def artist(request):
-    return render(request, 'gig_reviews/artist.html')
+def artist(request, pk):
+    artist = get_object_or_404(Artist, pk=pk)
+    reviews = GigReview.objects.filter(artist=artist)
+    return render(request, 'gig_reviews/artist.html', {'artist': artist})
 
-def venue(request):
-    return render(request, 'gig_reviews/venue.html')
+def venue(request, pk):
+    venue = get_object_or_404(Venue, pk=pk)
+    reviews = GigReview.objects.filter(venue=venue)
+    return render(request, 'gig_reviews/venue.html', {'venue': venue})
 
 @login_required
 def profile(request):
@@ -71,19 +76,21 @@ def profile(request):
     }
     return render(request, 'gig_reviews/profile.html', context)
 
+
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)           # log them in immediately
-            return redirect('home')        # send them to home page
+            login(request, user)
+            return redirect('home')
     else:
         form = UserCreationForm()
     return render(request, 'gig_reviews/signup.html', {'form': form})
 
 def logout(request):
     return render(request, 'gig_reviews/logout.html')
+
 
 @login_required
 def delete_profile(request):
@@ -92,6 +99,7 @@ def delete_profile(request):
         profile.delete()
         messages.success(request, "Your profile has been deleted.")
         return redirect('profile')
+
 
 def contact_view(request):
     fan_form = FanContactForm()
@@ -122,13 +130,13 @@ def contact_view(request):
         "venue_form": venue_form
     })
 
+
 def thank_you(request):
     return render(request, "gig_reviews/thank_you.html")
 
 
 def search_view(request):
-    #try:
-        #print(request.GET)
+    if request.method == 'GET':
         form = SearchForm(request.GET or None)
         results = []
         reviews = []
@@ -156,16 +164,20 @@ def search_view(request):
             'results': results,
             'reviews': reviews,
         })
-    #except Exception as e:
-        #import traceback
-        #print("Search View Error:", e)
-        #traceback.print_exc()
-        #raise
 
 
 def gallery_view(request):
     reviews_with_photos = GigReview.objects.filter(photo__isnull=False).order_by('-gig_date')
     return render(request, 'gig_reviews/gallery.html', {
         'reviews': reviews_with_photos
+    })
+
+
+def author_profile(request, pk):
+    author = get_object_or_404(User, pk=pk)
+    reviews = GigReview.objects.filter(author=author)
+    return render(request, 'gig_reviews/author_profile.html', {
+        'author': author,
+        'reviews': reviews,
     })
 
