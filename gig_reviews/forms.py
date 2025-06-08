@@ -19,7 +19,7 @@ class GigReviewForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['bio', 'location', 'facebook', 'instagram', 'profile_photo']
+        fields = ['bio', 'location', 'facebook', 'instagram', 'image']
 
 
 class FanContactForm(forms.Form):
