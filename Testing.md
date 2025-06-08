@@ -219,6 +219,63 @@ The reviews were initially not appearing under the artist bio due to incorrect t
 
 #### 9.2 Manual Testing
 
+#### 9.2.1 User Experience Testing
+
+#### 9.2.2 What Was Tested
+
+For my first round of user experience testing, I conducted a usability test with a friend who had no prior experience with the site. The test was conducted at Call of the Wild Festival (COTW). I asked four friends to set up fake profiles and submitted reviews on the app. I asked them to use it naturally in a live music setting and report anything they found confusing, broken, difficult and some general feedback.
+
+- [x] Tested the app in a live music setting at Call of the Wild Festival
+- [x] Collected detailed feedback from Paul, Dave, and Julie
+- [x] Reviewed screenshots from Julie to identify UI/UX issues
+- [x] Compiled feedback into actionable criteria for future testing
+
+**Feedback Summary:**
+
+Paul pointed out that putting spaces in the username during profile setup caused the page to reload without a clear error message. He also noted that his uploaded review image appeared oversized on mobile, requiring multiple swipes to scroll past. Additionally, he felt the review text box was too small, lacking a visible character limit and cutting his input short.
+
+Dave had issues uploading photos, receiving an error that there wasn’t enough memory. He also mentioned that “Lesbian Bed Death” was missing from the band list, and “Brave Revival” was not listed either. He suggested it may be helpful to allow users to suggest bands if admin-only entry is the current setup. Overall, he found the app simple and easy to use.
+
+Julie submitted a review but said the submit button behaved oddly, and her uploaded photo also displayed strangely. She confirmed the text input cut her off before she could finish her thought and suggested there may be a character limit issue. When asked, she said she preferred to avoid “waffle” but still needed room to round off the review properly. She also sent screenshots of the odd behavior for further analysis.
+
+**Profile Setup**
+
+- [x] Users should be informed if their chosen username is invalid (e.g. contains spaces)
+- [ ] Profile creation page should provide helpful error feedback
+- [x] Users can upload a profile image
+
+**Review Submission**
+
+- [x] Review form should accept and store text input
+- [ ] Review form should provide a clear character limit notice
+- [ ] Review form should allow enough text to feel complete without being too long
+- [ ] Image uploads should scale correctly for mobile
+- [x] Users should be able to select a band from a list
+- [ ] Band list should be comprehensive or allow suggestions
+- [ ] Review submission button should be consistently responsive
+- [ ] Image upload should work smoothly without memory issues
+
+**Actional Criteria**
+
+**Profile Setup**
+- [ ] Add validation feedback for username errors (e.g. if spaces are included)
+- [ ] Ensure the profile creation page clearly highlights and explains any input errors
+
+**Review Submission**
+
+- [ ] Add a visible character limit indicator to the review text box (e.g. "Max 1000 characters")
+- [ ] Increase character limit slightly to allow more complete thoughts
+- [ ] Ensure uploaded images are automatically resized or scaled down for mobile viewing
+- [ ] Investigate and fix memory-related issues with photo uploads (possibly related to file size or client-side limitations)
+- [ ] Improve feedback or retry logic when review submission fails or button misbehaves
+- [ ] Ensure all known bands (like “Lesbian Bed Death” and “Brave Revival”) are included in the dropdown list
+- [ ] Add a feature or form to allow users to suggest missing bands (optional, depending on admin workflow)
+
+These were then turned into actionable criteria for future testing as *'Github Issues'* and *'Issues'* in the project repository.
+  
+
+
+
 #### 9.3 Automated Testing
 
 #### 9.4 Code Validation
