@@ -15,6 +15,11 @@ h1 {
     font-family: 'Rock Salt', sans-serif;
     margin-top: 20px;
 }
+h2 {
+    color: #F50000;
+    font-family: 'Rock Salt', sans-serif;
+    margin-top: 20px;   
+}
 h4 {
     color: #F50000;
     font-family: 'Rock Salt', sans-serif;
@@ -267,6 +272,9 @@ input:-webkit-autofill:focus {
     object-fit: cover;
     border-radius: 10px;
     align-self: center;
+}
+.card-text {
+    color: #F5F5F5;
 }
 .tilt {
     transform: rotate(-1.5deg);

@@ -181,10 +181,25 @@ def author_profile(request, pk):
     except Profile.DoesNotExist:
         profile = None
 
-    reviews = GigReview.objects.filter(author=author).order_by('-review_date')
+    reviews = GigReview.objects.filter(author=author).order_by('-gig_date')
 
     return render(request, 'gig_reviews/author_profile.html', {
         'author': author,
         'profile': profile,
+        'reviews': reviews,
+    })
+
+def artist(request, pk):
+    artist = get_object_or_404(Artist, pk=pk)
+    reviews = GigReview.objects.filter(artist=artist).order_by('-gig_date')
+    return render(request, 'gig_reviews/artist.html', {
+        'artist': artist,
+        'reviews': reviews,
+    })
+def venue(request, pk):
+    venue = get_object_or_404(Venue, pk=pk)
+    reviews = GigReview.objects.filter(venue=venue).order_by('-gig_date')
+    return render(request, 'gig_reviews/venue.html', {
+        'venue': venue,
         'reviews': reviews,
     })

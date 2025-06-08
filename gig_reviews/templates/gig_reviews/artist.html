@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cloudinary %}
+
+{% block title %}{{ artist.name }}'s Profile{% endblock %}
+
+{% block content %}
+<div class="container search-item py-4">
+    <div class=" row mx-auto justify-content-center">
+        <div class="col-12 text-center">
+            <h1>{{ artist.name }}'s Public Profile</h1>
+                {% if artist.logo %}
+                    <img src="{{ artist.image.url }}" alt="{{ artist.name }}'s logo" class="img-fluid mb-3">
+                {% else %}
+                    <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
+                {% endif %}
+                {% if artist.bio %}
+                    <p>{{ artist.bio }}</p>
+                {% endif %}
+                {% if artist.website %}
+                    <p>Website: <a href="{{ artist.website }}" target="_blank">{{ artist.website }}</a></p>
+                {% endif %}
+  
+            <h2>Fan Reviews:</h2>
+            <ul class="list-unstyled">
+            {% for review in reviews %}
+                <li class="mb-4">
+                <div class="card result-card">
+                    <div class="card-body">
+                    {% if review.image %}
+                        <img src="{{ review.image.url }}" class="img-fluid mb-3" alt="Review image">
+                    {% endif %}
+                    
+                    <h2>{{ review.title }}</h2>
+                    <p class="card-text">{{ review.review }}</p>
+                    <p class="card-text">{{ review.gig_date|date:"d/m/Y" }} —
+                        by <a href="{% url 'author_profile' review.author.pk %}">{{ review.author.username }}</a>
+                    </p>
+                    </div>
+                </div>
+                </li>
+            {% empty %}
+                <p>This artist does not have any reviews yet.</p>
+            {% endfor %}
+            </ul>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

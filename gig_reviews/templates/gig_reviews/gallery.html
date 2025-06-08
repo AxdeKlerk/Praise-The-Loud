@@ -16,6 +16,7 @@
                     {% else %}
                     <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
                     {% endif %}
+
                     <div class="card-body">
                     <h5 class="card-title">{{ review.title }}</h5>
                     <p class="card-text">
@@ -26,9 +27,10 @@
                             <strong>Venue:</strong>
                             <a href="{% url 'venue_profile' review.venue.pk %}" style="color:#F50000">{{ review.venue.name }}</a><br>
                         {% endif %}
-                        <strong>Fan:</strong>
-                        <a href="{% url 'author_profile' review.author.pk %}" style="color:#F50000">{{ review.author.username }}</a><br>
+                            <strong>Fan:</strong>
+                            <a href="{% url 'author_profile' review.author.pk %}" style="color:#F50000">{{ review.author.username }}</a><br>
                     </p>
+                    <p class="card-text">{{ review.review|truncatewords:30 }}</p>
                     </div>
                     <div class="card-footer">Gig Date: {{ review.gig_date|date:"d/m/Y" }}
                     </div>
