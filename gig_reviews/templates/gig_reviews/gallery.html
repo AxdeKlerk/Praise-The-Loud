@@ -22,10 +22,10 @@
                     <p class="card-text">
                         {% if review.artist %}
                             <strong>Artist:</strong>
-                            <a href="{% url 'artist_profile' review.artist.pk %}" style="color:#F50000">{{ review.artist.name }}</a><br>
+                            <a href="{% url 'artist' review.artist.pk %}" style="color:#F50000">{{ review.artist.name }}</a><br>
                         {% else %}
                             <strong>Venue:</strong>
-                            <a href="{% url 'venue_profile' review.venue.pk %}" style="color:#F50000">{{ review.venue.name }}</a><br>
+                            <a href="{% url 'venue' review.venue.pk %}" style="color:#F50000">{{ review.venue.name }}</a><br>
                         {% endif %}
                             <strong>Fan:</strong>
                             <a href="{% url 'author_profile' review.author.pk %}" style="color:#F50000">{{ review.author.username }}</a><br>

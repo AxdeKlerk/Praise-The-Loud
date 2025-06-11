@@ -2,85 +2,88 @@
 {% load static %}
 {% load cloudinary %}
 
-
 {% block title %}Profile{% endblock %}
+
 {% block content %}
+<div class="container search-item profile-page">
+  <div class="row mx-auto justify-content-center">
+    <div class="col-12 text-center">
+      <h1>Your Profile</h1>
 
-<h1>Your Profile</h1>
+      {% if messages %}
+        {% for message in messages %}
+          <div class="text-danger">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
 
-{% if messages %}
-  {% for message in messages %}
-    <div style="color:red;">{{ message }}</div>
-  {% endfor %}
-{% endif %}
+      <div class="result-card">
+        {% if editing %}
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="page-btn">
+              {% if profile_exists %}Update{% else %}Create{% endif %} Profile
+            </button>
+            <a href="{% url 'profile' %}" class="btn-cancel">Cancel</a>
+          </form>
 
-<!-- Show form when editing or creating -->
-{% if editing %}
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">{% if profile_exists %}Update{% else %}Create{% endif %} Profile</button>
-  </form>
-
-<!-- Show profile details when NOT editing -->
-{% elif profile_exists %}
-    {% if profile.profile_image %}
-      <p><img src="{{ profile.profile_image.url }}" class="img-fluid" alt="Profile image" style="width: 300px; height: 300px; object-fit: contain; border-radius: 50%;"></p>
-    {% else %}
-      <p>No profile image uploaded.</p>
-    {% endif %}
-  <p><strong>Username:</strong> {{ profile.user.username }}</p>
-  <p><strong>Bio:</strong> {{ profile.bio }}</p>
-  <p><strong>Location:</strong> {{ profile.location }}</p>
-  <p><strong>Facebook:</strong> 
-  {% if profile.facebook %}
-    <a href="{{ profile.facebook }}" target="_blank">{{ profile.facebook }}</a>
-  {% else %}
-    Not provided.
-  {% endif %}
-  </p>
-
-  <p><strong>Instagram:</strong> 
-    {% if profile.instagram %}
-      <a href="{{ profile.instagram }}" target="_blank">{{ profile.instagram }}</a>
-    {% else %}
-      Not provided.
-    {% endif %}
-  </p>
-
-<!-- Buttons -->
-  <a href="?edit=true"><button type="button">Update Profile</button></a>
-
-  <form method="post" action="{% url 'delete_profile' %}" style="display:inline;" onsubmit="return confirmDelete();">
-  {% csrf_token %}
-    <button type="submit" style="color: red;">Delete Profile</button>
-  </form>
-
-{% else %}
-  <p>You have no profile yet. <a href="?edit=true">Create one now</a>.</p>
-{% endif %}
-
-<hr>
-<h2>Your Gig Reviews</h2>
-
-  {% if reviews %}
-    <ul>
-      {% for review in reviews %}
-      <li>
-          {% if review.image %}
-          <img src="{{ review.image.url }}" class="img-fluid" alt="Review image">
+        {% elif profile_exists %}
+          {% if profile.image %}
+            <img src="{{ profile.image.url }}" class="img-fluid result-card-logo" alt="Profile image" style="border-radius: 50%;">
+          {% else %}
+            <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
+            <p><em>No profile image uploaded.</em></p>
           {% endif %}
-          <h3>{{ review.title }}</h3>
-          <p>Artist: {{ review.artist }}</p>
-          <p>Date: {{ review.gig_date|date:"d-m-Y" }}</p>
-          <p>Venue: {{ review.venue }}</p>
-          <p>{{ review.review }}</p>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>You haven’t posted any gig reviews yet.</p>
-  {% endif %}
 
+          <p><strong>Username:</strong> {{ profile.user.username }}</p>
+          <p><strong>Bio:</strong> {{ profile.bio }}</p>
+          <p><strong>Location:</strong> {{ profile.location }}</p>
+          <p><strong>Facebook:</strong> 
+            {% if profile.facebook %}
+              <a href="{{ profile.facebook }}" target="_blank">{{ profile.facebook }}</a>
+            {% else %}
+              Not provided
+            {% endif %}
+          </p>
+          <p><strong>Instagram:</strong> 
+            {% if profile.instagram %}
+              <a href="{{ profile.instagram }}" target="_blank">{{ profile.instagram }}</a>
+            {% else %}
+              Not provided
+            {% endif %}
+          </p>
+
+          <a href="?edit=true"><button type="button" class="page-btn">Update Profile</button></a><form method="post" action="{% url 'delete_profile' %}" style="display:inline;" onsubmit="return confirmDelete();">{% csrf_token %}<button type="submit" class="page-btn" style="color: red;">Delete Profile</button></form>
+
+        {% else %}
+          <p>You have no profile yet. <a href="?edit=true">Create one now</a></p>
+        {% endif %}
+      </div>
+
+      <div class="mt-5">
+        <h2>Your Gig Reviews</h2>
+        {% if reviews %}
+          <ul class="list-unstyled">
+            {% for review in reviews %}
+              <li class="chaos-card tilt">
+                {% if review.image %}
+                  <img src="{{ review.image.url }}" class="card-img-top" alt="Gig image">
+                {% endif %}
+                <h3>{{ review.title }}</h3>
+                <p>Artist: {{ review.artist }}</p>
+                <p>Date: {{ review.gig_date|date:"d-m-Y" }}</p>
+                <p>Venue: {{ review.venue }}</p>
+                <p>{{ review.review }}</p>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
+          <p><em>You haven’t posted any gig reviews yet.</em></p>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</div>
 {% endblock %}
-

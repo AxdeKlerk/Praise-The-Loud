@@ -241,6 +241,15 @@ input:-webkit-autofill:focus {
     border: 1px solid #F50000;
     border-radius: 10px;
     padding: 0.75rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.result-card img{
+    width: 200px; 
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 50%;
+    margin: 1rem auto;
 }
 .result-card a {
     color: #F50000;
@@ -249,11 +258,6 @@ input:-webkit-autofill:focus {
 }
 .result-card a:hover {
     color: #F5F5F5;
-}
-.result-card img {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
 }
 
 /* Wall of Chaos */
@@ -292,6 +296,53 @@ input:-webkit-autofill:focus {
     width: 200px;
     object-fit: contain;
     align-self: center;
+}
+
+/* Profile Page */
+.profile-page {
+  padding: 1.5rem;
+  font-size: 1.2rem;
+  color: #F5F5F5;
+}
+
+.profile-page img {
+  border: 1px solid #F50000;
+  border-radius: 10px;
+  object-fit: contain;
+  max-width: 100%;
+}
+
+.profile-page p,
+.profile-page a {
+  font-size: 1.2rem;
+  color: #F5F5F5;
+}
+
+.profile-page a:hover {
+  color: #F50000;
+  text-decoration: underline;
+}
+
+.profile-page button {
+  background-color: black;
+  color: #F5F5F5;
+  border: 1px solid #F50000;
+  font-size: 1.1rem;
+  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.profile-page button:hover {
+  color: #F50000;
+  border-color: #F50000;
+}
+
+/* Red delete button with warning color */
+.profile-page form button[type="submit"][style*="red"] {
+  color: #F50000;
+  border-color: #F50000;
+  background-color: transparent;
 }
 
 /**Footer */
