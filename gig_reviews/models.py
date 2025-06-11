@@ -11,7 +11,7 @@ class GigReview(models.Model):
     venue = models.ForeignKey("Venue",on_delete=models.CASCADE, related_name="gig_reviews", null=True, blank=True)
     gig_date = models.DateField(null=False, blank=False)
     title = models.CharField(max_length=30, null=False, blank=False)
-    image = CloudinaryField('image', default='placeholder', blank=True, null=True)
+    image = CloudinaryField('image', blank=True, null=True)
     review = models.TextField(max_length=3000, null=False, blank=False)
     review_date = models.DateField(auto_now_add=True)
 
@@ -52,7 +52,7 @@ class Profile(models.Model):
     # Fields
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField(max_length=2000, null=False, blank=False)
-    image = CloudinaryField('image', default='placeholder', blank=True, null=True)
+    image = CloudinaryField('image', blank=True, null=True)
     location = models.CharField(max_length=100, default='UK')
     facebook = models.URLField(blank=True)
     instagram = models.URLField(blank=True)
