@@ -5,9 +5,9 @@
 
 {% block content %}
 
-<div class="container py-5">
-  <h1 class="text-center mb-4">Wall of Chaos</h1>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+<div class="container-fluid">
+  <h1 class="text-center mb-5">Wall of Chaos</h1>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         {% for review in reviews %}
             <div class="col tilt">
                 <div class="card h-100 chaos-card">
@@ -17,7 +17,7 @@
                     <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
                     {% endif %}
 
-                    <div class="card-body">
+                <div class="card-body">
                     <h5 class="card-title">{{ review.title }}</h5>
                     <p class="card-text">
                         {% if review.artist %}
@@ -38,7 +38,6 @@
             </div>
         {% endfor %}
     </div>
-</div>
 
 {% endblock %}
 

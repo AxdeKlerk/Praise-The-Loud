@@ -75,15 +75,13 @@
             <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
           </li>
         {% endif %}
-        <!-- Search form -->
-        <li class="nav-item">
-          <form class="d-flex nav-search" method="get" action="{% url 'search_view' %}">
-            {{ form.search_type }}
-            {{ form.search_term }}
-            <button class="btn btn-outline-light nav-btn" type="submit">Search</button>
-          </form>
-        </li>
       </ul>
+        <!-- Search form -->
+        <form class="d-flex nav-search" method="get" action="{% url 'search_view' %}">
+          {{ form.search_type }}
+          {{ form.search_term }}
+          <button class="btn btn-outline-light nav-btn" type="submit">Search</button>
+        </form>      
     </div>
   </div>
 </nav>

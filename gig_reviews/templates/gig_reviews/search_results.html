@@ -1,75 +1,85 @@
 {% extends 'base.html' %}
 {% load cloudinary %}
 
-
 {% block content %}
-<div class="container search-item profile-page">
-  <div class=" row mx-auto justify-content-center">
+<div class="container search-item py-4">
+  <div class="row mx-auto justify-content-center">
     <div class="col-12 text-center">
       <h1>Search Results</h1>
-        {% if form.is_valid %}
-        <h2> {{ form.cleaned_data.search_type|title }}</h2>
-        {% endif %}
-          {% if results %}
-          <ul >
-            {% for item in results %}
-              <div class="result-card chaos-card mt-5">
-                <li>
-                  {% if item.logo %}
-                    <img src="{{ item.logo.url }}" class="img-fluid result-card img result-card-logo" alt="{{ item.name }} logo">
-                  {% else %}
-                    <h3>{{ item.name }}</h3>
-                  {% endif %}
 
-                  {% if item.website %}
-                    <p><a href="{{ item.website }}" target="_blank">Visit Website</a></p>
-                  {% else %}
-                    <p style="color: #F50000">No website available</p>
-                  {% endif %}
+      {% if form.is_valid %}
+        <h2>{{ form.cleaned_data.search_type|title }}</h2>
+      {% endif %}
 
-                  {% if item.bio %}
-                    <p>{{ item.bio }}</p>
-                  {% endif %}
+      {% if results %}
+        <ul class="list-unstyled">
+          {% for item in results %}
+            <li class="mt-5">
 
-                  {% if item.town %}
-                    <p>{{ item.town }}, {{ item.post_code }}</p>
-                  {% endif %}
-                </div>
-                  {% if item.reviews %}
-                    <h4>Reviews</h4>
-                    <ul>
-                      {% for review in item.reviews %}
-                        <li class="result-card tilt mt-5">
+              {% if item.logo %}
+                <img src="{{ item.logo.url }}" class="img-fluid" alt="{{ item.name }} logo">
+              {% endif %}
+
+              {% if item.website %}
+                <p class="link">Website: <a href="{{ item.website }}" target="_blank">{{ item.website }}</a></p>
+              {% else %}
+                <p style="color: #F50000">No website available</p>
+              {% endif %}
+
+              {% if item.bio %}
+                <p>{{ item.bio }}</p>
+              {% endif %}
+
+              {% if item.town %}
+                <p>{{ item.town }}, {{ item.post_code }}</p>
+              {% endif %}
+
+              {% if item.reviews %}
+                <div class="mt-4">
+                  <h4 class="text-center mb-5">Fan Reviews</h4>
+                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+                    {% for review in item.reviews %}
+                      <div class="col tilt">
+                        <div class="card h-100 chaos-card">
                           {% if review.image and review.image.url and "placeholder" not in review.image.url %}
-                            <img src="{{ review.image.url }}" class="img-fluid" alt="Gig image">
+                            <img src="{{ review.image.url }}" class="card-img-top" alt="Fan review image">
                           {% else %}
-                          <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png">
+                            <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
                           {% endif %}
-                            <br>
-                            {% if review.artist %}
-                              <strong>Artist:</strong>
-                              <a href="{% url 'artist' review.artist.pk %}" style="color:#F50000">{{ review.artist.name }}</a><br>
-                            {% else %}
-                              <strong>Venue:</strong>
-                              <a href="{% url 'venue' review.venue.pk %}" style="color:#F50000">{{ review.venue.name }}</a><br>
-                            {% endif %}
-                            <strong>Fan:</strong>
-                            <a href="{% url 'author_profile' review.author.pk %}" style="color:#F50000">{{ review.author.username }}</a><br>
-                          <h5>{{ review.title }}</h5>
-                          <p>{{ review.gig_date|date:"d-m-Y" }}</p>
-                          <p>{{ review.review }}</p>
-                        </li>
-                      {% endfor %}
-                    </ul>
-                  {% else %}
-                    <p><em>No reviews yet.</em></p>
-                  {% endif %}
-                </li>
-            {% endfor %}
-          </ul>
+
+                          <div class="card-body">
+                            <h5 class="card-title">{{ review.title }}</h5>
+                            <p class="card-text">
+                              {% if review.artist %}
+                                <strong>Artist:</strong>
+                                <a href="{% url 'artist' review.artist.pk %}" style="color:#F50000">{{ review.artist.name }}</a><br>
+                              {% else %}
+                                <strong>Venue:</strong>
+                                <a href="{% url 'venue' review.venue.pk %}" style="color:#F50000">{{ review.venue.name }}</a><br>
+                              {% endif %}
+                              <strong>Fan:</strong>
+                              <a href="{% url 'author_profile' review.author.pk %}" style="color:#F50000">{{ review.author.username }}</a>
+                            </p>
+                            <p class="card-text">{{ review.review|truncatewords:30 }}</p>
+                          </div>
+                          <div class="card-footer">
+                            Gig Date: {{ review.gig_date|date:"d/m/Y" }}
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% else %}
+                <p style="color:#F50000">No reviews yet</p>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p><em>No matching artists or venues found.</em></p>
       {% endif %}
     </div>
   </div>
 </div>
-
 {% endblock %}

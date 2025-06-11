@@ -5,7 +5,7 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-<div class="container search-item profile-page">
+<div class="container profile-page">
   <div class="row mx-auto justify-content-center">
     <div class="col-12 text-center">
       <h1>Your Profile</h1>
@@ -29,7 +29,7 @@
 
         {% elif profile_exists %}
           {% if profile.image %}
-            <img src="{{ profile.image.url }}" class="img-fluid result-card-logo" alt="Profile image" style="border-radius: 50%;">
+            <img src="{{ profile.image.url }}" class="img-fluid" alt="Profile image">
           {% else %}
             <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
             <p><em>No profile image uploaded.</em></p>
@@ -53,7 +53,8 @@
             {% endif %}
           </p>
 
-          <a href="?edit=true"><button type="button" class="page-btn">Update Profile</button></a><form method="post" action="{% url 'delete_profile' %}" style="display:inline;" onsubmit="return confirmDelete();">{% csrf_token %}<button type="submit" class="page-btn" style="color: red;">Delete Profile</button></form>
+          <a href="?edit=true"><button type="button" class="page-btn">Update Profile</button></a>
+          <form method="post" action="{% url 'delete_profile' %}" style="display:inline;" onsubmit="return confirmDelete();">{% csrf_token %}<button type="submit" class="page-btn">Delete Profile</button></form>
 
         {% else %}
           <p>You have no profile yet. <a href="?edit=true">Create one now</a></p>
@@ -66,8 +67,10 @@
           <ul class="list-unstyled">
             {% for review in reviews %}
               <li class="chaos-card tilt">
-                {% if review.image %}
-                  <img src="{{ review.image.url }}" class="card-img-top" alt="Gig image">
+                {% if review.image and review.image.url and "placeholder" not in review.image.url %}
+                  <img src="{{ review.image.url }}" class="img-fluid card-img-top mt-3 mb-3" alt="Gig image">
+                  {% else %}
+                    <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns mt-3 mb-3" alt="Default horns image">
                 {% endif %}
                 <h3>{{ review.title }}</h3>
                 <p>Artist: {{ review.artist }}</p>
@@ -82,7 +85,6 @@
           <p><em>You haven’t posted any gig reviews yet.</em></p>
         {% endif %}
       </div>
-
     </div>
   </div>
 </div>

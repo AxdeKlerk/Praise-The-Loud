@@ -176,16 +176,12 @@ input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px black inset !important;
   border: 1px solid #F50000 !important;
 }
-
-/*.page-item ul.helptext {
-    padding-left: 0;
-    margin-top: 0.25rem;
-    margin-bottom: 0.5rem;
-}*/
 /* Help text elements*/
 .page-item input[type="text"],
 .page-item input[type="email"],
 .page-item input[type="password"],
+.page-item input[type="file"],
+.page-item input[type="date"],
 .page-item select,
 .page-item textarea {
   width: 100%;
@@ -194,6 +190,11 @@ input:-webkit-autofill:focus {
   border: 1px solid #F50000;
   font-size: 1.1rem;
   border-radius: 4px;
+}
+.page-item input[type="file"]::file-selector-button {
+  background-color: black;
+  border: 1px solid red;
+  color: #F5F5F5;
 }
 .page-item input:focus,
 .page-item select:focus,
@@ -259,6 +260,19 @@ input:-webkit-autofill:focus {
 .result-card a:hover {
     color: #F5F5F5;
 }
+.link {
+    color: #F50000;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+.link a {
+    color: #F50000;
+    text-decoration: none;
+}
+.link a:hover {
+    color: #F5F5F5;
+    text-decoration: underline;
+}
 
 /* Wall of Chaos */
 .chaos-card {
@@ -271,11 +285,12 @@ input:-webkit-autofill:focus {
     margin-bottom: 1rem;
 }
 .card-img-top {
-    width: 100%;
-    height: 300px;
+    width: 75%;
+    height: 150px;
     object-fit: cover;
     border-radius: 10px;
     align-self: center;
+    border: none !important;
 }
 .card-text {
     color: #F5F5F5;
@@ -292,22 +307,24 @@ input:-webkit-autofill:focus {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .horns {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 75;
     object-fit: contain;
     align-self: center;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
 }
 
 /* Profile Page */
 .profile-page {
-  padding: 1.5rem;
+  /*padding: 1.5rem;*/
   font-size: 1.2rem;
   color: #F5F5F5;
 }
 
 .profile-page img {
   border: 1px solid #F50000;
-  border-radius: 10px;
+  border-radius: 50%;
   object-fit: contain;
   max-width: 100%;
 }

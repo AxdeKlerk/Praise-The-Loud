@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="container-fluid signin-item">
+  <div class="container-fluid page-item">
     <div class="row mx-auto justify-content-center align-items-start">
       <div class="col-12 text-center">
         <h1>You have been logged out</h1>
-          <a href="{% url 'login' %}" class="logout">Log in again</a>
+          <a href="{% url 'login' %}" class="logout"><button type="submit" class="page-btn">Log in again</button></a>
       </div>
     </div>
   </div>
