@@ -15,6 +15,11 @@ h1 {
     font-family: 'Rock Salt', sans-serif;
     margin-top: 20px;
 }
+h2 {
+    color: #F50000;
+    font-family: 'Rock Salt', sans-serif;
+    margin-top: 20px;   
+}
 h4 {
     color: #F50000;
     font-family: 'Rock Salt', sans-serif;
@@ -119,11 +124,11 @@ form.d-flex input[type="text"] {
 .hero-image {
     margin-top: 40px;
     margin-bottom: 20px;
-    max-height: 80vh;
+    max-height: 100%;
     overflow: hidden;
 }
 .hero-image img {
-    height: 50vh;
+    height: 100%;
 }
 .hero-image p {
     font-size : 20px;
@@ -146,16 +151,12 @@ form.d-flex input[type="text"] {
 }
 /* Help text */
 .helptext {
-    /*font-size: 1.2em;*/
     color: #F5F5F5;
-    /*margin-top: 0.25rem;
-    margin-bottom: 0.5rem;*/
 }
 /* Help text list elements to adjust spacing and remove bullet points */
 .page-item ul,
 .page-item ul li 
-/*.helptext,
-.helptext li*/{
+{
     list-style: none;
     /*font-size: 1rem;*/
     color: #F5F5F5;
@@ -171,11 +172,12 @@ input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px black inset !important;
   border: 1px solid #F50000 !important;
 }
-
 /* Help text elements*/
 .page-item input[type="text"],
 .page-item input[type="email"],
 .page-item input[type="password"],
+.page-item input[type="file"],
+.page-item input[type="date"],
 .page-item select,
 .page-item textarea {
   width: 100%;
@@ -185,6 +187,11 @@ input:-webkit-autofill:focus {
   font-size: 1.1rem;
   border-radius: 4px;
 }
+.page-item input[type="file"]::file-selector-button {
+  background-color: black;
+  border: 1px solid red;
+  color: #F5F5F5;
+}
 .page-item input:focus,
 .page-item select:focus,
 .page-item textarea:focus {
@@ -193,7 +200,7 @@ input:-webkit-autofill:focus {
   box-shadow: none;
   background-color: #111 !important;
 }
-/* Create account / Login button */
+/* All Page Buttons */
 .page-btn{
     color: #F5F5F5;
     border-color: #F50000;
@@ -232,6 +239,13 @@ input:-webkit-autofill:focus {
     border-radius: 10px;
     padding: 0.75rem;
 }
+.result-card img{
+    width: 200px; 
+    height: 200px; 
+    object-fit: cover; 
+    border-radius: 50%;
+    margin: 1rem auto;
+}
 .result-card a {
     color: #F50000;
     margin-top: 0;
@@ -240,10 +254,18 @@ input:-webkit-autofill:focus {
 .result-card a:hover {
     color: #F5F5F5;
 }
-.result-card img {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
+.link {
+    color: #F50000;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+.link a {
+    color: #F50000;
+    text-decoration: none;
+}
+.link a:hover {
+    color: #F5F5F5;
+    text-decoration: underline;
 }
 
 /* Wall of Chaos */
@@ -256,6 +278,19 @@ input:-webkit-autofill:focus {
     padding: 0.75rem;
     margin-bottom: 1rem;
 }
+.card-img-top {
+    width: 75%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    align-self: center;
+    border: none !important;
+    display: block;
+    margin: 0 auto;
+}
+.card-text {
+    color: #F5F5F5;
+}
 .tilt {
     transform: rotate(-1.5deg);
     transition: transform 0.3s ease;
@@ -267,6 +302,69 @@ input:-webkit-autofill:focus {
     transform: rotate(0deg) scale(1.02);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
+.horns {
+    height: 150px;
+    width: 75;
+    object-fit: contain;
+    align-self: center;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
+
+/* Profile Page */
+.profile-page {
+  font-size: 1.2rem;
+  color: #F5F5F5;
+}
+
+.profile-page img {
+  border: 1px solid #F50000;
+  border-radius: 50%;
+  object-fit: contain;
+  max-width: 100%;
+}
+
+.profile-page p {
+  font-size: 1.2rem;
+  color: #F5F5F5;
+}
+
+/* Red delete button with warning color */
+.profile-page form button[type="submit"][style*="red"] {
+  color: #F50000;
+  border-color: #F50000;
+  background-color: transparent;
+}
+
+.profile-page form {
+  background-color: #0a0a0a;
+  border: 1px solid #F50000;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 0 10px #F50000;
+}
+
+.profile-page form label {
+  color: #F50000;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.profile-page form input,
+.profile-page form textarea,
+.profile-page form select {
+  background-color: black;
+  color: white;
+  border: 1px solid red;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border-radius: 5px;
+  width: 100%;
+}
 
 /**Footer */
 .footer {
@@ -276,16 +374,16 @@ input:-webkit-autofill:focus {
     width: 100%;
     height: 60px;
 }
-.footer-contact {
+.footer-p {
+    font-size: 1.2rem;
+}
+.contact {
     color: #F5F5F5;
     text-decoration: none;
     font-size: 1.5rem;
 }
-.footer-contact:hover {
+.contact:hover {
     color: #F50000;
-}
-.footer-p {
-    font-size: 1.2rem;
 }
 
 /*Media Queries*/
@@ -306,9 +404,6 @@ input:-webkit-autofill:focus {
     }
     .about p {
         margin-top: 20px;
-    }
-    .footer-contact {
-        font-size: 1rem;
     }
     .footer-p {
         font-size: 0.7rem;
@@ -360,9 +455,6 @@ input:-webkit-autofill:focus {
         width: 400px;
         height: 400px;
         object-fit: contain;
-    }
-    .footer-contact {
-        font-size: 1.3rem;
     }
     .footer-p {
         font-size: 1rem;

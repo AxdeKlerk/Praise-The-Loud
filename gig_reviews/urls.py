@@ -2,6 +2,7 @@
 
 from django.urls import path, include
 from .views import home, about, artist, venue, profile, review, signup, logout, delete_profile, contact_view, thank_you, search_view, gallery_view, author_profile
+from django.views.generic import TemplateView
 
 # Add URL patterns for other views as needed
 urlpatterns = [
@@ -17,8 +18,7 @@ urlpatterns = [
    path('fan/logout/', logout, name='logout'),
    path('profile/delete/', delete_profile, name='delete_profile'), 
    path('contact/', contact_view, name='contact'), 
-   path('thank-you/', thank_you, name='thank_you'), 
    path('search/', search_view, name='search_view'), 
    path('gallery/', gallery_view, name='gallery'), 
-
+   path('thank-you/', TemplateView.as_view(template_name="gig_reviews/thank_you.html"), name='thank_you'),
 ]
