@@ -166,7 +166,19 @@ Django's migration history didn’t match the actual state of the database. It t
 
 - **Lesson Learned:** Never commit sensitive credentials to GitHub. Always use a local-only *'env.py'* file to store them, and make sure it's excluded from Git tracking. If you accidentally commit a secret, use *'BFG Repo-Cleaner'* to remove it from the full history. It is also a good idea to use a key generator to create a new key and update it in the *'env.py'* file and periodically audit my repo to check for anything that shouldn'y be tracked. This was a simple error that took over a day to fix with the help of *'Chat GPT'* after I failed over three times to try and come to grips with the documentation and help from the *'Slack'* community.
   
+- **Bug:** When using the navbar with Bootstrap’s hamburger toggler, the search form would disappear after clicking "Search" and navigating to the results page. It only reappeared when manually reopening the hamburger menu. This broke the experience, especially since I want the navbar layout to remain consistent across all screen sizes.
 
+- **Fix:** I removed the responsive collapse logic by keeping the navbar fully expanded on all screen sizes. I placed the search form next to the nav links and moved the hamburger toggler to the right of it. Then, I added a close (X) icon that toggles dynamically when the hamburger menu is opened and closed.
+
+    Specifically:
+
+    I removed collapse-related responsiveness from the nav links and search form.
+
+    I added a second <span> with an "X" (&times;) beside the hamburger icon.
+
+    I wrote JavaScript to toggle visibility between the hamburger icon and the close icon based on the collapsed menu state.
+
+- **Lesson Learned:** Just because Bootstrap supports collapsing by default doesn't mean it's always the best choice — especially when combining navigation and custom forms. When layout consistency matters more than mobile responsiveness, it’s okay to override Bootstrap's behavior. Also, small JavaScript tweaks like toggling icons can improve UX significantly without breaking core functionality.
 
 ### 8.6 Other Bugs
 
