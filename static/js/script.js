@@ -36,3 +36,21 @@ document.addEventListener("DOMContentLoaded", function () {
         dropdown.addEventListener("change", showSelectedForm);
     }
 });
+
+// This script toggles the visibility of the close icon in the navbar when the collapse state changes.
+document.addEventListener("DOMContentLoaded", function () {
+    const toggler = document.getElementById("navToggler");
+    const collapse = document.getElementById("navbarSupportedContent");
+    const icon = toggler.querySelector(".navbar-toggler-icon");
+    const closeIcon = toggler.querySelector(".navbar-close-icon");
+
+    collapse.addEventListener("show.bs.collapse", () => {
+      icon.classList.add("d-none");
+      closeIcon.classList.remove("d-none");
+    });
+
+    collapse.addEventListener("hide.bs.collapse", () => {
+      icon.classList.remove("d-none");
+      closeIcon.classList.add("d-none");
+    });
+  });
