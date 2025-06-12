@@ -36,10 +36,10 @@ urlpatterns = [
     # Built-in login/logout views at /fan/
     path('fan/', include('django.contrib.auth.urls')),
     
-    # Your custom signup view at /fan/signup/
+    # Signup view at /fan/signup/
     path('fan/signup/', signup, name='signup'),
 
-    # Your custom logout view at /fan/logout/
+    # Logout view at /fan/logout/
     path('fan/logout/', LogoutView.as_view(), name='logout'),
     
     # Route for deleting a profile

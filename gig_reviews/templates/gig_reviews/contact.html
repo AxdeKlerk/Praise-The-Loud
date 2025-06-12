@@ -11,12 +11,12 @@
   {% endfor %}
 {% endif %}
 
-<!-- Role selector -->
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
 
+  <!-- Role Selector -->
   <label for="user_type">Who are you?</label>
-  <select name="user_type" id="user_type">
+  <select name="user_type" id="user_type" class="form-select mb-3">
     <option value="">-- Select --</option>
     <option value="fan">Fan</option>
     <option value="artist">Artist</option>
@@ -24,23 +24,23 @@
   </select>
 
   <!-- Fan Form -->
-  <div id="fanForm" class="contact-form" style="display:none; margin-top: 20px;">
+  <div id="fanForm" style="display:none;">
     <h3>Fan Contact Form</h3>
     {{ fan_form.as_p }}
   </div>
 
   <!-- Artist Form -->
-  <div id="artistForm" class="contact-form" style="display:none; margin-top: 20px;">
+  <div id="artistForm" style="display:none;">
     <h3>Artist Contact Form</h3>
     {{ artist_form.as_p }}
   </div>
 
   <!-- Venue Form -->
-  <div id="venueForm" class="contact-form" style="display:none; margin-top: 20px;">
+  <div id="venueForm" style="display:none;">
     <h3>Venue Contact Form</h3>
     {{ venue_form.as_p }}
   </div>
 
-  <button type="submit" style="margin-top: 20px;">Send Message</button>
+  <button type="submit" class="btn btn-primary mt-3">Send Message</button>
 </form>
 {% endblock %}

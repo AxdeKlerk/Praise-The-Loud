@@ -4,7 +4,7 @@ from .forms import GigReviewForm, ProfileForm, FanContactForm, ArtistContactForm
 from .models import Profile, Artist, Venue, GigReview
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.utils.text import slugify
@@ -106,6 +106,7 @@ def contact_view(request):
     fan_form = FanContactForm()
     artist_form = ArtistContactForm()
     venue_form = VenueContactForm()
+    user_type = None
 
     if request.method == "POST":
         user_type = request.POST.get("user_type")
@@ -125,10 +126,11 @@ def contact_view(request):
             if venue_form.is_valid():
                 return redirect("thank_you")
 
-    return render(request, "gig_reviews/contact_modal.html", {
+    return render(request, "gig_reviews/contact.html", {
         "fan_form": fan_form,
         "artist_form": artist_form,
-        "venue_form": venue_form
+        "venue_form": venue_form,
+        "selected_role": user_type,
     })
 
 
