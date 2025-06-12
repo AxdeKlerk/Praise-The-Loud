@@ -5,7 +5,7 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-<div class="container profile-page">
+<div class="container profile-page py-4">
   <div class="row mx-auto justify-content-center">
     <div class="col-12 text-center">
       <h1>Your Profile</h1>
@@ -18,18 +18,43 @@
 
       <div class="result-card">
         {% if editing %}
+          {% if profile.image %}
+            <img src="{{ profile.image.url }}" class="img-fluid mb-3" alt="Current profile picture">
+          {% else %}
+            <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns mb-3" alt="Default profile image">
+          {% endif %}
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ form.as_p }}
+            <div class="mb-3">
+              {{ form.image.label_tag }}
+              {{ form.image }}
+              <p>Please click clear and then update profile before trying to add a new photo</p>
+            </div>
+            <div class="mb-3">
+              {{ form.bio.label_tag }}
+              {{ form.bio }}
+            </div>
+            <div class="mb-3">
+              {{ form.location.label_tag }}
+              {{ form.location }}
+            </div>
+            <div class="mb-3">
+              {{ form.facebook.label_tag }}
+              {{ form.facebook }}
+            </div>
+            <div class="mb-3">
+              {{ form.instagram.label_tag }}
+              {{ form.instagram }}
+            </div>
             <button type="submit" class="page-btn">
               {% if profile_exists %}Update{% else %}Create{% endif %} Profile
             </button>
-            <a href="{% url 'profile' %}" class="btn-cancel">Cancel</a>
+            <a href="{% url 'profile' %}" class="page-btn">Cancel</a>
           </form>
 
         {% elif profile_exists %}
           {% if profile.image %}
-            <img src="{{ profile.image.url }}" class="img-fluid" alt="Profile image">
+            <img src="{{ profile.image.url }}" class="img-fluid mb-3" alt="Profile image">
           {% else %}
             <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
             <p><em>No profile image uploaded.</em></p>
@@ -38,53 +63,45 @@
           <p><strong>Username:</strong> {{ profile.user.username }}</p>
           <p><strong>Bio:</strong> {{ profile.bio }}</p>
           <p><strong>Location:</strong> {{ profile.location }}</p>
-          <p><strong>Facebook:</strong> 
-            {% if profile.facebook %}
-              <a href="{{ profile.facebook }}" target="_blank">{{ profile.facebook }}</a>
-            {% else %}
-              Not provided
-            {% endif %}
-          </p>
-          <p><strong>Instagram:</strong> 
-            {% if profile.instagram %}
-              <a href="{{ profile.instagram }}" target="_blank">{{ profile.instagram }}</a>
-            {% else %}
-              Not provided
-            {% endif %}
-          </p>
+
+          {% if profile.facebook %}
+            <p>Facebook: <a href="{{ profile.facebook }}" class="link" target="_blank">{{ profile.facebook }}</a></p>
+          {% else %}
+            <p>Facebook: Not provided</p>
+          {% endif %}
+
+          {% if profile.instagram %}
+            <p>Instagram: <a href="{{ profile.instagram }}" class="link" target="_blank">{{ profile.instagram }}</a></p>
+          {% else %}
+            <p>Instagram: Not provided</p>
+          {% endif %}
 
           <a href="?edit=true"><button type="button" class="page-btn">Update Profile</button></a>
-          <form method="post" action="{% url 'delete_profile' %}" style="display:inline;" onsubmit="return confirmDelete();">{% csrf_token %}<button type="submit" class="page-btn">Delete Profile</button></form>
-
-        {% else %}
-          <p>You have no profile yet. <a href="?edit=true">Create one now</a></p>
+          <form method="post" action="{% url 'delete_profile' %}" style="display:inline;" onsubmit="return confirmDelete();">
+            {% csrf_token %}
+            <button type="submit" class="page-btn">Delete Profile</button>
+          </form>
         {% endif %}
       </div>
 
-      <div class="mt-5">
-        <h2>Your Gig Reviews</h2>
-        {% if reviews %}
+      {% if not editing %}
+        <div class="mt-5">
+          <h2>Reviews:</h2>
           <ul class="list-unstyled">
             {% for review in reviews %}
               <li class="chaos-card tilt">
-                {% if review.image and review.image.url and "placeholder" not in review.image.url %}
-                  <img src="{{ review.image.url }}" class="img-fluid card-img-top mt-3 mb-3" alt="Gig image">
-                  {% else %}
-                    <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns mt-3 mb-3" alt="Default horns image">
-                {% endif %}
-                <h3>{{ review.title }}</h3>
-                <p>Artist: {{ review.artist }}</p>
-                <p>Date: {{ review.gig_date|date:"d-m-Y" }}</p>
-                <p>Venue: {{ review.venue }}</p>
-                <p>{{ review.review }}</p>
+                <div class="card-body">
+                  <h5><strong>{{ review.artist.name }}</strong> — {{ review.title }}</h5>
+                  <p>{{ review.gig_date|date:"d/m/Y" }}</p>
+                  <p>{{ review.review }}</p>
+                </div>
               </li>
+            {% empty %}
+              <li>You haven't written any reviews yet</li>
             {% endfor %}
           </ul>
-        {% else %}
-          <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
-          <p><em>You haven’t posted any gig reviews yet.</em></p>
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>

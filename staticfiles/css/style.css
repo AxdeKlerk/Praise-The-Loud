@@ -172,11 +172,6 @@ input:-webkit-autofill:focus {
   border: 1px solid #F50000 !important;
 }
 
-/*.page-item ul.helptext {
-    padding-left: 0;
-    margin-top: 0.25rem;
-    margin-bottom: 0.5rem;
-}*/
 /* Help text elements*/
 .page-item input[type="text"],
 .page-item input[type="email"],

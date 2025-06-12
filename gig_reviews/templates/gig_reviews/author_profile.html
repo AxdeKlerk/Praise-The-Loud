@@ -31,15 +31,11 @@
         </p>
 
         {% if profile.facebook %}
-          <p>Facebook:
-            <a href="{{ profile.facebook }}" target="_blank">{{ profile.facebook }}</a>
-          </p>
+            <p>Facebook: <a href="{{ profile.facebook }}" class="link" target="_blank">{{ profile.facebook }}</a></p>
         {% endif %}
 
         {% if profile.instagram %}
-          <p>Instagram:
-            <a href="{{ profile.instagram }}" target="_blank">{{ profile.instagram }}</a>
-          </p>
+            <p>Instagram: <a href="{{ profile.instagram }}" class="link" target="_blank">{{ profile.instagram }}</a></p>
         {% endif %}
       </div>
 

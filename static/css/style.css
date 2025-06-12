@@ -242,8 +242,6 @@ input:-webkit-autofill:focus {
     border: 1px solid #F50000;
     border-radius: 10px;
     padding: 0.75rem;
-    /*margin-left: 1rem;
-    margin-right: 1rem;*/
 }
 .result-card img{
     width: 200px; 
@@ -317,7 +315,6 @@ input:-webkit-autofill:focus {
 
 /* Profile Page */
 .profile-page {
-  /*padding: 1.5rem;*/
   font-size: 1.2rem;
   color: #F5F5F5;
 }
@@ -329,30 +326,9 @@ input:-webkit-autofill:focus {
   max-width: 100%;
 }
 
-.profile-page p,
-.profile-page a {
+.profile-page p {
   font-size: 1.2rem;
   color: #F5F5F5;
-}
-
-.profile-page a:hover {
-  color: #F50000;
-  text-decoration: underline;
-}
-
-.profile-page button {
-  background-color: black;
-  color: #F5F5F5;
-  border: 1px solid #F50000;
-  font-size: 1.1rem;
-  border-radius: 6px;
-  padding: 0.4rem 1rem;
-  margin-top: 1rem;
-  cursor: pointer;
-}
-.profile-page button:hover {
-  color: #F50000;
-  border-color: #F50000;
 }
 
 /* Red delete button with warning color */
@@ -360,6 +336,36 @@ input:-webkit-autofill:focus {
   color: #F50000;
   border-color: #F50000;
   background-color: transparent;
+}
+
+.profile-page form {
+  background-color: #0a0a0a;
+  border: 1px solid #F50000;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+  box-shadow: 0 0 10px #F50000;
+}
+
+.profile-page form label {
+  color: #F50000;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.profile-page form input,
+.profile-page form textarea,
+.profile-page form select {
+  background-color: black;
+  color: white;
+  border: 1px solid red;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
+  border-radius: 5px;
+  width: 100%;
 }
 
 /**Footer */

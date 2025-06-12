@@ -52,7 +52,8 @@ def profile(request):
         profile = Profile(user=request.user)
         profile_exists = False
 
-    editing = request.GET.get('edit') == 'true' or not profile_exists
+    editing = request.GET.get('edit') == 'true'
+    if not profile_exists: editing = True
 
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=profile)
