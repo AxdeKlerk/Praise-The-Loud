@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}About{% endblock %}
+{% block title %}404{% endblock %}
 
 {% block content %}
+
+    <h1>Ooooops!</h1>
+    <p>What have you done you plonker!</p>
+    <p>Return home and try again </p>
+    <p>If you still receive this message when you try again, go and get a beer, turn the volume up loud, shake you grey matter and try something else!</p>
+    <a href="{% url 'home' %}">Return to home</a>
 
 {% endblock %}
