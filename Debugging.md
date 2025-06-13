@@ -26,16 +26,16 @@ Below are the various bugs that I encountered along the way and how I fixed them
 
   - **Lesson Learned:** Syntax errors like these can completely stop Django from running, even if the actual mistake is minor. I was reminded to pay close attention to indentation, especially in conditional blocks, and to always check that function calls are written with the correct number of arguments. Stepping through each issue methodically helped isolate and fix the problems without getting overwhelmed by the complexity of the project.
 
-  - **Bug:** After deploying my project and trying to test the search functionality, I kept getting a *'500 internal server error'*. The search page had previously worked fine, so this was unexpected. The *'Heroku'* logs showed:
-    *'TemplateSyntaxError: Invalid filter: cloudinary'* which pointed to the line trying to render the image for an artist logo using a Cloudinary transformation filter.
+  - **Bug:** After deploying my project and trying to test the search functionality, I kept getting a *500 internal server error*. The search page had previously worked fine, so this was unexpected. The *Heroku* logs showed:
+    *TemplateSyntaxError: Invalid filter: cloudinary* which pointed to the line trying to render the image for an artist logo using a Cloudinary transformation filter.
 
-  - **Fix:** I checked the Cloudinary documentation and found that the filter syntax was incorrect because it does not exist in the *'django-cloudinary-storage'* package. It turns that the correct way to access *'Cloudinary'* image URLs from a *'CloudinaryField'* is simply: 
+  - **Fix:** I checked the Cloudinary documentation and found that the filter syntax was incorrect because it does not exist in the *django-cloudinary-storage* package. It turns that the correct way to access *Cloudinary* image URLs from a *CloudinaryField* is simply: 
   
-    *'<img src="{{ item.logo.url }}"...>'*
+    *<img src="{{ item.logo.url }}"...>*
 
   I updated the filter to use the new syntax and the error was resolved.
 
-  - **Lesson Learned:** The *'CloudinaryField'* in *'Django'* already provides a direct .url property, and there’s no need to apply a special filter or load a custom tag unless using a different *'Cloudinary'* library. I’ll stick with .url going forward and avoid introducing template filters that don’t exist.
+  - **Lesson Learned:** The *CloudinaryField* in *Django* already provides a direct .url property, and there’s no need to apply a special filter or load a custom tag unless using a different *Cloudinary* library. I’ll stick with .url going forward and avoid introducing template filters that don’t exist.
   
 ### 8.2 Logic Errors
 
@@ -53,7 +53,7 @@ Below are the various bugs that I encountered along the way and how I fixed them
 
 - **Bug:** The delete confirmation popup stopped appearing when I clicked the “Delete Profile” button. This happened after I moved my static files to a global directory. There were no errors in the Django server output, so I initially assumed the problem was with the JavaScript logic itself.
 
-- **Fix:**  I reviewed my base.html template and found that I hadn’t updated the path to the JS file after moving it. I had been using a hardcoded path like /static/js/script.js, but Django wasn’t recognizing it. I replaced it with the correct *'{% static %}'* tag:
+- **Fix:**  I reviewed my base.html template and found that I hadn’t updated the path to the JS file after moving it. I had been using a hardcoded path like /static/js/script.js, but Django wasn’t recognizing it. I replaced it with the correct *{% static %}* tag:
 
       <script src="{% static 'js/script.js' %}"></script>
 
@@ -82,7 +82,7 @@ Django's migration history didn’t match the actual state of the database. It t
 
 ![static file error message in console](image.png)
 
-- **Fix:** I first confirmed that my file structure and template paths were correct using *'{% static %}'*. Then I ran python manage.py findstatic css/style.css, which confirmed Django could locate the file. This pointed to the fact that Django simply wasn’t serving the static files during development. To fix this, I updated urls.py to explicitly serve static files by adding the following block at the bottom of the file:
+- **Fix:** I first confirmed that my file structure and template paths were correct using *{% static %}*. Then I ran python manage.py findstatic css/style.css, which confirmed Django could locate the file. This pointed to the fact that Django simply wasn’t serving the static files during development. To fix this, I updated urls.py to explicitly serve static files by adding the following block at the bottom of the file:
 
       from django.conf import settings
       from django.conf.urls.static import static
@@ -92,9 +92,9 @@ Django's migration history didn’t match the actual state of the database. It t
 
 - **Lesson Learned:** Always check the console for errors and make sure that the JS is being loaded correctly before moving on with the project assuming that the error is not in the JS. I left the console.log at the top of my Js file as a reminder to check the console for errors at each step of the way.
 
-  Even when static files exist and are referenced correctly in templates, Django won’t serve them during development unless explicitly told to. It’s important to use findstatic to confirm the path and then make sure the urls.py is properly configured. MIME errors in the browser usually indicate that something is being returned with the wrong content type — often a *'404 HTML'* page — so checking the browser’s DevTools network tab is an essential part of debugging static file issues.
+  Even when static files exist and are referenced correctly in templates, Django won’t serve them during development unless explicitly told to. It’s important to use findstatic to confirm the path and then make sure the urls.py is properly configured. MIME errors in the browser usually indicate that something is being returned with the wrong content type — often a *404 HTML* page — so checking the browser’s DevTools network tab is an essential part of debugging static file issues.
 
-- **Bug:** I had written the SearchForm class in forms.py but mistakenly tried to import it from models.py and got an *'ImportError'* caused by trying to import SearchForm from the wrong file.
+- **Bug:** I had written the SearchForm class in forms.py but mistakenly tried to import it from models.py and got an *ImportError* caused by trying to import SearchForm from the wrong file.
 
       ImportError: cannot import name 'SearchForm' from 'gig_reviews.models' (C:\Users\axdek\Documents\vscode-projects\Project 3\Praise-The-Loud\gig_reviews\models.py)
 
@@ -108,14 +108,31 @@ Django's migration history didn’t match the actual state of the database. It t
 
 - **Leason Learned:** Always check the render call in the view to make sure that the template is being rendered correctly, like this:
 
-    return render(request, *'gig_reviews/search_results.html'*, {'form': form, 'results': results})
+    return render(request, *gig_reviews/search_results.html*, {'form': form, 'results': results})
 
-- **Bug:** After deploying to *'Heroku'*, I got an *'“Internal Server Error”'* when trying to load the site. The *'Heroku'* logs showed:
-*'django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty'*.
+- **Bug:** After deploying to *Heroku*, I got an *“Internal Server Error”* when trying to load the site. The *Heroku* logs showed:
+*django.core.exceptions.ImproperlyConfigured: The SECRET_KEY setting must not be empty*.
 
--**Fix:** I realized that *'Heroku'* didn’t have my *'SECRET_KEY'* set as a config variable. To fix this, I ran the following command in the terminal: *''heroku config:set SECRET_KEY=mysecretkey'*. This sets the *'SECRET_KEY'* environment variable in *'Heroku'*. After restarting the app, the error was fixed.
+-**Fix:** I realized that *Heroku* didn’t have my *SECRET_KEY* set as a config variable. To fix this, I ran the following command in the terminal: *'heroku config:set SECRET_KEY=mysecretkey*. This sets the *SECRET_KEY* environment variable in *Heroku*. After restarting the app, the error was fixed.
 
-- **Lesson Learned:** *'Django'* will crash if *'SECRET_KEY'* is missing or empty in production, and *'Heroku'* doesn’t use my local *'env.py'*. Any environment variables I rely on locally must also be set explicitly in *'Heroku'* using *'heroku config:set'*. I’ll now make sure all production secrets are safely configured in the *'Heroku'* environment, not hardcoded in my files.
+- **Lesson Learned:** *Django* will crash if *SECRET_KEY* is missing or empty in production, and *Heroku* doesn’t use my local *env.py*. Any environment variables I rely on locally must also be set explicitly in *Heroku* using *heroku config:set*. I’ll now make sure all production secrets are safely configured in the *Heroku* environment, not hardcoded in my files.
+
+- **Bug:** When I set up my *custom 404 error handler*, everything seemed fine with *DEBUG = True*. But after switching *DEBUG = False* to test the actual *404 page*, *Django* crashed with a *500 Internal Server Error*. The console showed:
+
+  *The custom handler404 view '404.html' could not be imported.*  
+  *HINT: No module named '404*
+
+Even after correcting the handler path to point to the correct view function, I still got a *500 error* when visiting a broken URL like */seach/*. No helpful error message was shown because *DEBUG = False*.
+
+- **Fix:** The root cause was that I wrote this in my view: *return render(request, '404.html', status=404)*. But my actual template was stored inside: *gig_reviews/templates/gig_reviews/404.html*
+
+Because of that, Django couldn’t find the file — it was silently failing during template rendering, leading to a *500 error*.
+
+To fix it, I changed the view to: *return render(request, 'gig_reviews/404.html', status=404)* This matches the real location of the template, and then everything worked correctly. When I visit a broken URL with *DEBUG = False*, I see my custom *404 page* instead of *Django*'s default error screen or a *500*.
+
+- **Lesson Learned:** When using *render()* with templates, the path is always relative to the top of the template search path (i.e. what’s defined in *TEMPLATES['DIRS']*). If the file is inside an app's *templates/app_name/* folder, I need to include the app name in the path string unless the app’s template folder is directly in the global templates directory. Always double-check the template path when using *DEBUG = False*, because *Django* won't show helpful messages for template errors in production mode.
+
+
 
 ### 8.4 Semantic Errors
 
@@ -129,19 +146,19 @@ Django's migration history didn’t match the actual state of the database. It t
 
 - **Fix:** I Opened Chrome DevTools and saw multiple MIME type and 404 errors in the Console. Heroku was serving the JavaScript and CSS files as HTML instead of the correct MIME types because collectstatic was not running, and WhiteNoise was not configured to serve static files. These were the steps taken to fix the issue at the bottom of the settings.py file:
 
-      Added *'STATIC_ROOT = BASE_DIR / "staticfiles"'*
-      Installed *'whitenoise'* in *'MIDDLEWARE'*
-      Set *'STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"'*
-      Removed *'DISABLE_COLLECTSTATIC = 1'* from *'Heroku'*
-      Committed all changes and dep[loyed succefully after verifying *'collectstatic'* ran]
+      Added *STATIC_ROOT = BASE_DIR / "staticfiles"*
+      Installed *whitenoise* in *MIDDLEWARE*
+      Set *STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"*
+      Removed *DISABLE_COLLECTSTATIC = 1* from *Heroku*
+      Committed all changes and dep[loyed succefully after verifying *collectstatic* ran]
 
- - **Lesson Learned:** Heruko does nto serve static files out of the box. I need to set the *'STATIC_ROOT'* correctly, use *'whitenoise'* to handle the static assets in production, and confirm that *'{% static %}'* is linked in my CSS and JavaScript files. Using DevTools to inspect the network tab and check for MIME errors is also helpful.
+ - **Lesson Learned:** Heruko does nto serve static files out of the box. I need to set the *STATIC_ROOT* correctly, use *whitenoise* to handle the static assets in production, and confirm that *{% static %}* is linked in my CSS and JavaScript files. Using DevTools to inspect the network tab and check for MIME errors is also helpful.
 
 ### 8.5 Design Errors
 
-- **Bug:** After reopening the project folder, Bootstrap styles and interactivity broke unexpectedly. The site appeared unstyled, and navbar toggles no longer worked. No recent manual changes had been made to the *'base.html'* file.
+- **Bug:** After reopening the project folder, Bootstrap styles and interactivity broke unexpectedly. The site appeared unstyled, and navbar toggles no longer worked. No recent manual changes had been made to the *base.html* file.
 
-- **Fix:** I discovered that the *'bootstrap.bundle.min.js'* script tag at the bottom of *'base.html'* contained a broken *'integrity attribute (sha384-...)'*. I replaced it with the full, correct version copied from the official Bootstrap CDN, which restored all styling and JS interactivity.
+- **Fix:** I discovered that the *bootstrap.bundle.min.js* script tag at the bottom of *base.html* contained a broken *integrity attribute (sha384-...)*. I replaced it with the full, correct version copied from the official Bootstrap CDN, which restored all styling and JS interactivity.
 
 - **To prevent this I must:**
 
@@ -151,20 +168,20 @@ Django's migration history didn’t match the actual state of the database. It t
   
 - **Lesson Learned:** Closing and reopening Django project folders in VS Code without restarting the programme can cause cached or unsaved versions of files to reload incorrectly. In this case, the long integrity attribute was truncated when switching between projects, silently breaking the script load.
 
-- **Bug:** After a meeting with my mentor he noticed that I had accidentally committed my *'SECRET_KEY'* and *'env.py'* file to my GitHub repo, exposing sensitive credentials. I noticed that the key was still visible in the commit history even after I had removed it from the most recent version. I also saw that *'env.py'* was still being tracked by Git and visible in the online repository.
+- **Bug:** After a meeting with my mentor he noticed that I had accidentally committed my *SECRET_KEY* and *env.py* file to my GitHub repo, exposing sensitive credentials. I noticed that the key was still visible in the commit history even after I had removed it from the most recent version. I also saw that *env.py* was still being tracked by Git and visible in the online repository.
 
-- **Fix:** I generated a new *'SECRET_KEY'* using a secure key generator and moved it into a local-only *'env.py'* file. I then made sure that *'env.py'* was included in *'.gitignore'* to prevent it from being tracked again.
+- **Fix:** I generated a new *SECRET_KEY* using a secure key generator and moved it into a local-only *env.py* file. I then made sure that *env.py* was included in *.gitignore* to prevent it from being tracked again.
 
-    To remove the old key from GitHub’s full history, I used *'BFG Repo-Cleaner'*:
+    To remove the old key from GitHub’s full history, I used *BFG Repo-Cleaner*:
 
-  1. I cloned a mirror of my repo with *'git clone --mirror'*
-  2. Created a *'secrets.txt'* file listing the exact secret I wanted removed
-  3. Ran *'BFG'* to replace it with *'REMOVED'*
-  4. Cleaned the *'reflog'* and *'force-pushed'* the cleaned history back to GitHub
+  1. I cloned a mirror of my repo with *git clone --mirror*
+  2. Created a *secrets.txt* file listing the exact secret I wanted removed
+  3. Ran *BFG* to replace it with *REMOVED*
+  4. Cleaned the *reflog* and *force-pushed* the cleaned history back to GitHub
 
-  After that, I ran *'git rm --cached env.py'* to stop Git from tracking the file, committed the change, and pushed again. I confirmed that *'env.py'* is still working locally but is no longer visible or tracked online.
+  After that, I ran *git rm --cached env.py* to stop Git from tracking the file, committed the change, and pushed again. I confirmed that *env.py* is still working locally but is no longer visible or tracked online.
 
-- **Lesson Learned:** Never commit sensitive credentials to GitHub. Always use a local-only *'env.py'* file to store them, and make sure it's excluded from Git tracking. If you accidentally commit a secret, use *'BFG Repo-Cleaner'* to remove it from the full history. It is also a good idea to use a key generator to create a new key and update it in the *'env.py'* file and periodically audit my repo to check for anything that shouldn'y be tracked. This was a simple error that took over a day to fix with the help of *'Chat GPT'* after I failed over three times to try and come to grips with the documentation and help from the *'Slack'* community.
+- **Lesson Learned:** Never commit sensitive credentials to GitHub. Always use a local-only *env.py* file to store them, and make sure it's excluded from Git tracking. If you accidentally commit a secret, use *BFG Repo-Cleaner* to remove it from the full history. It is also a good idea to use a key generator to create a new key and update it in the *env.py* file and periodically audit my repo to check for anything that shouldn'y be tracked. This was a simple error that took over a day to fix with the help of *Chat GPT* after I failed over three times to try and come to grips with the documentation and help from the *Slack* community.
   
 - **Bug:** When using the navbar with Bootstrap’s hamburger toggler, the search form would disappear after clicking "Search" and navigating to the results page. It only reappeared when manually reopening the hamburger menu. This broke the experience, especially since I want the navbar layout to remain consistent across all screen sizes.
 
@@ -182,11 +199,11 @@ Django's migration history didn’t match the actual state of the database. It t
 
 - **Bug:** When using Chrome's autofill to select saved input values (like name or email), the selected text wouldn't appear in the input field — it looked like the form was blank. This was happening across all input fields site-wide, including login, contact, and review forms.
 
-I was using an autofill override targeting only *'input:-webkit-autofill'*, but it didn’t account for *'textarea'* and *'select fields'* or properly handle Chrome’s aggressive autofill behavior.
+I was using an autofill override targeting only *input:-webkit-autofill*, but it didn’t account for *textarea* and *select fields* or properly handle Chrome’s aggressive autofill behavior.
 
-- **Fix:** I replaced my original CSS with an expanded version that targets all input types and forces the text to show correctly by using *'webkit-text-fill-color and a shadow override'* and moved it to the bottom of my *'CSS'* file to make sure that it forced the *'autofill overrides'*.
+- **Fix:** I replaced my original CSS with an expanded version that targets all input types and forces the text to show correctly by using *webkit-text-fill-color and a shadow override* and moved it to the bottom of my *CSS* file to make sure that it forced the *autofill overrides*.
 
-- **Lesson Learned:** Autofill styling in modern browsers (especially *'Chrome'*) overrides normal input behavior unless it’s explicitly reset. I also learned that *'-webkit-text-fill-color'* is crucial for making autofilled text actually visible against a custom background, and that it’s best to override all input-like elements, not just *'input'*.
+- **Lesson Learned:** Autofill styling in modern browsers (especially *Chrome*) overrides normal input behavior unless it’s explicitly reset. I also learned that *-webkit-text-fill-color* is crucial for making autofilled text actually visible against a custom background, and that it’s best to override all input-like elements, not just *input*.
 
 ### 8.6 Other Bugs
 
@@ -200,15 +217,15 @@ I was using an autofill override targeting only *'input:-webkit-autofill'*, but 
 
 **Validation Error**
 
-- **Bug:** Submitting the gig review form gave an error saying "Enter a valid date," even though the date was selected using the calendar input. The form would not save. I had previously changed the date format in my settings file to *'DD-MM-YYYY'*, so I knew that wasn't the issue.
+- **Bug:** Submitting the gig review form gave an error saying "Enter a valid date," even though the date was selected using the calendar input. The form would not save. I had previously changed the date format in my settings file to *DD-MM-YYYY*, so I knew that wasn't the issue.
   
-- **Fix:** The form was using <input type="date"> which submits dates in *'YYYY-MM-DD'* format. However, the form's *'input_formats'* was incorrectly set to expect *'DD-MM-YYYY'*. I corrected the *'input_formats'* to *'%Y-%m-%d'* and the form started working correctly, as I had previously add the init method, of the form class, as *'%d-%m-%Y'*.
+- **Fix:** The form was using <input type="date"> which submits dates in *YYYY-MM-DD* format. However, the form's *input_formats* was incorrectly set to expect *DD-MM-YYYY*. I corrected the *input_formats* to *%Y-%m-%d* and the form started working correctly, as I had previously add the init method, of the form class, as *%d-%m-%Y*.
   
-- **Lesson Learned:** When using <input type="date"> in a form widget, always expect *'%Y-%m-%d'* as the input format. The browser handles formattting, but Django needs to know the exact formatting being submitted.
+- **Lesson Learned:** When using <input type="date"> in a form widget, always expect *%Y-%m-%d* as the input format. The browser handles formattting, but Django needs to know the exact formatting being submitted.
 
 **Version Control Issue**
 
-- **Bug:** After committing several changes locally (including fixes for static files), the *'git push heroku main:main'* command returned "Everything up-to-date", but Heroku kept failing with the same STATIC_ROOT error. It became clear that Heroku was not building from the latest local code. I had made a mistake in my local git repository, which caused a merge conflict when I tried to push my changes to GitHub.
+- **Bug:** After committing several changes locally (including fixes for static files), the *git push heroku main:main* command returned "Everything up-to-date", but Heroku kept failing with the same STATIC_ROOT error. It became clear that Heroku was not building from the latest local code. I had made a mistake in my local git repository, which caused a merge conflict when I tried to push my changes to GitHub.
 
 - **Fix:** I had to merge the changes from the main branch into my local branch, resolve the merge conflict, and then push the changes to GitHub.
 
@@ -216,9 +233,9 @@ I was using an autofill override targeting only *'input:-webkit-autofill'*, but 
 
 **Validation Styling**
 
-- **Bug:** I wanted to replace Django's default password help text with a custom set of *'p'* tags so that the styling would match the entire he sign up form. I tried overring the *'self.fields["password1"].help_text'* using *'password_validators_help_texts()'*, but Django still rendered the original *'ul & li'* help list. I decided to rollback and avoid customizing the form too deeply, as the logic behind Django's password validation system felt too complex to change confidently and I started to break my code.
+- **Bug:** I wanted to replace Django's default password help text with a custom set of *p* tags so that the styling would match the entire he sign up form. I tried overring the *self.fields["password1"].help_text* using *password_validators_help_texts()*, but Django still rendered the original *ul & li* help list. I decided to rollback and avoid customizing the form too deeply, as the logic behind Django's password validation system felt too complex to change confidently and I started to break my code.
 
-- **Fix:** I rolled back to using Django’s built-in *'UserCreationForm'* and left the default help text rendering untouched. Instead of replacing the HTML structure, I used CSS to remove the bullets, collapse the spacing, and visually match the default help list with the rest of the form. This gave me full control over the appearance without needing to override the form logic or validators.
+- **Fix:** I rolled back to using Django’s built-in *UserCreationForm* and left the default help text rendering untouched. Instead of replacing the HTML structure, I used CSS to remove the bullets, collapse the spacing, and visually match the default help list with the rest of the form. This gave me full control over the appearance without needing to override the form logic or validators.
 
 - **Lesson Learned:** Not every problem needs a code-level fix. Sometimes it's better to work with Django’s defaults and solve presentation issues using CSS. This approach is simpler, more maintainable, and avoids breaking built-in functionality — especially when the underlying logic is complex or abstracted away.
 
@@ -232,11 +249,11 @@ I was using an autofill override targeting only *'input:-webkit-autofill'*, but 
 
 ### 8.7 Bugs Unresolved
 
-- **Bug:** I wanted to change the highlight color that appears when selecting or hovering over options in a native *'select'* dropdown. My goal was to make the selection styling match the custom color scheme used across the rest of the site.
+- **Bug:** I wanted to change the highlight color that appears when selecting or hovering over options in a native *select* dropdown. My goal was to make the selection styling match the custom color scheme used across the rest of the site.
 
-- **Fix:** This could not be fixed using standard CSS. Most modern browsers (especially Chrome, Safari, and Firefox) render *'select'* dropdowns and their option lists using native OS UI components, which are not styleable via CSS. I considered rebuilding the dropdown as a fully custom component using JavaScript and HTML, but chose not to pursue this due to the added complexity and time constraints.
+- **Fix:** This could not be fixed using standard CSS. Most modern browsers (especially Chrome, Safari, and Firefox) render *select* dropdowns and their option lists using native OS UI components, which are not styleable via CSS. I considered rebuilding the dropdown as a fully custom component using JavaScript and HTML, but chose not to pursue this due to the added complexity and time constraints.
 
-- **Lesson Learner** Some UI elements like native *'select'* options are outside the scope of CSS styling due to how browsers and operating systems render them. In these cases, it’s better to accept the default behavior or switch to a fully custom solution — which may not be worth it if the rest of the experience is consistent and functional.
+- **Lesson Learner** Some UI elements like native *select* options are outside the scope of CSS styling due to how browsers and operating systems render them. In these cases, it’s better to accept the default behavior or switch to a fully custom solution — which may not be worth it if the rest of the experience is consistent and functional.
 
 
 
