@@ -7,8 +7,10 @@ Below are the various bugs that I encountered along the way and how I fixed them
 - **Runtime Errors**
 - **Semantic Errors**
 - **Design Errors**
+- **Validation Errors**
 - **Other Bugs**
 - **Bugs Unresolved**
+
 
 ### 8.1 Syntax Errors
 
@@ -205,7 +207,47 @@ I was using an autofill override targeting only *input:-webkit-autofill*, but it
 
 - **Lesson Learned:** Autofill styling in modern browsers (especially *Chrome*) overrides normal input behavior unless it’s explicitly reset. I also learned that *-webkit-text-fill-color* is crucial for making autofilled text actually visible against a custom background, and that it’s best to override all input-like elements, not just *input*.
 
-### 8.6 Other Bugs
+### 8.6 Validation Errors
+
+- **Bug:** While validating my *base.htm*l using the W3C *HTML Validator*, I initially encountered errors like:
+
+    1. “Non-space characters found without seeing a doctype first”
+
+    2.  “Stray doctype”
+
+    3. “Element *<head>* is missing a required instance of child element *<title>*”
+
+    4. “Cannot recover after last error”
+
+Even though the structure in my *Django* template was correct, the validator acted like it was broken from the very first line. Later, after fixing that issue and revalidating the rendered output from my browser, I got a second error:
+
+  "Attribute *`row` not allowed on element `div` at this point."
+
+This pointed to line 88 in the rendered source of my homepage. The layout still looked fine in the browser, but something was clearly wrong according to the validator.
+
+- **Fix:** The first issue came from copying and pasting raw *Django* template code *({% load static %} and {% static '...' %})* directly into the validator. HTML validators don’t recognize Django tags and treat them as invalid markup.
+
+To fix that, I opened my site in the browser, right-clicked the page, chose *“View Page Source”*, and pasted the fully rendered HTML into the validator. This solved the false errors caused by *Django*’s template syntax.
+
+The second issue was a genuine HTML bug. In my hero section I had this:
+
+  *<div row class="row mx-auto justify-content-center align-items-center">*
+
+I had accidentally typed *row* as its own attribute outside the class declaration. That’s not valid HTML. I fixed it by removing the stray *row*. After this fix, the page validated cleanly.
+
+- **Lesson Learned:** When validating HTML in a *Django* project:
+
+  1. Never paste raw *Django* templates into an HTML validator — especially files like *base.html* which aren't full pages.
+
+  2. Always validate the rendered HTML by viewing page source in the browser and pasting that into the validator.
+
+  3. Be careful of stray words like *row* outside of *class=""*. These can be hard to spot visually but will break validation.
+
+  4. The *base.html* can’t be validated directly, because it’s not a full HTML document until *Django* renders it with a child template. Trying to validate it raw will always produce misleading errors.
+
+
+
+### 8.7 Other Bugs
 
 **Field error**
 
