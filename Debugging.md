@@ -180,6 +180,14 @@ Django's migration history didn’t match the actual state of the database. It t
 
 - **Lesson Learned:** Just because Bootstrap supports collapsing by default doesn't mean it's always the best choice — especially when combining navigation and custom forms. When layout consistency matters more than mobile responsiveness, it’s okay to override Bootstrap's behavior. Also, small JavaScript tweaks like toggling icons can improve UX significantly without breaking core functionality.
 
+- **Bug:** When using Chrome's autofill to select saved input values (like name or email), the selected text wouldn't appear in the input field — it looked like the form was blank. This was happening across all input fields site-wide, including login, contact, and review forms.
+
+I was using an autofill override targeting only *'input:-webkit-autofill'*, but it didn’t account for *'textarea'* and *'select fields'* or properly handle Chrome’s aggressive autofill behavior.
+
+- **Fix:** I replaced my original CSS with an expanded version that targets all input types and forces the text to show correctly by using *'webkit-text-fill-color and a shadow override'* and moved it to the bottom of my *'CSS'* file to make sure that it forced the *'autofill overrides'*.
+
+- **Lesson Learned:** Autofill styling in modern browsers (especially *'Chrome'*) overrides normal input behavior unless it’s explicitly reset. I also learned that *'-webkit-text-fill-color'* is crucial for making autofilled text actually visible against a custom background, and that it’s best to override all input-like elements, not just *'input'*.
+
 ### 8.6 Other Bugs
 
 **Field error**
