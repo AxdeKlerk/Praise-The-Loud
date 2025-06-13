@@ -134,9 +134,14 @@ form.d-flex input[type="text"] {
     font-size : 20px;
     margin-bottom: 0;
 }
-.horns {
+/*.horns {
     max-height: 100px;
-}
+    width: auto;
+    object-fit: contain;
+    align-self: center;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}*/
 
 /*About page*/
 .about{
@@ -295,8 +300,8 @@ form.d-flex input[type="text"] {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .horns {
-    height: 150px;
-    width: 75;
+    max-height: 100px;
+    width: auto;
     object-fit: contain;
     align-self: center;
     margin-bottom: 2rem;
