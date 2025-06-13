@@ -52,22 +52,33 @@ document.addEventListener("DOMContentLoaded", function () {
   const artistForm = document.getElementById("artistForm");
   const venueForm = document.getElementById("venueForm");
 
+  function setFormState(formElement, show) {
+    if (!formElement) return;
+
+    // Show or hide the form visually
+    formElement.style.display = show ? "block" : "none";
+
+    // Enable or disable all form fields
+    const inputs = formElement.querySelectorAll("input, textarea, select");
+    inputs.forEach(input => input.disabled = !show);
+  }
+
   function hideAllForms() {
-    if (fanForm) fanForm.style.display = "none";
-    if (artistForm) artistForm.style.display = "none";
-    if (venueForm) venueForm.style.display = "none";
+    setFormState(fanForm, false);
+    setFormState(artistForm, false);
+    setFormState(venueForm, false);
   }
 
   if (userTypeSelect) {
     userTypeSelect.addEventListener("change", function () {
       hideAllForms();
       const selected = this.value;
-      if (selected === "fan" && fanForm) fanForm.style.display = "block";
-      else if (selected === "artist" && artistForm) artistForm.style.display = "block";
-      else if (selected === "venue" && venueForm) venueForm.style.display = "block";
+      if (selected === "fan") setFormState(fanForm, true);
+      else if (selected === "artist") setFormState(artistForm, true);
+      else if (selected === "venue") setFormState(venueForm, true);
     });
 
-    // Restore selected form on reload
+    // Restore form if user had already selected something
     const preselected = userTypeSelect.getAttribute("data-selected");
     if (preselected) {
       userTypeSelect.value = preselected;
@@ -75,4 +86,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 });
+
 

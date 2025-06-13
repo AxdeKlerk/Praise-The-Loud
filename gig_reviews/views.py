@@ -110,6 +110,7 @@ def contact_view(request):
 
     if request.method == "POST":
         user_type = request.POST.get("user_type")
+        print("Submitted user type:", user_type)  # Debugging line
 
         if user_type == "fan":
             fan_form = FanContactForm(request.POST)

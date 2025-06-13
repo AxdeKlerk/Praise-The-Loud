@@ -163,15 +163,7 @@ form.d-flex input[type="text"] {
     margin-top: 0.25rem;
     margin-bottom: 0.75rem;
 }
-/* Chrome autofill override for the input fields for the login and logout pages */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-  background-color: black !important;
-  color: #F5F5F5 !important;
-  -webkit-box-shadow: 0 0 0px 1000px black inset !important;
-  border: 1px solid #F50000 !important;
-}
+
 /* Help text elements*/
 .page-item input[type="text"],
 .page-item input[type="email"],
@@ -182,8 +174,8 @@ input:-webkit-autofill:focus {
 .page-item textarea {
   width: 100%;
   background-color: black !important;
-  color: #F5F5F5;
-  border: 1px solid #F50000;
+  color: #F5F5F5 !important;
+  border: 1px solid #F50000 !important;
   font-size: 1.1rem;
   border-radius: 4px;
 }
@@ -459,4 +451,22 @@ input:-webkit-autofill:focus {
     .footer-p {
         font-size: 1rem;
     }
+}
+
+/* Chrome autofill override for al input fields */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  background-color: black !important;
+  color: #F5F5F5 !important;
+  -webkit-text-fill-color: #F5F5F5 !important;
+  -webkit-box-shadow: 0 0 0 1000px black inset !important;
+  border: 1px solid #F50000 !important;
+  transition: background-color 5000s ease-in-out 0s;
 }
