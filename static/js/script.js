@@ -1,16 +1,20 @@
 console.log("script.js loaded!");
 
-// This function is called when the user clicks the "Delete Profile" button.
-function confirmDelete() {
+const toggler = document.getElementById("navToggler");
+const collapse = document.getElementById("navbarSupportedContent");
+const userTypeSelect = document.getElementById("user_type");
+const fanForm = document.getElementById("fanForm");
+const artistForm = document.getElementById("artistForm");
+const venueForm = document.getElementById("venueForm");
+
+// This function is called when the user clicks the "Delete Profile" button
+  function confirmDelete() {
     return confirm("Are you sure you want to delete your profile? This action cannot be undone.");
 }
 
-// This script handles the toggling of the mobile navigation menu.
-// It changes the icon from a hamburger to a close icon when the menu is open.
-document.addEventListener("DOMContentLoaded", function () {
-  const toggler = document.getElementById("navToggler");
-  const collapse = document.getElementById("navbarSupportedContent");
-
+// This script handles the toggling of the navigation menu
+// It changes the icon from a hamburger to a close icon when the menu is open
+// It also ensures the close icon is hidden when the menu is closed
   if (toggler && collapse) {
     const icon = toggler.querySelector(".navbar-toggler-icon");
     const closeIcon = toggler.querySelector(".navbar-close-icon");
@@ -25,11 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (closeIcon) closeIcon.classList.add("d-none");
     });
   }
-});
 
 
-// This function is called when the user clicks on a contact type button (fan, artist, venue).
-function showSelectedForm() {
+// This function is called when the user clicks on a contact type button (fan, artist, venue)
+  function showSelectedForm() {
     const type = document.getElementById("user_type")?.value;
     const forms = document.querySelectorAll(".contact-form");
 
@@ -44,14 +47,8 @@ function showSelectedForm() {
     }
 }
 
-// This script initializes the contact form based on the selected user type.
-// It listens for changes on the user type dropdown and shows the corresponding form.
-document.addEventListener("DOMContentLoaded", function () {
-  const userTypeSelect = document.getElementById("user_type");
-  const fanForm = document.getElementById("fanForm");
-  const artistForm = document.getElementById("artistForm");
-  const venueForm = document.getElementById("venueForm");
-
+// This script initializes the contact form based on the selected user type
+// It listens for changes on the user type dropdown and shows the corresponding form
   function setFormState(formElement, show) {
     if (!formElement) return;
 
@@ -67,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
     setFormState(fanForm, false);
     setFormState(artistForm, false);
     setFormState(venueForm, false);
-  }
+}
 
   if (userTypeSelect) {
     userTypeSelect.addEventListener("change", function () {
@@ -85,6 +82,41 @@ document.addEventListener("DOMContentLoaded", function () {
       userTypeSelect.dispatchEvent(new Event("change"));
     }
   }
-});
+
+// This script handles the toggling of the review management form
+// It allows users to manage their reviews by showing or hiding the form
+  document.querySelectorAll("[data-toggle-manage]").forEach(function (button) {
+    button.addEventListener("click", function () {
+
+      const reviewId = this.dataset.toggleManage;
+      const form = document.getElementById(`manage-form-${reviewId}`);
+      if (form) {
+        form.classList.toggle("d-none");
+      }
+      console.log("Button clicked:", reviewId);
+    });
+  });
+
+  // Cancel
+  document.querySelectorAll("[data-cancel-manage]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      const reviewId = this.dataset.cancelManage;
+      const form = document.getElementById(`manage-form-${reviewId}`);
+      if (form) {
+        form.classList.add("d-none");
+      }
+    });
+  });
+
+  // Confirm before delete
+  document.querySelectorAll("[data-delete-button]").forEach(function (btn) {
+    btn.addEventListener("click", function (event) {
+      const confirmDelete = confirm("Are you sure you want to delete this review?");
+      if (!confirmDelete) {
+        event.preventDefault();
+      }
+    });
+  });
+
 
 

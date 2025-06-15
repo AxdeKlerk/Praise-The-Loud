@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.utils.text import slugify
+from django.views.decorators.http import require_POST
 
 
 # Create your views here.
@@ -214,3 +215,27 @@ def venue(request, pk):
 
 def custom_404(request, exception):
     return render(request, 'gig_reviews/404.html', status=404)
+
+@require_POST
+def manage_review(request, pk):
+    review = get_object_or_404(GigReview, pk=pk)
+
+    if request.user != review.author:
+        return redirect('profile')
+
+    action = request.POST.get('action')
+
+    if action == 'update':
+        review.title = request.POST.get('title')
+        review.gig_date = request.POST.get('gig_date')
+        review.review = request.POST.get('review')
+        if 'image' in request.FILES:
+            review.image = request.FILES['image']
+        review.save()
+        messages.success(request, "Review updated successfully!")
+    
+    elif action == 'delete':
+        review.delete()
+        messages.success(request, "Review deleted.")
+
+    return redirect('profile')

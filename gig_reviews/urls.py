@@ -1,8 +1,9 @@
 ## APP (gig_reviews) URLS
 
 from django.urls import path, include
-from .views import home, about, artist, venue, profile, review, signup, logout, delete_profile, contact_view, thank_you, search_view, gallery_view, author_profile
+from .views import home, about, artist, venue, profile, review, signup, logout, delete_profile, contact_view, thank_you, search_view, gallery_view, author_profile, manage_review
 from django.views.generic import TemplateView
+
 
 # Add URL patterns for other views as needed
 urlpatterns = [
@@ -21,4 +22,6 @@ urlpatterns = [
    path('search/', search_view, name='search_view'), 
    path('gallery/', gallery_view, name='gallery'), 
    path('thank-you/', thank_you, name='thank_you'),
+   path('review/<int:pk>/manage/', manage_review, name='manage_review'),
+
 ]
