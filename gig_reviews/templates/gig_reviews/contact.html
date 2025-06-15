@@ -6,12 +6,17 @@
 <div class="container-fluid page-item mt-5">
   <div class=" row mx-auto justify-content-center align-items-start">
     <div class="col-12 text-center">
-      <h1>Contact Us</h1>
-      <p>We love hearing from you! Please fill out the form below to get in touch</p>
-      <p>Select your role to display the appropriate contact form</p>
-
       <form method="post" enctype="multipart/form-data" novalidate>
-        {% csrf_token %}
+      {% csrf_token %}
+      {% if fan_form.errors or artist_form.errors or venue_form.errors %}
+        <div class="alert alert-danger">
+          <strong>There were errors in your submission. Please correct the form below and resubmit</strong>
+        </div>
+      {% endif %}
+      <h1>Contact Us</h1>
+      <p>We love hearing from you!</p>
+      <p>Please fill out the form below to get in touch</p>
+      <p>Select your role to display the appropriate contact form</p>
 
         <!-- Role Selector -->
         <label for="user_type">Who are you?</label>
@@ -26,31 +31,22 @@
         <div id="fanForm" style="display:none;">
           <h3>Fan Contact Form</h3>
           {{ fan_form.as_p }}
-          {% if fan_form.errors %}
-            <div class="text-danger mb-3">Please correct the errors in this form.</div>
-          {% endif %}
         </div>
 
         <!-- Artist Form -->
         <div id="artistForm" style="display:none;">
           <h3>Artist Contact Form</h3>
           {{ artist_form.as_p }}
-            {% if artist_form.errors %}
-              <div class="text-danger mb-3">Please correct the errors in this form.</div>
-            {% endif %}
         </div>
 
         <!-- Venue Form -->
         <div id="venueForm" style="display:none;">
           <h3>Venue Contact Form</h3>
           {{ venue_form.as_p }}
-            {% if venue_form.errors %}
-              <div class="text-danger mb-3">Please correct the errors in this form.</div>
-            {% endif %}
         </div>
 
         <!--Submit Button -->
-        <button type="submit" class="btn page-btn mt-3">Send Message</button>
+        <button type="submit" class="page-btn mt-3">Send Message</button>
       </form>
     </div>
   </div>

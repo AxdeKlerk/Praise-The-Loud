@@ -6,34 +6,27 @@
   <div class="row mx-auto justify-content-center">
     <div class="col-12 text-center">
       <h1>Search Results</h1>
-
       {% if form.is_valid %}
         <h2>{{ form.cleaned_data.search_type|title }}</h2>
       {% endif %}
-
       {% if results %}
         <ul class="list-unstyled">
           {% for item in results %}
             <li class="mt-5">
-
               {% if item.logo %}
                 <img src="{{ item.logo.url }}" class="img-fluid" alt="{{ item.name }} logo">
               {% endif %}
-
               {% if item.website %}
                 <p class="link">Website: <a href="{{ item.website }}" target="_blank">{{ item.website }}</a></p>
               {% else %}
                 <p style="color: #F50000">No website available</p>
               {% endif %}
-
               {% if item.bio %}
                 <p>{{ item.bio }}</p>
               {% endif %}
-
               {% if item.town %}
                 <p>{{ item.town }}, {{ item.post_code }}</p>
               {% endif %}
-
               {% if item.reviews %}
                 <div class="mt-4">
                   <h4 class="text-center mb-5">Fan Reviews:</h4>

@@ -1,5 +1,3 @@
-console.log("script.js loaded!");
-
 const toggler = document.getElementById("navToggler");
 const collapse = document.getElementById("navbarSupportedContent");
 const userTypeSelect = document.getElementById("user_type");
@@ -93,7 +91,6 @@ const venueForm = document.getElementById("venueForm");
       if (form) {
         form.classList.toggle("d-none");
       }
-      console.log("Button clicked:", reviewId);
     });
   });
 

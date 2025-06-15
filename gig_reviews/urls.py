@@ -23,5 +23,4 @@ urlpatterns = [
    path('gallery/', gallery_view, name='gallery'), 
    path('thank-you/', thank_you, name='thank_you'),
    path('review/<int:pk>/manage/', manage_review, name='manage_review'),
-
 ]
