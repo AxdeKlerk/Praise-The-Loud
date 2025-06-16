@@ -289,6 +289,14 @@ I had accidentally typed *row* as its own attribute outside the class declaratio
 
 - **Lesson Learned:** Always check the HTML structure and context variables when debugging display issues. It's easy to overlook subtle changes in the template logic that can break the layout. Even if the query returns the correct data, the layout won't work unless everything is placed inside the correct blocks in the template.
 
+**Layout Issue**
+
+- **Bug:** The review sections on my author, artist, and venue profile pages all looked slightly different. Some were centered, others weren’t, and the column layout didn’t behave consistently across screen sizes. The artist reviews especially looked off when arriving from the Wall of Chaos, even though the data was loading correctly.
+
+- **Fix:** I created a shared partial template called reviews_section.html and included it in all profile pages using *{% include 'partials/reviews_section.html' %}*. I moved the review layout code into that file and updated the grid system to use *Bootstrap*’s column classes with consistent wrappers:
+
+- **Lesson Learned:** Even when templates are rendering the same data, layout inconsistencies can easily sneak in if markup and class structure aren’t unified. Using a shared partial not only solved the inconsistency but also cleaned up my code. It’s better to centralize layout logic when the content structure is reused across multiple views.
+
 ### 8.7 Bugs Unresolved
 
 - **Bug:** I wanted to change the highlight color that appears when selecting or hovering over options in a native *select* dropdown. My goal was to make the selection styling match the custom color scheme used across the rest of the site.
@@ -296,6 +304,8 @@ I had accidentally typed *row* as its own attribute outside the class declaratio
 - **Fix:** This could not be fixed using standard CSS. Most modern browsers (especially Chrome, Safari, and Firefox) render *select* dropdowns and their option lists using native OS UI components, which are not styleable via CSS. I considered rebuilding the dropdown as a fully custom component using JavaScript and HTML, but chose not to pursue this due to the added complexity and time constraints.
 
 - **Lesson Learner** Some UI elements like native *select* options are outside the scope of CSS styling due to how browsers and operating systems render them. In these cases, it’s better to accept the default behavior or switch to a fully custom solution — which may not be worth it if the rest of the experience is consistent and functional.
+
+
 
 
 
