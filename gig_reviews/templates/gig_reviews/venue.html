@@ -2,26 +2,30 @@
 {% load static %}
 {% load cloudinary %}
 
-{% block title %}{{ artist.name }}'s Profile{% endblock %}
+{% block title %}{{ venue.name }}'s Profile{% endblock %}
 
 {% block content %}
 <div class="container search-item py-4">
   <div class="row mx-auto justify-content-center">
     <div class="col-12 text-center">
-      <h1>{{ artist.name }}'s Public Profile</h1>
-      {% if artist.logo %}
-        <img src="{{ artist.logo.url }}" alt="{{ artist.name }}'s logo" class="img-fluid mb-3">
+      <h1>{{ venue.name }}'s Public Profile</h1>
+      {% if venue.logo %}
+        <img src="{{ venue.logo.url }}" alt="{{ venue.name }}'s logo" class="img-fluid mb-3">
       {% else %}
         <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
       {% endif %}
-      {% if artist.bio %}
-        <p>{{ artist.bio }}</p>
+      {% if venue.town %}
+        <p>{{ venue.town }}</p>
       {% endif %}
-      {% if artist.website %}
-        <p class="link">Website: <a href="{{ artist.website }}" target="_blank">{{ artist.website }}</a></p>
+      {% if venue.post_code %}
+        <p>{{ venue.post_code }}</p>
+      {% endif %}
+      {% if venue.website %}
+        <p class="link">Website: <a href="{{ venue.website }}" target="_blank">{{ venue.website }}</a></p>
       {% endif %}
     </div>
   </div>
   {% include 'partials/reviews_section.html' %}
 </div>
+
 {% endblock %}

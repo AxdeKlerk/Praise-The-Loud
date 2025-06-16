@@ -5,7 +5,7 @@
 {% block title %}{{ author.username }}'s Profile{% endblock %}
 
 {% block content %}
-<div class="container search-item profile-page py-4">
+<div class="container search-item py-4">
   <div class="row mx-auto justify-content-center">
     <div class="col-12 text-center">
       <h1>{{ author.username }}'s Public Profile</h1>
@@ -33,29 +33,9 @@
             <p>Instagram: <a href="{{ profile.instagram }}" class="link" target="_blank">{{ profile.instagram }}</a></p>
         {% endif %}
       </div>
-
-      <div class="mt-5">
-        <h2>Reviews:</h2>
-        <ul class="list-unstyled">
-          {% for review in reviews %}
-            <li class="chaos-card tilt">
-              {% if review.image and review.image.url and "placeholder" not in review.image.url %}
-              <img src="{{ review.image.url }}" class="card-img-top mt-3" alt="Fan review image">
-              {% else %}
-              <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
-              {% endif %}
-              <div class="card-body">
-                <h5><strong>{{ review.artist.name }}</strong> — {{ review.title }}</h5>
-                <p>{{ review.gig_date|date:"d/m/Y" }}</p>
-                <p>{{ review.review }}</p>
-              </div>
-            </li>
-          {% empty %}
-            <li>You haven't written any reviews yet</li>
-          {% endfor %}
-        </ul>
-      </div>
     </div>
+    {% include 'partials/reviews_section.html' %}
   </div>
 </div>
+
 {% endblock %}

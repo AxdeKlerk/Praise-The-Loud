@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+  <div class="col-12 text-center mt-5">
+    <h2>Fan Reviews:</h2>
+
+    {% if reviews %}
+      <div class="row g-4 justify-content-center mt-3">
+        {% for review in reviews %}
+          <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+            <div class="card h-100 chaos-card tilt">
+              {% if review.image and review.image.url and "placeholder" not in review.image.url %}
+                <img src="{{ review.image.url }}" class="card-img-top" alt="Review image">
+              {% else %}
+                <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default image">
+              {% endif %}
+
+              <div class="card-body">
+                <h5 class="card-title">{{ review.title }}</h5>
+
+                {% if review.artist %}
+                  <p class="card-text"><strong>{{ review.artist.name }}</strong></p>
+                {% elif review.venue %}
+                  <p class="card-text"><strong>{{ review.venue.name }}</strong></p>
+                {% endif %}
+
+                <p class="card-text">Fan:
+                  <a href="{% url 'author_profile' review.author.pk %}" style="color:#F50000">
+                    {{ review.author.username }}
+                  </a>
+                </p>
+                <p class="card-text">Date: {{ review.gig_date|date:"d-m-Y" }}</p>
+                <p class="card-text">{{ review.review }}</p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p><em>No reviews yet.</em></p>
+    {% endif %}
+  </div>
+</div>
