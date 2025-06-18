@@ -282,11 +282,11 @@ Tested using:
 
 ##### 9.3.1.1 Home Page
 
-![Home Page](image-1.png)
+![Home Page](lh-home-page.png)
 
 ##### 9.3.1.2 About Page
 
-![About Page](image-2.png)
+![About Page](lh-about-page.png)
 
 ##### 9.3.1.3 Wall of Chaos (Gallery)
 
@@ -357,6 +357,10 @@ Tested using:
 
 
 ##### 9.3.3.8 Gig Review Form Page
+
+
+
+##### 9.3.3.9 Logout Page
 
 
 

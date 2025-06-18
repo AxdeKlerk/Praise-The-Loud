@@ -5,14 +5,13 @@
 {% block title %}{{ author.username }}'s Profile{% endblock %}
 
 {% block content %}
-<div class="container search-item profile-page py-4">
+<div class="container search-item py-4">
   <div class="row mx-auto justify-content-center">
-    <div class="col-12 text-center">
+    <div class="col-12 text-center profile-page">
       <h1>{{ author.username }}'s Public Profile</h1>
       <div class="result-card">
         {% if profile and profile.image.url and "placeholder" not in profile.image.url %}
-          <img src="{{ profile.image.url }}" alt="{{ author.username }}'s profile picture"
-               class="img-fluid mb-3">
+          <img src="{{ profile.image.url }}" alt="{{ author.username }}'s profile picture" class="img-fluid mb-3">
         {% else %}
           <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
         {% endif %}
