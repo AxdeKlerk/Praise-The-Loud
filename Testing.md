@@ -39,7 +39,7 @@ As a **fan**, I can **register an account** so that I can **create a profile**.
 **Notes**
 Initial Cloudinary image uploads failed due to incorrect environment variable setup. This was resolved by configuring *'env.py'* and using *'CloudinaryField'* in the model. Also ran into an issue where the JS for delete confirmation didn't work due to broken static file paths — this was fixed by correcting the path with *'{% static %}'* and ensuring static files were served via *'urls.py'*.
 
-**9.1.1.2** As a fan, I can view consistent and clearly styled password instructions so that I feel confident when setting up my account and know exactly what is required.
+**9.1.1.2** As a **fan**, I can **view consistent and clearly styled password instructions** so that **I feel confident when setting up my account and know exactly what is required**.
 
 **Acceptance Criteria 5: Password help text styling**
 
@@ -68,7 +68,7 @@ Originally attempted to override the password help text using a custom form and 
 
 This user story covers the ability for fans to edit or delete their profile, including image updates and confirmation before deletion.
 
-As a **Fan**, I want to **be able to update or delete my profile** so that **I can have full control over my presence on the website**.
+As a **fan**, I want to **be able to update or delete my profile** so that **I can have full control over my presence on the website**.
 
 **Acceptance Criteria 1: Profile form can be edited and updated**
 
@@ -87,7 +87,7 @@ As a **Fan**, I want to **be able to update or delete my profile** so that **I c
 
 - [x] All profile fields pre-fill with the user's current data  
 - [x] Edited data persists after refresh  
-- [ ] Updated information is visible on the public-facing profile *(This was tested later in development, but included here as it part of this user story)*  
+- [x] Updated information is visible on the public-facing profile *(This was tested later in development, but included here as it part of this user story)*  
 
 **Acceptance Criteria 4: Form deletion shows a pop-up warning before confirming deletion**
 
@@ -241,51 +241,164 @@ Julie submitted a review but said the submit button behaved oddly, and her uploa
 **Profile Setup**
 
 - [x] Users should be informed if their chosen username is invalid (e.g. contains spaces)
-- [ ] Profile creation page should provide helpful error feedback
+- [x] Profile creation page should provide helpful error feedback
 - [x] Users can upload a profile image
 
 **Review Submission**
 
 - [x] Review form should accept and store text input
-- [ ] Review form should provide a clear character limit notice
-- [ ] Review form should allow enough text to feel complete without being too long
-- [ ] Image uploads should scale correctly for mobile
+- [ ] Review form should provide a clear character limit notice (e.g. "Max 1000 characters")
+- [x] Review form should allow enough text to feel complete without being too long
+- [x] Image uploads should scale correctly for mobile
 - [x] Users should be able to select a band from a list
-- [ ] Band list should be comprehensive or allow suggestions
-- [ ] Review submission button should be consistently responsive
-- [ ] Image upload should work smoothly without memory issues
+- [ ] Band list should be comprehensive or allow suggestions. All known bands (like “Lesbian Bed Death” and “Brave Revival”) are included in the dropdown list
+- [x] Review submission button should be consistently responsive
+- [x] Image upload should work smoothly without memory issues
 
 **Actional Criteria**
 
 **Profile Setup**
 - [ ] Add validation feedback for username errors (e.g. if spaces are included)
-- [ ] Ensure the profile creation page clearly highlights and explains any input errors
+- [x] Ensure the profile creation page clearly highlights and explains any input errors
 
 **Review Submission**
 
-- [ ] Add a visible character limit indicator to the review text box (e.g. "Max 1000 characters")
-- [ ] Increase character limit slightly to allow more complete thoughts
-- [ ] Ensure uploaded images are automatically resized or scaled down for mobile viewing
-- [ ] Investigate and fix memory-related issues with photo uploads (possibly related to file size or client-side limitations)
-- [ ] Improve feedback or retry logic when review submission fails or button misbehaves
-- [ ] Ensure all known bands (like “Lesbian Bed Death” and “Brave Revival”) are included in the dropdown list
+- [x] Increase character limit slightly to allow more complete thoughts
+- [x] Ensure uploaded images are automatically resized or scaled down for mobile viewing
+- [x] Investigate and fix memory-related issues with photo uploads (possibly related to file size or client-side limitations)
+- [x] Improve feedback or retry logic when review submission fails or button misbehaves
 - [ ] Add a feature or form to allow users to suggest missing bands (optional, depending on admin workflow)
 
 These were then turned into actionable criteria for future testing as *'Github Issues'* and *'Issues'* in the project repository.
   
-
+Tested using:
+- Mobiles (iPhone 12, iPad, Galaxy S20, Motorola Edge, iPhone XR)
+- OS (Windows, Firefox and Safari)
 
 
 #### 9.3 Automated Testing
 
-#### 9.4 Code Validation
+#### 9.3.1 LightHouse
 
-#### 9.5 Performance Testing
+##### 9.3.1.1 Home Page
 
-##### 9.5.1 Responsive Testing
+![Home Page](image-1.png)
 
-Tested using:
-- Chrome DevTools (iPhone 12, iPad, Galaxy S20)
-- Windows desktop, MacBook, iPhone XR
-- Layout and forms adapt well across screen sizes
+##### 9.3.1.2 About Page
+
+![About Page](image-2.png)
+
+##### 9.3.1.3 Wall of Chaos (Gallery)
+
+![Wall of Chaos](image-3.png)
+
+##### 9.3.1.4 Login Page
+
+![Login Page](image-4.png)
+
+##### 9.3.1.5 Sign Up Page
+
+![Sign Up Page](image-5.png)
+
+##### 9.3.1.6 Contact Page
+
+![Contact Page](image-6.png)
+
+##### 9.3.1.7 Profile Page
+
+![Profile Page](image-7.png)
+
+![Error Message](image-8.png)
+
+##### 9.3.1.7.1 Profile Edit Page
+
+![Profile Edit Page](image-9.png)
+
+##### 9.3.1.8 Gig Review Form Page
+
+![Gig Review Form Page](image-10.png)
+
+##### 9.3.2 CSS Validation
+
+![CSS Validation](image-11.png)
+
+##### 9.3.3 HTML Validation
+
+##### 9.3.3.1 Home Page
+
+![Home Page](image-13.png)
+
+##### 9.3.3.2 About Page
+
+![About Page](image-14.png)
+
+##### 9.3.3.3 Wall of Chaos (Gallery)
+
+
+
+##### 9.3.3.4 Login Page
+
+
+
+##### 9.3.3.5 Sign Up Page
+
+
+
+##### 9.3.3.6 Contact Page
+
+
+
+##### 9.3.3.7 Profile Page
+
+
+
+##### 9.3.3.7.1 Profile Edit Page
+
+
+
+##### 9.3.3.8 Gig Review Form Page
+
+
+
+##### 9.3.4 Responsive Testing
+
+##### 9.3.4.1 Home Page
+
+
+
+##### 9.3.4.2 About Page
+
+
+
+##### 9.3.4.3 Wall of Chaos (Gallery)
+
+
+
+##### 9.3.4.4 Login Page
+
+
+
+##### 9.3.4.5 Sign Up Page
+
+
+
+##### 9.3.4.6 Contact Page
+
+
+
+##### 9.3.4.7 Profile Page
+
+
+
+##### 9.3.4.7.1 Profile Edit Page
+
+
+
+##### 9.3.4.8 Gig Review Form Page
+
+##### 9.3.5 JSHint
+
+![JSHint](image-12.png)
+
+
 
