@@ -54,7 +54,7 @@ For clarity and ease of use, I have broken the bugs down into the following cate
 
 -  **Bug:** Sign-up, login and logout templates not loading on server. After checking my template structure multiplue times I could not understand why the templates were not loading. I had checked the urls.py file and the views.py file and they were both correct. I then realised that I had created the template and registration folders at the wrong level. This was a simple mistake but it took me a while to figure out.
 
--  **Fix:** Moved template and registration folders to the root level of the project and left the signup *html* file in the app level templates folder.
+-  **Fix:** Moved template and registration folders to the root level of the project and left the - *HTML* file in the app level templates folder.
 
 -  **Lesson Learned:** Double check everything I do and make sure that I am using the correct logic and placement of my template folders.
 
@@ -67,7 +67,7 @@ For clarity and ease of use, I have broken the bugs down into the following cate
   -  **Bug:** The delete confirmation popup stopped appearing when I clicked the “Delete Profile” button. This happened after I moved my static files to a global directory. There were no errors in the **Django* server output, so I initially assumed the problem was with the *JavaScript* logic itself.
 
 
--  **Fix:** I reviewed my base.*html* template and found that I hadn’t updated the path to the *JS* file after moving it. I had been using a hardcoded path like */static/js/script.js*, but *Django* wasn’t recognizing it. I replaced it with the correct *{% static %}* tag:
+-  **Fix:** I reviewed my base.*HTML* template and found that I hadn’t updated the path to the *JS* file after moving it. I had been using a hardcoded path like */static/js/script.js*, but *Django* wasn’t recognizing it. I replaced it with the correct *{% static %}* tag:
 
 		<script  src="{% static 'js/script.js' %}"></script>
 
@@ -86,7 +86,7 @@ For clarity and ease of use, I have broken the bugs down into the following cate
 
 -  **Bug:** *JS* delete confirmation not triggering when clicking the "Delete Profile" button. The issue was created when I moved my static file location from my app to my global settings. However, there were no errors in the *Django* server output. So in order to diagnose why the *JS* was not working, I wrote a *console log* statement to the top on my *JS* file to say "script.js loaded!". As this was not appearing in the console in *DevTools*, I knew that the *JS* was not being loaded.
 
--  **Fix:** I retraced my steps and found that I had not rerouted my script src in my base.*html*. I moved the static file location from 'my app/' and changed the path in the *html* file to the global location.
+-  **Fix:** I retraced my steps and found that I had not rerouted my script src in my base.*HTML*. I moved the static file location from 'my app/' and changed the path in the *HTML* file to the global location.
 
 -  **Lesson Learned:** Always check the console for errors and make sure that the *JS* is being loaded correctly before moving on with the project assuming that the error is not in the *JS*. I left the console.log at the top of my *Js* file as a reminder to check the console for errors at each step of the way.
 
@@ -118,7 +118,7 @@ For clarity and ease of use, I have broken the bugs down into the following cate
 
 -  **Leason Learned:** Always check the render call in the view to make sure that the template is being rendered correctly, like this:
 
-	   return render(request, *gig_reviews/search_results.*html**, {'form': form, 'results': results})
+	   return render(request, *gig_reviews/search_results.*HTML*, {'form': form, 'results': results})
 
 -  **Bug:** After deploying to *Heroku*, I got an *“Internal Server Error”* when trying to load the site. The *Heroku* logs showed:
 
@@ -130,22 +130,22 @@ For clarity and ease of use, I have broken the bugs down into the following cate
 
 -  **Bug:** When I set up my *custom 404 error handler*, everything seemed fine with *DEBUG = True*. But after switching *DEBUG = False* to test the actual *404 page*, *Django* crashed with a *500 Internal Server Error*. The console showed:
 
-		  The custom handler404 view '404.*html*' could not be imported.
+		  The custom handler404 view '404.*HTML*' could not be imported.
 			HINT: No module named '404
 	
 	Even after correcting the handler path to point to the correct view function, I still got a *500 error* when visiting a broken URL like */seach/*. No helpful error message was shown because *DEBUG = False*.
 
 -  **Fix:** The root cause was that I wrote this in my view: *
 
-		return render(request, '404.*html*', status=404)*. 
+		return render(request, '404.*HTML*', status=404)*. 
 	
 	But my actual template was stored inside: *
 	
-		gig_reviews/templates/gig_reviews/404.*html**
+		gig_reviews/templates/gig_reviews/404.*HTML*
 
 	Because of that, *Django* couldn’t find the file — it was silently failing during template rendering, leading to a *500 error*.
 
-	To fix it, I changed the view to: *return render(request, 'gig_reviews/404.*html*', status=404)* This matches the real location of the template, and then everything worked correctly. When I visit a broken URL with *DEBUG = False*, I see my custom *404 page* instead of *Django*'s default error screen or a *500*.
+	To fix it, I changed the view to: *return render(request, 'gig_reviews/404.*HTML*', status=404)* This matches the real location of the template, and then everything worked correctly. When I visit a broken URL with *DEBUG = False*, I see my custom *404 page* instead of *Django*'s default error screen or a *500*.
 
 -  **Lesson Learned:** When using *render()* with templates, the path is always relative to the top of the template search path (i.e. what’s defined in *TEMPLATES['DIRS']*). If the file is inside an app's *templates/app_name/* folder, I need to include the app name in the path string unless the app’s template folder is directly in the global templates directory. Always double-check the template path when using *DEBUG = False*, because *Django* won't show helpful messages for template errors in production mode.
 
@@ -171,14 +171,14 @@ For clarity and ease of use, I have broken the bugs down into the following cate
 
 ### 8.5 Design Errors
 
--  **Bug:** After reopening the project folder, *Bootstrap* styles and interactivity broke unexpectedly. The site appeared unstyled, and navbar toggles no longer worked. No recent manual changes had been made to the *base.*html** file.
+-  **Bug:** After reopening the project folder, *Bootstrap* styles and interactivity broke unexpectedly. The site appeared unstyled, and navbar toggles no longer worked. No recent manual changes had been made to the *base.*HTML* file.
 
--  **Fix:** I discovered that the *bootstrap.bundle.min.js* script tag at the bottom of *base.*html** contained a broken *integrity attribute (sha384-...)*. I replaced it with the full, correct version copied from the official *Bootstrap* CDN, which restored all styling and *JS* interactivity.
+-  **Fix:** I discovered that the *bootstrap.bundle.min.js* script tag at the bottom of *base.*HTML* contained a broken *integrity attribute (sha384-...)*. I replaced it with the full, correct version copied from the official *Bootstrap* CDN, which restored all styling and *JS* interactivity.
 
 	 To prevent this I must:
 	1. Save all files before switching folders
 	2. Restart the editor when switching projects
-	3. Use *Git* to track *html* changes, even for template files
+	3. Use *Git* to track *HTML* changes, even for template files
 
 -  **Lesson Learned:** Closing and reopening *Django* project folders in *VS Code* without restarting the programme can cause cached or unsaved versions of files to reload incorrectly. In this case, the long integrity attribute was truncated when switching between projects, silently breaking the script load.
 
@@ -243,10 +243,10 @@ This pointed to line 88 in the rendered source of my homepage. The layout still 
 
   -  **Lesson Learned:** When validating *HTML* in a *Django* project:
 
-		1. Never paste raw *Django* templates into an *HTML* validator — especially files like *base.*html* which aren't full pages.
+		1. Never paste raw *Django* templates into an *HTML* validator — especially files like *base.*HTML* which aren't full pages.
 		2. Always validate the rendered *HTML* by viewing page source in the browser and pasting that into the validator.
 		3. Be careful of stray words like *row* outside of *class=""*. These can be hard to spot visually but will break validation.
-		4. The *base.*html* can’t be validated directly, because it’s not a full *HTML* document until *Django* renders it with a child template. Trying to validate it raw will always produce misleading errors.
+		4. The *base.*HTML* can’t be validated directly, because it’s not a full *HTML* document until *Django* renders it with a child template. Trying to validate it raw will always produce misleading errors.
 
 -  **Bug:** Submitting the gig review form gave an error saying "Enter a valid date," even though the date was selected using the calendar input. The form would not save. I had previously changed the date format in my settings file to *DD-MM-YYYY*, so I knew that wasn't the issue.
 
@@ -296,23 +296,57 @@ This pointed to line 88 in the rendered source of my homepage. The layout still 
 
 -  **Bug:** The review sections on my author, artist, and venue profile pages all looked slightly different. Some were centred, others weren’t, and the column layout didn’t behave consistently across screen sizes. The artist reviews especially looked off when arriving from the Wall of Chaos, even though the data was loading correctly.
 
--  **Fix:** I created a shared partial template called reviews_section.*html* and included it in all profile pages using *{% include 'partials/reviews_section.*html*' %}. I moved the review layout code into that file and updated the grid system to use *Bootstrap*’s column classes with consistent wrappers:
+-  **Fix:** I created a shared partial template called reviews_section.*HTML* and included it in all profile pages using *{% include 'partials/reviews_section.*HTML*' %}. I moved the review layout code into that file and updated the grid system to use *Bootstrap*’s column classes with consistent wrappers:
 
 -  **Lesson Learned:** Even when templates are rendering the same data, layout inconsistencies can easily sneak in if markup and class structure aren’t unified. Using a shared partial not only solved the inconsistency but also cleaned up my code. It’s better to centralize layout logic when the content structure is reused across multiple views.
 
 ### 8.7 Validation testing Errors
 
--  **Bug:** When I ran the sign-up page through the W3C HTML validation checker, I received an error saying:
+-  **Bug:** When I ran the sign-up page through the *W3C* HTML validation checker, I received an error saying:
 
-	*Element button must not contain interactive content (such as anchor elements)*
+  	*Element button must not contain interactive content (such as anchor elements)*
 
 	This pointed to the line in my template where I had a *button* wrapping an *a* tag, like this:
 
-		<button type="submit"><a href="{% url 'login' %}">Log in again</a></button>
+  		<button type="submit"><a href="{% url 'login' %}">Log in again</a></button>
 
-	This is invalid HTML because *a* is interactive, and interactive elements shouldn’t be nested inside each other (like inside a *button*). The validator flagged this as a structural error.
+  	This is invalid HTML because *a* is interactive, and interactive elements shouldn’t be nested inside each other (like inside a *button*). The validator flagged this as a structural error.
 
 -  **Fix:** I restructured the code to separate the button from the anchor tag. Instead of nesting one inside the other, I used a regular *a* tag styled like a button:
+
+			<a href="{% url 'login' %}" class="page-btn">Log in again</a>
+
+-  **Lesson Learned:** It's easy to accidentally nest interactive elements when building with *Django* templates, especially when using buttons for styling. However, HTML doesn't allow this. It's better to choose either a *button* or an *a* element depending on the action: use *button* for submitting forms, and *a* for navigation. Then apply consistent styling to both.
+
+-  **Bug:** Whe checking the sign-up page in the *W3C HTML* validation checker, the sign-up page showed another validation error, even though the form structure looked correct. No help text appeared, and the error messaging was unclear. The *{{ form.as_p }}* resulted in an ugly layout and unhelpful formatting.
+
+  -  **Fix:** I hardcoded the help text manually above each field in the template using *p* tags (e.g. "Please don't use your email as a username") and removed the automatic help text injections like *{{ field.help_text }}*. I kept my *CustomUserCreationForm* minimal in forms.py and used it in the signup view without trying to override help text programmatically.
+
+-  **Lesson Learned:** Sometimes it’s easier to take control of form presentation in the template rather than relying on *Django*'s default rendering. Customizing form layout manually gave me full control over spacing, instructions, and design — which worked better for my project style.
+
+-  **Bug:** When I passed the contact page through the W3 HTML validation checker, I received multiple "Duplicate ID" errors such as: *Duplicate ID id_name*, *Duplicate ID id_logo* and *Duplicate ID id_message*. This happened because the contact page includes all three forms (Fan, Artist, and Venue) at once, and *Django* automatically assigns the same id values (e.g. id_name) to matching field names across each form. I updated the contact form to include *prefix* arguments. For example:
+
+		fan_form = FanContactForm(prefix="fan")
+		artist_form = ArtistContactForm(prefix="artist")
+		venue_form = VenueContactForm(prefix="venue")
+
+And in the POST logic I added:
+
+	if request.method == "POST":
+	user_type = request.POST.get("user_type")
+	if user_type == "fan":
+	fan_form = FanContactForm(request.POST, prefix="fan")
+	...
+	elif user_type == "artist":
+	artist_form = ArtistContactForm(request.POST, request.FILES, prefix="artist")
+	...
+	elif user_type == "venue":
+	venue_form = VenueContactForm(request.POST, request.FILES, prefix="venue")
+	...
+
+This made sure that the form fields rendered with unique IDs.
+
+  -  **Lesson Learned:** When rendering multiple *Django* forms on the same page — especially when they share field names — I need to use the *prefix* argument to avoid duplicate id attributes and *HTML* validation issues.
 
 ### 8.8 Bugs Unresolved
 
