@@ -6,21 +6,23 @@ Below are the various bugs that I encountered along the way and how I fixed them
 For clarity and ease of use, I have broken the bugs down into the following categories:
 
 
--  **8.1 Syntax Errors**
+-  **8.1 [Syntax Errors](#81-syntax-errors)**
 
--  **8.2 Logic Errors**
+-  **8.2 [Logic Errors](#82-logic-errors)**
 
--  **8.3 Runtime Errors**
+-  **8.3 [Runtime Errors](#83-runtime-errors)**
 
--  **8.4 Semantic Errors**
+-  **8.4 [Semantic Errors](#84-semantic-errors)**
 
--  **8.5 Design Errors**
+-  **8.5 [Design Errors](#85-design-errors)**
 
--  **8.6 Validation Errors**
+-  **8.6 [Validation Errors](#86-validation-errors)**
 
--  **8.7 Other Bugs**
+-  **8.7 [Other Bugs](#87-other-bugs)**
+  
+- **8.8 [Validation Checking Errors](#87-validation-testing-errors)**
 
--  **8.8 Bugs Unresolved**
+-  **8.9 [Bugs Unresolved](#88-bugs-unresolved)**
 
   ### 8.1 Syntax Errors
 
@@ -300,7 +302,7 @@ This pointed to line 88 in the rendered source of my homepage. The layout still 
 
 ### 8.7 Validation testing Errors
 
-- **Bug:** When I ran the sign-up page through the W3C HTML validation checker, I received an error saying:
+-  **Bug:** When I ran the sign-up page through the W3C HTML validation checker, I received an error saying:
 
 	*Element button must not contain interactive content (such as anchor elements)*
 
@@ -310,14 +312,7 @@ This pointed to line 88 in the rendered source of my homepage. The layout still 
 
 	This is invalid HTML because *a* is interactive, and interactive elements shouldn’t be nested inside each other (like inside a *button*). The validator flagged this as a structural error.
 
-- **Fix:** I restructured the code to separate the button from the anchor tag. Instead of nesting one inside the other, I used a regular *a* tag styled like a button:
-
-		<a href="{% url 'login' %}" class="btn page-btn">Log in again</a>
-
-	This keeps the look consistent with my other buttons and avoids HTML validation errors.
-
-- **Lesson Learned:** Always avoid putting interactive elements (like *a*, *input*, *button*, tags etc.) inside one another. It might work visually in the browser, but it’s not valid HTML and can cause unexpected issues — especially with screen readers, keyboard navigation, or automated testing.
-
+-  **Fix:** I restructured the code to separate the button from the anchor tag. Instead of nesting one inside the other, I used a regular *a* tag styled like a button:
 
 ### 8.8 Bugs Unresolved
 
