@@ -3,12 +3,12 @@ from django.shortcuts import render, redirect
 from .forms import GigReviewForm, ProfileForm, FanContactForm, ArtistContactForm, VenueContactForm, SearchForm #, CustomUserCreationForm
 from .models import Profile, Artist, Venue, GigReview
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.utils.text import slugify
 from django.views.decorators.http import require_POST
+from .forms import CustomUserCreationForm
 
 
 # Create your views here.
@@ -83,13 +83,13 @@ def profile(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'gig_reviews/signup.html', {'form': form})
 
 
@@ -164,7 +164,7 @@ def search_view(request):
 
 
 def gallery_view(request):
-    reviews_with_photos = GigReview.objects.filter(image__isnull=False).order_by('-gig_date')
+    reviews_with_photos = GigReview.objects.all().order_by('-gig_date')
     return render(request, 'gig_reviews/gallery.html', {
         'reviews': reviews_with_photos
     })

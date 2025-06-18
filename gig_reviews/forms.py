@@ -1,8 +1,9 @@
 from django import forms
 from .models import GigReview, Profile, Artist, Venue
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.utils.safestring import mark_safe
 #from django.contrib.auth.password_validation import get_default_password_validators
-#from django.utils.safestring import mark_safe
 
 
 class GigReviewForm(forms.ModelForm):
@@ -52,3 +53,8 @@ class SearchForm(forms.Form):
     search_type = forms.ChoiceField(choices=SEARCH_TYPE_CHOICES, widget=forms.Select(attrs={'class': 'form-select'}))
     search_term = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Search by name...'}))
 
+
+class CustomUserCreationForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = User
+        fields = ("username", "password1", "password2")

@@ -290,11 +290,11 @@ Tested using:
 
 ##### 9.3.1.3 Wall of Chaos (Gallery)
 
-![Wall of Chaos](image-3.png)
+![Wall of Chaos](lh-wall-of-chaos.png)
 
 ##### 9.3.1.4 Login Page
 
-![Login Page](image-4.png)
+![Login Page](lh-login-page.png)
 
 ##### 9.3.1.5 Sign Up Page
 

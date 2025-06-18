@@ -6,12 +6,44 @@
     <div class="col-12 text-center">
         <h1>Sign Up</h1>
         <p>Please don't use your email address as your user name</p>
-        <form method="post" class="d-flex flex-column align-items-stretch">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="page-btn">Create account</button>
-        </form>
+      <form method="post" class="needs-validation" novalidate>
+        {% csrf_token %}
+
+        <div class="mb-4">
+          {{ form.username.label_tag }}
+          {{ form.username }}
+          {% if form.username %}
+            <p>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. No spaces.</p>
+          {% endif %}
+          {{ form.username.errors }}
+        </div>
+
+        <div class="mb-4">
+          {{ form.password1.label_tag }}
+          {{ form.password1 }}
+          {% if form.password1 %}
+            <p>Your password can’t be too similar to your other personal information.</p>
+            <p>Your password must contain at least 8 characters.</p>
+            <p>Your password can’t be a commonly used password.</p>
+            <p>Your password can’t be entirely numeric.</p>
+          {% endif %}
+          {{ form.password1.errors }}
+        </div>
+
+        <div class="mb-4">
+          {{ form.password2.label_tag }}
+          {{ form.password2 }}
+          {% if form.password2 %}
+            <p>Enter the same password as before, for verification.</p>
+          {% endif %}
+          {{ form.password2.errors }}
+        </div>
+
+        <button type="submit" class="page-btn">Create account</button>
+      </form>
+
     </div>
   </div>
 </div>
 {% endblock %}
+

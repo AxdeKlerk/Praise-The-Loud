@@ -298,7 +298,28 @@ This pointed to line 88 in the rendered source of my homepage. The layout still 
 
 -  **Lesson Learned:** Even when templates are rendering the same data, layout inconsistencies can easily sneak in if markup and class structure aren’t unified. Using a shared partial not only solved the inconsistency but also cleaned up my code. It’s better to centralize layout logic when the content structure is reused across multiple views.
 
-### 8.7 Bugs Unresolved
+### 8.7 Validation testing Errors
+
+- **Bug:** When I ran the sign-up page through the W3C HTML validation checker, I received an error saying:
+
+	*Element button must not contain interactive content (such as anchor elements)*
+
+	This pointed to the line in my template where I had a *button* wrapping an *a* tag, like this:
+
+		<button type="submit"><a href="{% url 'login' %}">Log in again</a></button>
+
+	This is invalid HTML because *a* is interactive, and interactive elements shouldn’t be nested inside each other (like inside a *button*). The validator flagged this as a structural error.
+
+- **Fix:** I restructured the code to separate the button from the anchor tag. Instead of nesting one inside the other, I used a regular *a* tag styled like a button:
+
+		<a href="{% url 'login' %}" class="btn page-btn">Log in again</a>
+
+	This keeps the look consistent with my other buttons and avoids HTML validation errors.
+
+- **Lesson Learned:** Always avoid putting interactive elements (like *a*, *input*, *button*, tags etc.) inside one another. It might work visually in the browser, but it’s not valid HTML and can cause unexpected issues — especially with screen readers, keyboard navigation, or automated testing.
+
+
+### 8.8 Bugs Unresolved
 
 -  **Bug:** I wanted to change the highlight colour that appears when selecting or hovering over options in a native *select* dropdown. My goal was to make the selection styling match the custom colour scheme used across the rest of the site.
 
