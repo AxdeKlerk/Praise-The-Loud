@@ -366,6 +366,14 @@ Tested using:
 
 ##### 9.3.4 Responsive Testing
 
+##### 9.3.4.1 Without Logging In
+
+https://www.loom.com/share/072b48ab6a764abfabc4c80485969133?sid=00cb359f-1532-46ef-a7fe-fa8a46eb5e49
+
+##### 9.3.4.2 Logged In
+
+
+
 ##### 9.3.4.1 Home Page
 
 
