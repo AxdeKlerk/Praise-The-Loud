@@ -205,15 +205,12 @@ form.d-flex input[type="text"] {
     font-size: 1.2rem;
     border-radius: 7px;
     margin-top: 20px;
-}
+    text-decoration: none;
+  }
 .page-btn:hover {
     color: #F50000;
     background-color: black;
     border-color: #F50000;
-}
-.logout {
-    color: #F5F5F5;
-    font-size: 1.2rem;
 }
 
 /* Search results */

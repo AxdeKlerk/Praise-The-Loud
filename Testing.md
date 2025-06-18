@@ -334,7 +334,7 @@ Tested using:
 
 ##### 9.3.3.3 Wall of Chaos (Gallery)
 
-
+![Wall of Chaos - Gallery page](image-15.png)
 
 ##### 9.3.3.4 Login Page
 
