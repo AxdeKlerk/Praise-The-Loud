@@ -7,7 +7,7 @@ const venueForm = document.getElementById("venueForm");
 
 // This function is called when the user clicks the "Delete Profile" button
   function confirmDelete() {
-    return confirm("Are you sure you want to delete your profile? This action cannot be undone.");
+    return confirm("Are you sure you want to delete? This action cannot be undone.");
 }
 
 // This script handles the toggling of the navigation menu
@@ -28,22 +28,6 @@ const venueForm = document.getElementById("venueForm");
     });
   }
 
-
-// This function is called when the user clicks on a contact type button (fan, artist, venue)
-  function showSelectedForm() {
-    const type = document.getElementById("user_type")?.value;
-    const forms = document.querySelectorAll(".contact-form");
-
-    forms.forEach(f => f.style.display = "none");
-
-    if (type === "fan") {
-        document.getElementById("fanForm").style.display = "block";
-    } else if (type === "artist") {
-        document.getElementById("artistForm").style.display = "block";
-    } else if (type === "venue") {
-        document.getElementById("venueForm").style.display = "block";
-    }
-}
 
 // This script initializes the contact form based on the selected user type
 // It listens for changes on the user type dropdown and shows the corresponding form
@@ -108,7 +92,6 @@ const venueForm = document.getElementById("venueForm");
   // Confirm before delete
   document.querySelectorAll("[data-delete-button]").forEach(function (btn) {
     btn.addEventListener("click", function (event) {
-      const confirmDelete = confirm("Are you sure you want to delete this review?");
       if (!confirmDelete) {
         event.preventDefault();
       }

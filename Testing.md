@@ -366,51 +366,11 @@ Tested using:
 
 ##### 9.3.4 Responsive Testing
 
-##### 9.3.4.1 Without Logging In
-
-https://www.loom.com/share/072b48ab6a764abfabc4c80485969133?sid=00cb359f-1532-46ef-a7fe-fa8a46eb5e49
-
-##### 9.3.4.2 Logged In
-
-
-
-##### 9.3.4.1 Home Page
-
-
-
-##### 9.3.4.2 About Page
-
-
-
-##### 9.3.4.3 Wall of Chaos (Gallery)
-
-
-
-##### 9.3.4.4 Login Page
-
-
-
-##### 9.3.4.5 Sign Up Page
-
-
-
-##### 9.3.4.6 Contact Page
-
-
-
-##### 9.3.4.7 Profile Page
-
-
-
-##### 9.3.4.7.1 Profile Edit Page
-
-
-
-##### 9.3.4.8 Gig Review Form Page
+https://www.loom.com/share/072b48ab6a764abfabc4c80485969133?sid=cd73abe2-9e82-46ed-b8c0-dedd9a8b72b1
 
 ##### 9.3.5 JSHint
 
-![JSHint](image-12.png)
+![JSHint](praise_the_loud/Images/Testing/JSHint.png)
 
 
 
