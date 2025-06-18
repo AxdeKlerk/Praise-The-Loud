@@ -282,87 +282,87 @@ Tested using:
 
 ##### 9.3.1.1 Home Page
 
-![Home Page](lh-home-page.png)
+![Home Page](praise_the_loud/Images/Testing/Lighthouse/lh-home-page.png)
 
 ##### 9.3.1.2 About Page
 
-![About Page](lh-about-page.png)
+![About Page](praise_the_loud/Images/Testing/Lighthouse/lh-about-page.png)
 
 ##### 9.3.1.3 Wall of Chaos (Gallery)
 
-![Wall of Chaos](lh-wall-of-chaos.png)
+![Wall of Chaos](praise_the_loud/Images/Testing/Lighthouse/lh-wall-of-chaos.png)
 
 ##### 9.3.1.4 Login Page
 
-![Login Page](lh-login-page.png)
+![Login Page](praise_the_loud/Images/Testing/Lighthouse/lh-login-page.png)
 
 ##### 9.3.1.5 Sign Up Page
 
-![Sign Up Page](image-5.png)
+![Sign Up Page](praise_the_loud/Images/Testing/Lighthouse/lh-signup-page.png)
 
 ##### 9.3.1.6 Contact Page
 
-![Contact Page](image-6.png)
+![Contact Page](praise_the_loud/Images/Testing/Lighthouse/lh-contact-page.png)
 
 ##### 9.3.1.7 Profile Page
 
-![Profile Page](image-7.png)
-
-![Error Message](image-8.png)
+![Profile Page](praise_the_loud/Images/Testing/Lighthouse/lh-profile-page.png)
 
 ##### 9.3.1.7.1 Profile Edit Page
 
-![Profile Edit Page](image-9.png)
+![Profile Edit Page](praise_the_loud/Images/Testing/Lighthouse/lh-update-profile.png)
 
 ##### 9.3.1.8 Gig Review Form Page
 
-![Gig Review Form Page](image-10.png)
+![Gig Review Form Page](praise_the_loud/Images/Testing/Lighthouse/lh-gig-review-form.png)
 
 ##### 9.3.2 CSS Validation
 
-![CSS Validation](image-11.png)
+![CSS Validation](praise_the_loud/Images/Testing/Validation/css-validation.png)
+
+![CSS Validation Warning](praise_the_loud/Images/Testing/Validation/css-validation-warnings.png)
 
 ##### 9.3.3 HTML Validation
 
 ##### 9.3.3.1 Home Page
 
-![Home Page](image-13.png)
+![Home Page](praise_the_loud/Images/Testing/Validation/home-page-validation.png)
 
 ##### 9.3.3.2 About Page
 
-![About Page](image-14.png)
+![About Page](praise_the_loud/Images/Testing/Validation/about-page-validation.png)
 
 ##### 9.3.3.3 Wall of Chaos (Gallery)
 
-![Wall of Chaos - Gallery page](image-15.png)
+![Wall of Chaos - Gallery page](praise_the_loud/Images/Testing/Validation/wall-of-chaos-validation.png)
 
 ##### 9.3.3.4 Login Page
 
-
+![Login Page](praise_the_loud/Images/Testing/Validation/login-page-validation.png)
 
 ##### 9.3.3.5 Sign Up Page
 
+![Sign Up Page](praise_the_loud/Images/Testing/Validation/sign-up-page-validation.png)
 
+##### 9.3.3.6 Contact Form
 
-##### 9.3.3.6 Contact Page
-
-
+![Contact Form](praise_the_loud/Images/Testing/Validation/contact-form-validation.png)
 
 ##### 9.3.3.7 Profile Page
 
-
+![Profile Page](praise_the_loud/Images/Testing/Validation/profile-page-validation.png)
 
 ##### 9.3.3.7.1 Profile Edit Page
 
-
+![Edit Profile](praise_the_loud/Images/Testing/Validation/profile-edit-validation.png)
 
 ##### 9.3.3.8 Gig Review Form Page
 
-
+![Gig Review Form](praise_the_loud/Images/Testing/Validation/gig-review-form-validation.png)
 
 ##### 9.3.3.9 Logout Page
 
-
+![Logout](praise_the_loud/Images/Testing/Validation/logout-validation.png)
 
 ##### 9.3.4 Responsive Testing
 

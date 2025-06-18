@@ -107,23 +107,22 @@ def delete_profile(request):
 
 
 def contact_view(request):
-    fan_form = FanContactForm()
-    artist_form = ArtistContactForm()
-    venue_form = VenueContactForm()
+    fan_form = FanContactForm(prefix='fan')
+    artist_form = ArtistContactForm(prefix='artist')
+    venue_form = VenueContactForm(prefix='venue')
     user_type = None
     if request.method == "POST":
         user_type = request.POST.get("user_type")
-        print("Submitted user type:", user_type)  # Debugging line
         if user_type == "fan":
-            fan_form = FanContactForm(request.POST)
+            fan_form = FanContactForm(request.POST, prefix='fan')
             if fan_form.is_valid():
                 return redirect("thank_you")
         elif user_type == "artist":
-            artist_form = ArtistContactForm(request.POST, request.FILES)
+            artist_form = ArtistContactForm(request.POST, request.FILES, prefix='artist')
             if artist_form.is_valid():
                 return redirect("thank_you")
         elif user_type == "venue":
-            venue_form = VenueContactForm(request.POST, request.FILES)
+            venue_form = VenueContactForm(request.POST, request.FILES, prefix='venue')
             if venue_form.is_valid():
                 return redirect("thank_you")
     return render(request, "gig_reviews/contact.html", {
