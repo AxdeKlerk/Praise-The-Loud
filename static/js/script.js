@@ -5,14 +5,20 @@ const fanForm = document.getElementById("fanForm");
 const artistForm = document.getElementById("artistForm");
 const venueForm = document.getElementById("venueForm");
 
-// This function is called when the user clicks the "Delete Profile" button
+//----------------------------------------------//
+// 1. Confirm Delete For Profile Page
+//----------------------------------------------//
+
+  // This function is called when the user clicks the "Delete Profile" button
   function confirmDelete() {
     return confirm("Are you sure you want to delete? This action cannot be undone.");
 }
 
-// This script handles the toggling of the navigation menu
-// It changes the icon from a hamburger to a close icon when the menu is open
-// It also ensures the close icon is hidden when the menu is closed
+//----------------------------------------------//
+// 2. Toggle Navbar Icons
+//----------------------------------------------//
+
+  // Switches between hamburger (☰) and close (×) icon when navbar is opened or closed
   if (toggler && collapse) {
     const icon = toggler.querySelector(".navbar-toggler-icon");
     const closeIcon = toggler.querySelector(".navbar-close-icon");
@@ -28,9 +34,11 @@ const venueForm = document.getElementById("venueForm");
     });
   }
 
+//----------------------------------------------//
+// 3. Contact Forms Based on User Type
+//----------------------------------------------//
 
-// This script initializes the contact form based on the selected user type
-// It listens for changes on the user type dropdown and shows the corresponding form
+  // Helper function: shows or hides a form and enables/disables its fields
   function setFormState(formElement, show) {
     if (!formElement) return;
 
@@ -42,16 +50,19 @@ const venueForm = document.getElementById("venueForm");
     inputs.forEach(input => input.disabled = !show);
   }
 
+  // Hides all three contact forms
   function hideAllForms() {
     setFormState(fanForm, false);
     setFormState(artistForm, false);
     setFormState(venueForm, false);
 }
 
+  // Watch for changes on dropdown and show the correct form
   if (userTypeSelect) {
     userTypeSelect.addEventListener("change", function () {
       hideAllForms();
       const selected = this.value;
+      // Show only the selected form
       if (selected === "fan") setFormState(fanForm, true);
       else if (selected === "artist") setFormState(artistForm, true);
       else if (selected === "venue") setFormState(venueForm, true);
@@ -61,11 +72,16 @@ const venueForm = document.getElementById("venueForm");
     const preselected = userTypeSelect.getAttribute("data-selected");
     if (preselected) {
       userTypeSelect.value = preselected;
+      // Triggers the change event manually
       userTypeSelect.dispatchEvent(new Event("change"));
     }
   }
 
-// This script handles the toggling of the review management form
+//----------------------------------------------//
+// 4. Review Management Forms
+//----------------------------------------------//
+
+// Handles the toggling of the review management form
 // It allows users to manage their reviews by showing or hiding the form
   document.querySelectorAll("[data-toggle-manage]").forEach(function (button) {
     button.addEventListener("click", function () {
@@ -78,7 +94,7 @@ const venueForm = document.getElementById("venueForm");
     });
   });
 
-  // Cancel
+  // Hides the review management form if the user clicks a cancel button
   document.querySelectorAll("[data-cancel-manage]").forEach(function (button) {
     button.addEventListener("click", function () {
       const reviewId = this.dataset.cancelManage;
