@@ -22,9 +22,18 @@
                   <p class="card-text"><strong>{{ review.venue.name }}</strong></p>
                 {% endif %}
 
-                <p class="card-text">Fan:
+                <p class="card-text">
+                Fan:
                   <a href="{% url 'author_profile' review.author.pk %}" style="color:#F50000">
                     {{ review.author.username }}
+                  </a><br>
+                Artist:
+                  <a href="{% url 'artist' review.artist.pk %}" style="color:#F50000">
+                    {{ review.artist.name }}
+                  </a><br>
+                Venue:
+                  <a href="{% url 'venue' review.venue.pk %}" style="color:#F50000">
+                    {{ review.venue.name }}
                   </a>
                 </p>
                 <p class="card-text">Date: {{ review.gig_date|date:"d-m-Y" }}</p>
