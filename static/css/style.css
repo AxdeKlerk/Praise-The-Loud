@@ -263,7 +263,7 @@ form.d-flex input[type="text"] {
     text-decoration: none;
 }
 .link a:hover {
-    color: #F5F5F5;
+    color: #F5F5F5 !important;
     text-decoration: underline;
 }
 
@@ -357,12 +357,6 @@ form.d-flex input[type="text"] {
   margin-bottom: 1.5rem;
   border-radius: 5px;
   width: 100%;
-}
-.result-card > .update > a.page-btn {
-  color: #F5F5F5 !important;
-}
-.result-card > .update > a.page-btn:hover {
-  color: #F50000 !important;
 }
 
 /* Error Messages */

@@ -7,7 +7,7 @@
     <div class="col-12 text-center">
       <h1>Search Results</h1>
       {% if form.is_valid %}
-        <h2>{{ form.cleaned_data.search_type|title }}s</h2>
+        <h2>{{ form.cleaned_data.search_type|title }}</h2>
       {% endif %}
     </div>
   </div>
@@ -40,7 +40,7 @@
       </div>
     {% endfor %}
   {% else %}
-    <p class="text-center mt-4"><em>No {{ form.cleaned_data.search_type }}s found for "{{ form.cleaned_data.search_term }}"</em></p>
+    <p class="text-center mt-4">Tap the name of the artist or venue you want to find out about above and smash search!</p>
   {% endif %}
 </div>
 {% endblock %}

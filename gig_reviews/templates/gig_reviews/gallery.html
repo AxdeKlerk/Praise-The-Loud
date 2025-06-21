@@ -18,7 +18,7 @@
                     {% endif %}
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ review.title }}</h5>
-                        <p class="card-text">
+                        <p class="card-text link">
                             {% if review.artist %}
                             <strong>Artist:</strong>
                                 <a href="{% url 'artist' review.artist.pk %}" style="color:#F50000">{{ review.artist.name }}</a><br>
