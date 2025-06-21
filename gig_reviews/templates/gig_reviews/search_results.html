@@ -7,10 +7,40 @@
     <div class="col-12 text-center">
       <h1>Search Results</h1>
       {% if form.is_valid %}
-        <h2>{{ form.cleaned_data.search_type|title }}</h2>
+        <h2>{{ form.cleaned_data.search_type|title }}s</h2>
       {% endif %}
     </div>
   </div>
-  {% include 'partials/reviews_section.html' %}
+
+  {% if results %}
+    {% for item in results %}
+      <div class="text-center mt-5">
+        {% if item.logo %}
+          <img src="{{ item.logo.url }}" class="img-fluid mb-3" alt="{{ item.name }} logo">
+        {% else %}
+          <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default image">
+        {% endif %}
+
+        <h3>{{ item.name }}</h3>
+        {% if item.bio %}
+          <p>{{ item.bio }}</p>
+        {% endif %}
+
+        {% if item.website %}
+          <p class="link">Website: <a href="{{ item.website }}" target="_blank">{{ item.website }}</a></p>
+        {% endif %}
+
+        {% if item.reviews %}
+          {% with reviews=item.reviews %}
+            {% include 'partials/reviews_section.html' %}
+          {% endwith %}
+        {% else %}
+          <p><em>No reviews for this {{ form.cleaned_data.search_type }}</em></p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <p class="text-center mt-4"><em>No {{ form.cleaned_data.search_type }}s found for "{{ form.cleaned_data.search_term }}"</em></p>
+  {% endif %}
 </div>
 {% endblock %}
