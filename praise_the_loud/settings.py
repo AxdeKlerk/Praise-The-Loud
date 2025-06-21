@@ -31,7 +31,6 @@ ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', 'localhost', 'praise-the-loud.he
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -96,7 +95,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Europe/London'
@@ -107,11 +105,10 @@ USE_TZ = True
 
 # Custom date/time formats
 USE_L10N = False
-DATE_FORMAT = 'd M Y'           # e.g. 15 May 2025
-DATETIME_FORMAT = 'd M Y H:i'   # e.g. 15 May 2025 14:30
+DATE_FORMAT = 'd M Y'        
+DATETIME_FORMAT = 'd M Y H:i' 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 DATETIME_INPUT_FORMATS = ['%d-%m-%Y %H:%M']
-
 
 
 # Static files (CSS, JavaScript, Images)
@@ -131,7 +128,6 @@ cloudinary.config(
 )
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
