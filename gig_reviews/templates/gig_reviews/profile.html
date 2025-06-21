@@ -46,14 +46,7 @@
               {{ form.instagram.label_tag }}
               {{ form.instagram }}
             </div>
-            <button type="submit" class="btn page-btn">
-              {% if profile_exists %}
-              Update
-              {% else %}
-              Create
-              {% endif %}
-              Profile
-            </button><br>
+            <button type="submit" class="btn page-btn">Update Profile</button><br>
             <a href="{% url 'profile' %}" class="btn page-btn mt-3">Cancel</a>
           </form>
             {% if profile_exists %}
@@ -86,20 +79,22 @@
           <p><strong>Bio:</strong> {{ profile.bio }}</p>
           <p><strong>Location:</strong> {{ profile.location }}</p>
           {% if profile.facebook %}
-            <p>Facebook: <a href="{{ profile.facebook }}" class="link" target="_blank">{{ profile.facebook }}</a></p>
+            <p>Facebook: <a href="{{ profile.facebook }}" target="_blank">{{ profile.facebook }}</a></p>
           {% else %}
             <p>Facebook: Not provided</p>
           {% endif %}
           {% if profile.instagram %}
-            <p>Instagram: <a href="{{ profile.instagram }}" class="link" target="_blank">{{ profile.instagram }}</a></p>
+            <p>Instagram: <a href="{{ profile.instagram }}" target="_blank">{{ profile.instagram }}</a></p>
           {% else %}
             <p>Instagram: Not provided</p>
           {% endif %}
-          <a href="?edit=true" class="btn page-btn update">Update Profile</a>
+          <div class="update">
+          <a href="?edit=true" class="btn page-btn">Update Profile</a>
           <form method="post" action="{% url 'delete_profile' %}" style="display:inline;">
             {% csrf_token %}
             <button type="submit" class="page-btn">Delete Profile</button>
           </form>
+          </div>
         {% endif %}
       </div>
 

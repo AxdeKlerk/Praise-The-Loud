@@ -157,7 +157,8 @@ form.d-flex input[type="text"] {
 }
 /* Help text list elements to adjust spacing and remove bullet points */
 .page-item ul,
-.page-item ul li {
+.page-item ul li 
+{
     list-style: none;
     color: #F5F5F5;
     margin-top: 0.25rem;
@@ -357,6 +358,12 @@ form.d-flex input[type="text"] {
   border-radius: 5px;
   width: 100%;
 }
+.result-card .update a.page-btn {
+    color:#F5F5F5 !important;
+}
+.result-card .update a.page-btn:hover {
+    color: #F50000 !important;
+}
 
 /* Error Messages */
 .custom-error {
@@ -439,4 +446,14 @@ select:-webkit-autofill:focus {
   opacity: 1;
   cursor: pointer;
 }
+.result-card > .update > a.page-btn {
+  color: #F5F5F5 !important;
+  background-color: black !important;
+  border: 2px dashed lime !important; /* temporary visual to prove override */
+}
 
+.result-card > .update > a.page-btn:hover {
+  color: #F50000 !important;
+  border-color: #F50000 !important;
+  background-color: #111 !important;
+}
