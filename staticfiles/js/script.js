@@ -5,8 +5,6 @@ const fanForm = document.getElementById("fanForm");
 const artistForm = document.getElementById("artistForm");
 const venueForm = document.getElementById("venueForm");
 
-console.log("JS has landed!");
-
 //----------------------------------------------//
 // 1. Confirm Delete For Profile Page
 //----------------------------------------------//
@@ -110,7 +108,7 @@ console.log("JS has landed!");
   // Confirm before delete
   document.querySelectorAll("[data-delete-button]").forEach(function (btn) {
     btn.addEventListener("click", function (event) {
-      if (!confirmDelete) {
+      if (!confirmDelete()) {
         event.preventDefault();
       }
     });

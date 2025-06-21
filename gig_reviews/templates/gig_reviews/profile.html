@@ -92,7 +92,7 @@
           <a href="?edit=true" class="btn page-btn">Update Profile</a>
           <form method="post" action="{% url 'delete_profile' %}" style="display:inline;">
             {% csrf_token %}
-            <button type="submit" class="page-btn">Delete Profile</button>
+            <button type="submit" class="page-btn" data-delete-button>Delete Profile</button>
           </form>
           </div>
         {% endif %}
