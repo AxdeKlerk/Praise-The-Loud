@@ -53,8 +53,27 @@
               Create
               {% endif %}
               Profile
-            </button>
-            <a href="{% url 'profile' %}" class="btn page-btn">Cancel</a>
+            </button><br>
+            <a href="{% url 'profile' %}" class="btn page-btn mt-3">Cancel</a>
+          </form>
+            {% if profile_exists %}
+              <input type="hidden" name="profile_id" value="{{ profile.id }}">
+            {% endif %}
+            {% if form.errors %}
+              <div class="text-danger mt-3">
+                <p>Please correct the errors below:</p>
+                <ul>
+                  {% for field in form %}
+                    {% for error in field.errors %}
+                      <li>{{ error }}</li>
+                    {% endfor %}
+                  {% endfor %}
+                  {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
           </form>
         {% elif profile_exists %}
           {% if profile.image %}
