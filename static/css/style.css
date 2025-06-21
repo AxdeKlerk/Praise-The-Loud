@@ -345,6 +345,15 @@ form.d-flex input[type="text"] {
   width: 100%;
 }
 
+/* Error Messages */
+.custom-error {
+  color: red;
+  font-weight: bold;
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.25rem;
+}
+
 /**Footer */
 .footer {
     position: fixed;

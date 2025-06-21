@@ -13,9 +13,11 @@
           {{ form.username.label_tag }}
           {{ form.username }}
           {% if form.username %}
-            <p>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. No spaces.</p>
+            <p>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</p>
           {% endif %}
-          {{ form.username.errors }}
+          {% for error in form.username.errors %}
+            <p class="custom-error">{{ error }}</p>
+          {% endfor %}
         </div>
 
         <div class="mb-4">
@@ -27,7 +29,9 @@
             <p>Your password can’t be a commonly used password.</p>
             <p>Your password can’t be entirely numeric.</p>
           {% endif %}
-          {{ form.password1.errors }}
+          {% for error in form.password1.errors %}
+            <p class="custom-error">{{ error }}</p>
+          {% endfor %}
         </div>
 
         <div class="mb-4">
@@ -36,7 +40,9 @@
           {% if form.password2 %}
             <p>Enter the same password as before, for verification.</p>
           {% endif %}
-          {{ form.password2.errors }}
+          {% for error in form.password2.errors %}
+            <p class="custom-error">{{ error }}</p>
+          {% endfor %}
         </div>
 
         <button type="submit" class="page-btn">Create account</button>
