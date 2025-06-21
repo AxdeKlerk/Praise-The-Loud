@@ -80,7 +80,7 @@
             <img src="{{ profile.image.url }}" class="img-fluid mb-3" alt="Profile image">
           {% else %}
             <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
-            <p><em>No profile image uploaded.</em></p>
+            <p><em>No profile image uploaded</em></p>
           {% endif %}
           <p><strong>Username:</strong> {{ profile.user.username }}</p>
           <p><strong>Bio:</strong> {{ profile.bio }}</p>
@@ -95,7 +95,7 @@
           {% else %}
             <p>Instagram: Not provided</p>
           {% endif %}
-          <a href="?edit=true" class="btn page-btn">Update Profile</a>
+          <a href="?edit=true" class="btn page-btn update">Update Profile</a>
           <form method="post" action="{% url 'delete_profile' %}" style="display:inline;">
             {% csrf_token %}
             <button type="submit" class="page-btn">Delete Profile</button>

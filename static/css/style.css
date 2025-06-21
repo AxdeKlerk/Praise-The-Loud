@@ -325,11 +325,11 @@ form.d-flex input[type="text"] {
   font-size: 1.2rem;
   color: #F5F5F5;
 }
-/* Red delete button with warning color */
-.profile-page form button[type="submit"][style*="red"] {
-  color: #F50000;
-  border-color: #F50000;
-  background-color: transparent;
+.profile-page a {
+    color: #F5F5F5;
+}
+.profile-page a:hover {
+    color:#F50000;
 }
 .profile-page form {
   background-color: #0a0a0a;
@@ -357,6 +357,12 @@ form.d-flex input[type="text"] {
   margin-bottom: 1.5rem;
   border-radius: 5px;
   width: 100%;
+}
+.update a {
+    color:#F5F5F5;
+}
+.update a:hover {
+    color: #F50000;
 }
 
 /* Error Messages */
