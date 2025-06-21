@@ -170,7 +170,6 @@ form.d-flex input[type="text"] {
 .page-item input[type="email"],
 .page-item input[type="password"],
 .page-item input[type="file"],
-.page-item input[type="date"],
 .page-item select,
 .page-item textarea {
   width: 100%;
@@ -179,6 +178,16 @@ form.d-flex input[type="text"] {
   border: 1px solid #F50000 !important;
   font-size: 1.1rem;
   border-radius: 4px;
+}
+.page-item input[type="date"] {
+  width: 100%;
+  background-color: black;
+  color: #F5F5F5;
+  border: 1px solid #F50000;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
 }
 .page-item input[type="file"]::file-selector-button {
   background-color: black;
@@ -425,4 +434,10 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 1000px black inset !important;
   border: 1px solid #F50000 !important;
   transition: background-color 5000s ease-in-out 0s;
+}
+/* Calendar icon visibility */
+.page-item input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+  opacity: 1;
+  cursor: pointer;
 }
