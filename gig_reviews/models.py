@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
 
-# Create your models here. 
 class GigReview(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="gig_reviews", null=True, blank=True)
     artist = models.ForeignKey("Artist",on_delete=models.CASCADE, related_name="gig_reviews", null=True, blank=True)

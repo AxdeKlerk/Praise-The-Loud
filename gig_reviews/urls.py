@@ -5,7 +5,7 @@ from .views import home, about, artist, venue, profile, review, signup, logout, 
 from django.views.generic import TemplateView
 
 
-# Add URL patterns for other views as needed
+# App URLs
 urlpatterns = [
    path('', home, name='home'), 
    path('about/', about, name='about'), 

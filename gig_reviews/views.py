@@ -11,7 +11,6 @@ from django.views.decorators.http import require_POST
 from .forms import CustomUserCreationForm
 
 
-# Create your views here.
 def home(request):
     form = SearchForm()
     return render(request, 'gig_reviews/index.html', {'form': form})
@@ -171,7 +170,7 @@ def gallery_view(request):
 def author_profile(request, pk):
     author = get_object_or_404(User, pk=pk)
     try:
-        profile = author.profile  # Access the profile of the author
+        profile = author.profile
     except Profile.DoesNotExist:
         profile = None
     reviews = GigReview.objects.filter(author=author).order_by('-gig_date')
