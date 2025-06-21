@@ -5,6 +5,8 @@ const fanForm = document.getElementById("fanForm");
 const artistForm = document.getElementById("artistForm");
 const venueForm = document.getElementById("venueForm");
 
+console.log("JS has landed!");
+
 //----------------------------------------------//
 // 1. Confirm Delete For Profile Page
 //----------------------------------------------//
