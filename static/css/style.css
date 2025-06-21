@@ -74,6 +74,11 @@ h5 {
     background-color: black;
     border-color: #F50000;
 }
+.navbar-close-icon {
+    color: #F50000;
+    font-size: 2rem;
+    cursor: pointer;
+}
 
 /* search bar*/
 .nav-search {
