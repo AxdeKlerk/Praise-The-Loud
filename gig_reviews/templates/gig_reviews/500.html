@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load cloudinary %}
+
+{% block title %}404{% endblock %}
+
+{% block content %}
+<div class="container-fluid page-item mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12 text-center">
+      <img src="https://res.cloudinary.com/dqde3a83z/image/upload/v1748106876/red-horns_meorvq.png" class="card-img-top horns" alt="Default horns image">
+      <h1>Ooooops!</h1>
+      <p>My bad!</p>
+      <p>There appears to be bugs in the beer! Please contact us discribing the error and we will swat it as soon as possible!</p>
+      <form action="{% url 'home' %}">
+        <button type="submit" class="page-btn">Return home</button>
+      </form>
+    </div>
+  </div>
+</div>  
+{% endblock %}
