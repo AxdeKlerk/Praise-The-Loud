@@ -366,7 +366,7 @@ Tested using:
 
 ##### 9.3.4 Responsive Testing
 
-https://www.loom.com/share/072b48ab6a764abfabc4c80485969133?sid=cd73abe2-9e82-46ed-b8c0-dedd9a8b72b1
+<a href="https://www.loom.com/share/072b48ab6a764abfabc4c80485969133?sid=cd73abe2-9e82-46ed-b8c0-dedd9a8b72b1" target="_blank">Watch responsive video</a>
 
 ##### 9.3.5 JSHint
 
