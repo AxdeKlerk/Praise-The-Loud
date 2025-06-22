@@ -28,11 +28,7 @@ The wireframes were drawn using Balsamic. Both the larger screen and the mobile 
 ### 6.3 Colour Palette
 The colour palette chosen is the typical colour scheme of the rock and metal scene: red, white and black. However, I change the 'white' for a softer shade of light grey (#F5F5F5) so that it wasn’t so stark on the eyes and doesn't cause blurring and bleeding into the black or red. The red (#F50000) was chosen to reduce the brightness of the red and a dark grey (#5C5C5C) was chosen for the navigation bar so that it had prominance on the black background. 
 
-Finally, the logo was designed using gold (#D4AF37) on a black (#000000) background in fitting with, and to play on, the religious iconography taken in humour for the website.
-
-The colours chosen from [coolors.co](https://coolors.co/) were:
-
-[insert image]
+The colours chosen from using this pallet [coolors.co](https://coolors.co/)
 
 ### 6.4 Typography
 

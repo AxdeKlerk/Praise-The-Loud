@@ -5,8 +5,8 @@
     <h2>Fan Reviews:</h2>
       <div class="row g-4 justify-content-center mt-3">
         {% for review in reviews %}
-          <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
-            <div class="card h-100 w-100 chaos-card tilt">
+          <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center tilt">
+            <div class="card h-100 w-100 chaos-card">
               {% if review.image and review.image.url and "placeholder" not in review.image.url %}
                 <img src="{{ review.image.url }}" class="card-img-top" alt="Review image">
               {% else %}
