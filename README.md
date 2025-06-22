@@ -9,7 +9,7 @@
 [1.1 Project Goal](#project-goal)  
 [1.2 Target Audience](#target-audience)  
 [1.2.1 User Stories](#user-stories)  
-[1.3 Site Purpose](#site-purpose) 
+[1.3 Site Aim and Purpose](#site-aim-and-purpose) 
 </details>
 
 <details><summary>2 Planning and Development</summary> 
@@ -69,8 +69,46 @@
 [5.2 Acknowledgements](#acknowledgements)
 </details>
 
+## 1 Introduction
 
-## 2. Planning and Development
+Praise the Loud has been designed as a one-of-a-kind gig review website that allows fans to add their own personal gig reviews, to celebrate all that the home grown artisits and venues do for emerging rock and metal music. By creating a profile they have access to the gig review form to create their own reviews for gigs that they have attended. If a fan chooses not to create a profile they can still browse other fan's reviews and search by artist or venue to give them a flavour of opinion, from those who do have a profile. It also serves the artists and the venues to see what fans think of them. By actively engaging with the site (no matter how users choose do it) the idea is to promote all that is loud!
+
+### 1.1 Project Goal
+
+The ultimate goal of the project is to create a website that is visually appealing, enjoyable to engage with, light-hearted and simple to use so as not to detract from the aim and objective of the website: to discover new music and celebrate the ones you already love.
+
+### 1.2 Target Audience 
+
+The target Audience for this website are fellow rock and metal heads and fans. More specifically people who enjoy going to independent rock and metal festivals, that showcase emerging British bands, artists and venues that support them.
+
+### 1.2.1 User Stories 
+
+Below are the user stories in a consistent format of: As a **[user type]**, I want **[a feature]** so that **[a benefit or outcome]**. They have been grouped under the MoSCoW method categories: Must-Have, Should-Have and Could-have.
+
+#### Must-Have:
+
+- As a visitor, I want to view a functioning homepage so that I understand the purpose and layout of the site
+- As a new user, I want to register for an account so that I can access the gig reviews form to leave a review
+- As a registered user, I want to log in and view my profile so that I can see and manage my activity
+- As a fan, I want to write a gig review so that I can share my experiences with others and engage with the artists to celebrate their music
+-  As a fan, I want to search reviews by artist or venue so that I can find specific performances
+-  As a user, I want intuitive navigation so that I can move easily between sections of the site
+-  As a user, I want to choose what to be able to use any screen or device view to optimised my experience
+-  As a user, I want to feel confident that website I'm using aligns with the genre I love (*brand identity*)
+-  As a user, I want my username to be validated clearly during signup so that I avoid registration errors
+-  As a user, I want any errors in forms to be visibly displayed so that I can fix them before submission
+-  As a user, I want a reliable submit button so that I can confidently complete forms without failure
+  
+##### Should-Have:
+
+-
+
+
+### 1.3 Site Aim and Purpose
+
+The aim and the purpose of this website is to provide a real-time platform for fans to engage with the rock and metal  artists we love and venues that promote them. Too often fans don't have access to artists after the gig due to the crowds that gather around the artists at the end. Although the artists encourage fans to come and see them, too many fans do not get the opportuntiy to tell the artists how much their music means to them
+
+## 2 Planning and Development
 
 ### 2.1 ERD (Entity Relationship Diagram)
 The ERD was designed using [draw.io](https://app.diagrams.net/) to show the relationship between the different entities in the database.
@@ -100,6 +138,8 @@ The typography was chosen from *Google Fonts*. All headings are in 'Rock Salt' a
 ### 7.1 The Home Page
 
 ### 7.2 The About Page
+
+Although not censored, following the anarchic politics of the genre's community so that it provides a true reflection of what fans feel, any abuse will not be tolerated and removed by the administrator
 
 ### 7.3 The Register and Login Page
 
