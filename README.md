@@ -119,7 +119,7 @@ Below are the user stories in a consistent format of: As a **[user type]**, I wa
 
 ### 1.3 Site Aim and Purpose
 
-The aim and the purpose of this website is to provide a real-time platform for fans to engage with the rock and metal  artists we love and venues that promote them. Too often fans don't have access to artists after the gig due to the crowds that gather around the artists at the end. Although the artists encourage fans to come and see them, too many fans do not get the opportuntiy to tell the artists how much their music means to them
+The aim and the purpose of this website is to provide a real-time platform for fans to engage with the rock and metal  artists we love and venues that promote them. Too often fans don't have access to artists after the gig due to the crowds that gather around the artists at the end. Although the artists encourage fans to come and see them, too many fans do not get the opportuntiy to tell the artists how much their music means to them.
 
 ## 2 Planning and Development
 
@@ -174,71 +174,197 @@ Here is a representation of the *Kaban* board in use:
 
 ### 3.1 Home Page
 
+The landing page welcomes fans into a space designed with grit and soul — a tribute to the culture we love. It sets the tone for everything that follows, inviting users to explore the music, the reviews, and the voices that live beyond the stage. In equal measures our comminty enjoys, good company, good beer, good music and good humour. This has been reflected in the title.
+
+![Home Page](praise_the_loud/Images/Features/home-page.jpg)
+
 ### 3.1.1 Navbar
+
+A clean, responsive navbar floats atop every page, making it easy to navigate between gigs, artists, venues, and contact points. It reflects the project’s core aim: to let fans focus on expression, not confusion.
+
+![Navbar](praise_the_loud/Images/Features/navbar.png)
 
 ### 3.1.1.1 User Greeting 
 
+Once logged in, users are greeted by name — a simple but intentional gesture that recognises the fan behind the screen. It personalises the experience and reinforces the idea that every fan voice matters here.
+
+![User Greeting](praise_the_loud/Images/Features/greeting.png)
+
 ### 3.2 About Page 
 
-Although not censored, following the anarchic politics of the genre's community so that it provides a true reflection of what fans feel, any abuse will not be tolerated and removed by the administrator
+This page captures the project’s ethos: uncensored and unfiltered, but not without boundaries. While it gives fans space to speak freely, it holds to the genre’s code — respect in rebellion, honesty without abuse.
+
+![About Page](praise_the_loud/Images/Features/about-page.jpg)
 
 ### 3.3 Wall of Chaos 
 
+A visual wall of fan voices — unfiltered, raw, and celebratory. The Wall of Chaos turns the fanbase into the gallery, a space where your memories and moments from the gig live on, shared with the world that understands.
+
+![Wall of Chaos](praise_the_loud/Images/Features/wall-of-chaos-page.jpg)
+
 ### 3.3.1 Chaos Cards 
 
-### 3.3.1.2 Author's Page 
+Each chaos card captures a fan review in snapshot form — slanted, vibrant, and ready to be hovered over. This playful randomness reflects the joy of live music and keeps the design energetic, just like a packed-out pit.
 
-### 3.3.1.3 Fan's Profile Page 
+![Chaos Card](praise_the_loud/Images/Features/chaos-card.png)
+
+### 3.3.1.2 Author's Profile Page 
+
+Fans can click through to read more about the author of any review. These mini profiles help turn strangers into a community, giving faces to usernames and voices to passionate stories. Author's have a dedicated space that displays every gig they’ve reviewed — a personal archive of connection. This space belongs to them, echoing the project’s goal of honouring fan perspectives without distraction.
+
+![Auithor's Public Profile](praise_the_loud/Images/Features/aurthor's-public-profile.png)
+
+### 3.3.1.3 Artist's Page 
+
+Each artist has a dedicated page that gathers all fan reviews written about them. It gives bands a place to see the love in one space — uncensored, unfiltered, and fan-powered. For users, it’s a way to revisit their favourite acts or discover new ones through the eyes of fellow rock and metal heads.
+
+![Artist Page](praise_the_loud/Images/Features/artist-page.jpg)
 
 ### 3.3.1.4 Venue's Page 
 
+Venues get the spotlight too, with pages that pull together every fan review posted about them. It recognises the role of grassroots spaces in nurturing this scene and gives fans a way to celebrate the places that welcomed them.
+
+![Venue Page](praise_the_loud/Images/Features/venue-page.png)
+
 ### 3.4 Signup Page
+
+The signup process is quick, simple, and clearly validated — lowering the barrier to entry so fans can jump straight into the music and memory-sharing. No noise, no gimmicks, just easy access to the space.
+
+![Signup Page](praise_the_loud/Images/Features/sign-up-page.jpg)
 
 ### 3.4.1 Help Text and Error Messages
 
+Helpful messages guide users through the form, ensuring clarity without ever making fans feel unwelcome or wrong. This is about building confidence, without any complicated barriers.
+
+![Signup Error Messages](praise_the_loud/Images/Features/sign-up-page-error-text.jpg)
+
 ### 3.5 Login Page
+
+The login screen keeps it straightforward and sleek — just like the experience it unlocks. Once inside, fans can review, explore, and take part in the scene that brought them here.
+
+![Login Page](praise_the_loud/Images/Features/login-page.jpg)
 
 ###  3.6 Profile Page 
 
+The profile is the backstage pass — a personalised area that showcases the fan's reviews, photo, and engagement with the community. It’s designed to celebrate and give voice to the fans.
+
+![Profile Page](praise_the_loud/Images/Features/profile-page.jpg)
+
 ###  3.6.1 Update Profile Page and form
 
-### 3.6.2 Update Profile Photo  
+Fans can update their bio and details without hassle, giving them control over how they show up in the space. It keeps everything current and personal.
+
+![Update Profile Page](praise_the_loud/Images/Features/profile-update-page.jpg)
+
+### 3.6.2 Update Profile Photo 
+
+This is feature is more complicated that it needs to be and should definitely be developed in future iterations to be more simple. Unfortunately, the time and scope of this project did not allow for the necessary research into editing images without have to clear, update and then upload a new photo before the final update. Instructions on how to do this successfully are shown here:
+
+![Update Photo Instructions](praise_the_loud/Images/Features/update-photo.jpg)
 
 ### 3.6.3 Delete Profile Function 
 
+While this project celebrates fan voices, it also respects autonomy. If someone wants to leave, they can do so simply. The size of the button here is deliberate to draw the user to its action/function so as not to confuse it with the update button.
+
+![Delete Button](praise_the_loud/Images/Features/delete-profile-button.jpg)
+
+Once clicked it returns a warning asking the user if they are sure they want to delete their profile.
+
+![Delete Pop-Up for Profile](praise_the_loud/Images/Features/delete-pop-up.png)
+
+Unfortunately, time and scope have not allowed the research needed to customise the delete pop-ups. Perhaps for a future irriteration.
+
 ### 3.6.4 Manage Reviews Button and Update Form
+
+Each review can be revisited, edited, or improved. Fans are given the power to shape their own legacy, correcting the record if needed
 
 ### 3.6.4.1 Review Update and Cancel Buttons and Functionality 
 
+With clearly labelled update and cancel options, fans are never locked in. Flexibility reigns — write when the passion hits, revise when needed. The delete button gives a warning asking the user if the really intend deleting - similar to  the profile delete above.
+
+![Update, Cancel and Delete Buttons](praise_the_loud/Images/Features/update-cancel-delete.jpg)
+
+![Reviews Delete Popup](praise_the_loud/Images/Features/delete-popup-2.jpg)
+
 ### 3.7 New Gig Review Page and Form
+
+The review form is the beating heart of the site. It asks just what’s needed to share the experience: who played, where, when, and how it felt.
+
+![Gig Review Form](praise_the_loud/Images/Features/gig-review-form-page.jpg)
 
 ### 3.8 Logout Page
 
+A simple, respectful exit. When users log out, they’re thanked and sent back to the homepage.
+
+![Logout Page](praise_the_loud/Images/Features/logout-page.jpg)
+
 ### 3.9 The Contact Page and Forms 
+
+Fans, artists, and venues can all contact the owner/admin directly through the contact form. It ensures the site stays connected; fan-powered, but artist and venue friendly collaboration encouraged too.
+
+![Contact Us Page](praise_the_loud/Images/Features/contact-us-page.jpg)
+
+There are 3 seperate forms. One for the fan, one for the artists and one for the venues. The idea to have 3 seperate forms for the different groups of people shows extra care and attention to the different group's needs. It personalises and therefore encourages contact as opposed to the usual, souless, contact forms on every website. All 3 are show here.
 
 ### 3.9.1 Fan Form 
 
+Fans can leave feedback, ask questions, or reach out to the site admin. It’s part of the mission: to be heard not just by artists, but by the community itself.
+
+![Fan Contact Form](praise_the_loud/Images/Features/fan-contact-form.jpg)
+
 ### 3.9.2 Artist Form
+
+Artists have their own form to use — a way to check their listings, respond to fan praise, or just say thanks. It reinforces the two-way connection that fuels this culture.
+
+![Artist Contact Form](praise_the_loud/Images/Features/artisit-contact-form.jpg)
 
 ### 3.9.3 Venue Form
 
+Venues can contact the site too, ensuring accuracy, building bridges, and staying in touch with the fans who filled their bars.
+
+![Venue Contact Form](praise_the_loud/Images/Features/venue-contact-form.jpg)
+
 ### 3.10 The Search Bar and Functionality
+
+The search bar lets users look up reviews by artist or venue, streamlining the path to discovery. It supports the site's core goal: helping fans relive what they loved, or discover something new.
 
 ### 3.10.1 Search Results
 
+Search results are clearly presented with the artist or venue at the top, followed by reviews. It’s all about clarity and accessibility.
+
 ### 3.10.2 Artist Results 
+
+Artist results pages showcase all reviews associated with that act. It honours their place in the scene and creates a central hub for fan voices.
+
+![Search Results by Artist](praise_the_loud/Images/Features/search-results-artist.jpg)
 
 ### 3.10.3 Venue Results
 
+Venues receive similar treatment, collecting all reviews in one place. It reminds us that these spaces are more than rooms, they’re part of the story.
+
+![Search Result by Venue](praise_the_loud/Images/Features/search-results-venue.jpg)
+
 ### 3.10.4 No Results
 
+If nothing is found, fans are gently told, providing the option to try again
+
+![No Result Found Message](praise_the_loud/Images/Features/search-no-result.jpg)
+
 ### 3.11 Footer
+
+The footer is simply the copyright for the site. No additional promotion, sponsorship, or advertising. The space is not meant for anybody other than the rock and mwetal community who support emerging artists. It harnesses the 'outsider' ethos, spirit and character of the community.
+
+![Footer](praise_the_loud/Images/Features/footer.jpg)
 
 ## 4 Debugging, Testing, Deployment and Future Developments
 
 ### 4.1 Debugging
 
+Please refer to the debugging documentation for detailed descritions of all bugs found, fixed and learned from. It can be found here: [DEBUGGING.md](DEBUGGING.md)
+
 ### 4.2 Testing
+
+Please refer to the testing documentation for detailed descritions of the tests completed found here: [TESTING.md](TESTING.md)
 
 ### 4.3 Deployment
 

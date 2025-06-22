@@ -1,11 +1,13 @@
-### 9. Testing
-All functionality was tested manually by walking through user stories. Testing was carried out in Google Chrome and Firefox across desktop and mobile screen sizes. DevTools were used to check responsiveness and console errors. Forms and dynamic elements were tested for validation, correct behaviour, and feedback.
+## 9. Testing
+All functionality was tested manually by working through user stories. Testing was carried out in Google Chrome, Edge, Brave and Firefox across desktop and mobile screen sizes. DevTools were used to check responsiveness and console errors. Forms and dynamic elements were tested for validation, correct behaviour, and feedback.
 
-#### 9.1 User Stories
+### 9.1 User Stories
 
-##### 9.1.1 What Was Tested
+Different user stories, as listed in the README.md 1.2.1, have been combined into new stories that bring together the different, but similar, elements for testing purposes.
 
-**9.1.1.1** This user story covers the full flow of registration, profile creation, and social link input.
+#### 9.1.1 What Was Tested
+
+This user story covers the full flow of registration, profile creation, and social link input.
 
 As a **fan**, I can **register an account** so that I can **create a profile**.
 
@@ -37,34 +39,31 @@ As a **fan**, I can **register an account** so that I can **create a profile**.
 - [x] Added input fields for Facebook and Instagram links
 
 **Notes**
-Initial Cloudinary image uploads failed due to incorrect environment variable setup. This was resolved by configuring *'env.py'* and using *'CloudinaryField'* in the model. Also ran into an issue where the JS for delete confirmation didn't work due to broken static file paths — this was fixed by correcting the path with *'{% static %}'* and ensuring static files were served via *'urls.py'*.
+Initial *Cloudinary* image uploads failed due to incorrect environment variable setup. This was resolved by configuring *'env.py'* and using *'CloudinaryField'* in the model. Also ran into an issue where the *JS* for delete confirmation didn't work due to broken static file paths — this was fixed by correcting the path with *'{% static %}'* and ensuring static files were served via *'urls.py'*.
 
-**9.1.1.2** As a **fan**, I can **view consistent and clearly styled password instructions** so that **I feel confident when setting up my account and know exactly what is required**.
+#### 9.1.1.2 What Was Tested
+
+As a **fan**, I can **view consistent and clearly styled password instructions** so that **I feel confident when setting up my account and know exactly what is required**.
 
 **Acceptance Criteria 5: Password help text styling**
 
-- [x] The password help text appears using Django’s default validation messages
-- [x] Bullet points are removed using CSS without modifying Django’s logic
+- [x] The password help text appears using *Django*’s default validation messages
+- [x] Bullet points are removed using *CSS* without modifying *Django*’s logic
 - [x] The spacing between the password input and help text matches the spacing on other fields
 - [x] Help text is styled to match the form's colour scheme and font
 - [x] No unwanted margin or list styling appears in the final rendered form
 - [x] All password validation rules still apply on form submission
 
-Tasks Completed
+**Tasks Completed**
 
-- [x] Reverted from using CustomUserCreationForm to Django’s built-in UserCreationForm
-- [x] Applied CSS to style and space .helptext and remove list bullets
+- [x] Reverted from using *CustomUserCreationForm* to *Django*’s built-in *UserCreationForm*
+- [x] Applied *CSS* to style and space .helptext and remove list bullets
 - [x] Tested signup page to ensure visual consistency and validator functionality remained intact
 
 **Notes**
-Originally attempted to override the password help text using a custom form and <p> tags for cleaner output. This was rolled back to preserve Django’s default behavior and reduce complexity, relying instead on CSS for full visual control.
+Originally attempted to override the password help text using a custom form and *p* tags for cleaner output. This was rolled back to preserve *Django*’s default behavior and reduce complexity, relying instead on *CSS* for full visual control.
 
-
-
-**Screenshots**
-
-
-##### 9.1.2 What Was Tested
+#### 9.1.2 What Was Tested
 
 This user story covers the ability for fans to edit or delete their profile, including image updates and confirmation before deletion.
 
@@ -81,7 +80,7 @@ As a **fan**, I want to **be able to update or delete my profile** so that **I c
 
 - [x] Existing image is displayed on the update form  
 - [x] Selecting a new image replaces the old one after submission  
-- [x] Updated image is stored in Cloudinary  
+- [x] Updated image is stored in *Cloudinary*  
 
 **Acceptance Criteria 3: Update form shows existing profile data and changes are saved and displayed correctly**
 
@@ -92,24 +91,22 @@ As a **fan**, I want to **be able to update or delete my profile** so that **I c
 **Acceptance Criteria 4: Form deletion shows a pop-up warning before confirming deletion**
 
 - [x] Delete button appears alongside the update button  
-- [x] Clicking the delete button triggers a JS confirmation popup  
+- [x] Clicking the delete button triggers a *JS* confirmation popup  
 - [x] Profile is only deleted if user confirms  
 - [x] User is redirected to homepage after deletion  
 
 **Tasks Completed**
 
 - [x] Created update and delete buttons in profile view  
-- [x] Enabled image update functionality with Cloudinary  
+- [x] Enabled image update functionality with *Cloudinary*  
 - [x] Added confirmation message after update  
-- [x] Implemented JavaScript delete confirmation popup  
+- [x] Implemented *JavaScript* delete confirmation popup  
 
 **Notes**
 
 The delete confirmation popup initially failed to appear after static files were moved to a global directory. This was resolved by fixing the path to *'scripts.js'* in *'base.html'* using *'{% static %}'* and confirming the file was being loaded by checking for a *'console.log'* message in the browser console.
 
-**Screenshots**
-
-**9.1.3 What Was Tested**
+#### 9.1.3 What Was Tested
 
 This user story covers the fan login process, viewing an existing profile, and accessing the review form through the navigation bar.
 
@@ -144,9 +141,7 @@ As a **fan**, I can **login** so that I can **view my profile and leave a review
 
 No major issues were encountered during testing. The login, profile access, and review navigation worked as expected. Session persistence and conditional display of nav links based on login state were verified through manual testing.
 
-**Screenshots**
-
-**9.1.4 What Was Tested**
+#### 9.1.4 What Was Tested
 
 This user story covers the fan's ability to log in, navigate to the review form, write a review for an artist, and see the review immediately appear on their profile page after submission.
 
@@ -181,9 +176,7 @@ As a **fan**, I can **log in** so that **I can leave a review for the artist**.
 
 The review form initially rejected valid dates with a *“Enter a valid date”* error because the input format was incorrectly set. This was corrected to to match the format sent by the browser's calendar picker. After this fix, the form submitted successfully and the review appeared immediately on the profile page.
 
-**Screenshots**
-
-**9.1.5 What Was Tested**
+#### 9.1.5 What Was Tested
 
 This user story covers the fan’s ability to view reviews associated with an artist, displayed directly beneath the artist's bio after selecting them from the search bar.
 
@@ -219,14 +212,30 @@ The reviews were initially not appearing under the artist bio due to incorrect t
 
 #### 9.2 Manual Testing
 
-#### 9.2.1 User Experience Testing
+For the testing of the website, I followed the exact same process I did for project 1 ans 2, as it seemed to be the most robust way of testing my project. I intend to use this same process for all my projects, both for the course material as well as any future work I undertake - albeit with additional practices as I learn more languages, tools and practices.
 
-#### 9.2.2 What Was Tested
+As I went along, I tested the website on my phone and laptop using both *Google* and *Brave* (a *Google* based browser), as well as testing it in *MS Edge* on my work laptop. I tested the site for responsiveness continually in *Google* and *Brave* and made the necessary changes to my *style.css* file using media queries to improve performance. I tested it in *Ms Edge* very occasionally, as it is not a browser I like using, but did so to make sure there were no errors that did not show up in *Google* or *Brave*. Other than my own testing two separate methods were also used for testing purposes: informal and formal testing.
 
-For my first round of user experience testing, I conducted a usability test with a friend who had no prior experience with the site. The test was conducted at Call of the Wild Festival (COTW). I asked four friends to set up fake profiles and submitted reviews on the app. I asked them to use it naturally in a live music setting and report anything they found confusing, broken, difficult and some general feedback.
+#### 9.2.1 Informal manual (live)
+
+Testing was done through friends and family who use different OS and devices, for feedback. In particular my girlfriend tested the site on *Firefox* on her laptop and on her mobile (which dates back to a pre-2018 model). 
+
+My parents tested the site on their *Google* tablet and *Amazon Kindle*. 4 close friends tested the site on the different *Apple* devices (2 phones and 1 laptop) and a work colleague ran it through *MS Edge* as he wanted to keep up to date with the changes as I went along. My work colleague was very polite, but he did send me screen shots when he had questions about the development of the website.
+
+This was incredibly useful as it gave me a full understanding of each user experience. As this core group is very close to me their feedback was honest and to the point, which was both frustrating and extremely valuable.
+
+Formal (automated) testing of the website was validated using the W3C Validation tools.
+
+#### 9.2.1 What Was Tested - User Experience at COTW
+
+Tests were conducted at the *Call of the Wild Festival (COTW)*, at *Lincoln Showground*s between Friday the 30th of May to Sunday the 01st of June. I asked Five friends to set up fake profiles and submitted reviews on the app. I asked them to use it naturally in a live music setting and report anything they found confusing, broken, difficult and to give some general feedback.
+
+Testing Devices used:
+- Mobiles (iPhone 12, iPad, Galaxy S20, Motorola Edge, iPhone XR)
+- OS (Windows, Chrome and Safari)
 
 - [x] Tested the app in a live music setting at Call of the Wild Festival
-- [x] Collected detailed feedback from Paul, Dave, and Julie
+- [x] Collected detailed feedback from Paul, Paul B., Dave, Steph and Julie
 - [x] Reviewed screenshots from Julie to identify UI/UX issues
 - [x] Compiled feedback into actionable criteria for future testing
 
@@ -238,9 +247,13 @@ Dave had issues uploading photos, receiving an error that there wasn’t enough 
 
 Julie submitted a review but said the submit button behaved oddly, and her uploaded photo also displayed strangely. She confirmed the text input cut her off before she could finish her thought and suggested there may be a character limit issue. When asked, she said she preferred to avoid “waffle” but still needed room to round off the review properly. She also sent screenshots of the odd behavior for further analysis.
 
+Steph chose not to setup a profile and decided that she would have a look later when the others had created their reviews to see what it all looked like. She never did give any feedback.
+
+Paul B. only created a profile after the festival and submitted one review. His only feedback was; "you still have some work to do!".
+
 **Profile Setup**
 
-- [x] Users should be informed if their chosen username is invalid (e.g. contains spaces)
+- [x] Users should be informed if their chosen username is invalid (clear error message)
 - [x] Profile creation page should provide helpful error feedback
 - [x] Users can upload a profile image
 
@@ -255,27 +268,26 @@ Julie submitted a review but said the submit button behaved oddly, and her uploa
 
 **Actional Criteria**
 
-**Profile Setup**
-- [x] Add validation feedback for username errors (e.g. if spaces are included)
-- [x] Ensure the profile creation page clearly highlights and explains any input errors
+- Profile Setup
+  - [x] Add validation feedback for username errors (e.g. if spaces are included)
+  - [x] Ensure the profile creation page clearly highlights and explains any input errors
 
-**Review Submission**
+- Review Submission
 
-- [x] Increase character limit slightly to allow more complete thoughts
-- [x] Ensure uploaded images are automatically resized or scaled down for mobile viewing
-- [x] Investigate and fix memory-related issues with photo uploads (possibly related to file size or client-side limitations)
-- [x] Improve feedback or retry logic when review submission fails or button misbehaves
+  - [x] Increase character limit slightly to allow more complete thoughts
+  - [x] Ensure uploaded images are automatically resized or scaled down for mobile viewing
+  - [x] Investigate and fix memory-related issues with photo uploads (possibly related to file size or client-side limitations)
+  - [x] Improve feedback or retry logic when review submission fails or button misbehaves
 
 These were then turned into actionable criteria for future testing as *'Github Issues'* and *'Issues'* in the project repository.
-  
-Tested using:
-- Mobiles (iPhone 12, iPad, Galaxy S20, Motorola Edge, iPhone XR)
-- OS (Windows, Firefox and Safari)
 
+#### 9.2.2 Automated Testing
 
-#### 9.3 Automated Testing
+Formal (automated) testing of the website was validated using the *W3C Validation* tools and *Lighthouse*.
 
 #### 9.3.1 LightHouse
+
+Below are the performance, Accessibility, Best Priocatice and SEO results for each page. For the most part Accessibility and SEO scored very well and remained in the 'green'. However, there were mixed resilts for Performance and Best Practices with both going from 'green' to 'yellow'. Most of the issues were due to image size and *Bootstrap* performance and rendering, which beyond the capability of this developer at this stage. Having said that, had there been more time all images would have been compressed. It is noted that with a website of this sort, where there are a lot of photos as well as logos, their size is paramount to the overall performance and best practices of the site.
 
 ##### 9.3.1.1 Home Page
 
@@ -313,13 +325,45 @@ Tested using:
 
 ![Gig Review Form Page](praise_the_loud/Images/Testing/Lighthouse/lh-gig-review-form.png)
 
+##### 9.3.1.9 Author's Profile Page
+
+The bearded_clam's public profile page was used here.
+
+![Author's Profile Page](praise_the_loud/Images/Testing/Lighthouse/lh-author-profile.png)
+
+##### 9.3.1.10 Artist Profile Page
+
+DeadFire's profile page was used here.
+
+![Artist Profile Page](praise_the_loud/Images/Testing/Lighthouse/lh-artist-page.png)
+
+##### 9.3.1.11 Venue Page
+
+![Venue Profile Page](praise_the_loud/Images/Testing/Lighthouse/lh-venue-page.png)
+
+##### 9.3.1.11 Search Result Page
+
+Both the Artist and Venue search results were tested with the letter 'o'.
+
+##### 9.3.1.11.1 Artist Search Results
+
+![Artist Search Results](praise_the_loud/Images/Testing/Lighthouse/lh-artist-search-results.png)
+
+##### 9.3.1.11.2 Venue Search Results
+
+![Venue Search Results](praise_the_loud/Images/Testing/Lighthouse/lh-venue-search-results.png)
+
 ##### 9.3.2 CSS Validation
+
+*CSS* validation was completed using *W3C CSS Validator**. The warnings shown below are the 'forces' that were used to minipulate browser defaults.
 
 ![CSS Validation](praise_the_loud/Images/Testing/Validation/css-validation.png)
 
 ![CSS Validation Warning](praise_the_loud/Images/Testing/Validation/css-validation-warnings.png)
 
 ##### 9.3.3 HTML Validation
+
+Below are the results for each of the *HTML* pages in the website and their corrresponding results using *W3C Markup Validator*.
 
 ##### 9.3.3.1 Home Page
 
@@ -360,6 +404,34 @@ Tested using:
 ##### 9.3.3.9 Logout Page
 
 ![Logout](praise_the_loud/Images/Testing/Validation/logout-validation.png)
+
+##### 9.3.3.10 Author's Profile Page
+
+The bearded_clam's public profile page was used here.
+
+![Author's Profile Page](praise_the_loud/Images/Testing/Validation/author-profile-page-validation.png)
+
+##### 9.3.3.13 Artist Profile Page
+
+DeadFire's profile page was used here.
+
+![Artist Profile Page](praise_the_loud/Images/Testing/Validation/artist-page-validation.png)
+
+##### 9.3.1.11 Venue Page
+
+![Venue Profile Page](praise_the_loud/Images/Testing/Validation/venue-page-validation.png)
+
+##### 9.3.1.11 Search Result Page
+
+Both the Artist and Venue search results were tested with the letter 'o'.
+
+##### 9.3.1.11.1 Artist Search Results
+
+![Artist Search Results](praise_the_loud/Images/Testing/Validation/artist-search-results-validation.png)
+
+##### 9.3.1.11.2 Venue Search Results
+
+![Venue Search Results](praise_the_loud/Images/Testing/Validation/venue-search-results-validation.png)
 
 ##### 9.3.4 Responsive Testing
 
