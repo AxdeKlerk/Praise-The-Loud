@@ -76,7 +76,17 @@ This section outlines the full process for deploying this project from GitHub to
 - Your terminal prompt will change to show the environment is active
 
 ### 10.4 Install Project Dependencies
-- Use the requirements.txt file to install all necessary *Python* packages
+- Use the requirements.txt file to install all necessary *Python* packages:
+
+  1. *Django* – Core web framework for building the project
+  2. *Gunicorn* – WSGI HTTP server for running *Django* on *Heroku*
+  3. *dj-database-url* – Parses the *Heroku* database URL into *Django* database settings
+  4. *psycopg2-binary* – *PostgreSQL* database adapter for *Python*
+  5. *whitenoise* – Serves static files efficiently in production
+  6. *cloudinary* – Handles image uploads and storage
+  7. *django-cloudinary-storage* – Integrates *Cloudinary* with *Django*'s media and static file handling
+  8. *django-allauth* – (Optional) For user authentication, if used
+
 - If this file doesn’t exist yet, install your packages manually and then generate the file
 
 ### 10.5 Prepare the Project for Heroku

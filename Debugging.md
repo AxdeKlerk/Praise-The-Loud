@@ -1,32 +1,32 @@
 
 ### 8. Debugging
 
-Below are the various bugs that I encountered along the way and how I fixed them. In ever first instance, I would consult with *ChatGPT* to see if it could help me fix the bug. As it is now becoming more common place to use AI for coding in the industry, I decided that it would be good practice to use it as a tool to help me debug. One thing I did not do was to dump huge copies of code into *ChatGPT*, but rather asked it questions like *what does this mean?* and *why does this do this?* to enhance my understanding. Fair to say that I used *ChatGPT* as a tutor/study buddy.
+Below are the various bugs that I encountered along the way and how I fixed them. In every first instance, I would consult with *ChatGPT* to see if it could help me fix the bug. As it is now becoming more common place to use AI for coding in the industry, I decided that it would be good practice to use it as a tool to help me debug. One thing I did not do was to dump huge copies of code into *ChatGPT*, but rather asked it questions like *what does this mean?* and *why does this do this?* to enhance my understanding. Fair to say that I used *ChatGPT* as a tutor and study buddy, rather than a co-author.
 
 For clarity and ease of use, I have broken the bugs down into the following categories:
 
 
--  **8.1 [Syntax Errors](#81-syntax-errors)**
+[8.1 Syntax Errors](#81-syntax-errors)
 
--  **8.2 [Logic Errors](#82-logic-errors)**
+[8.2 Logic Errors](#82-logic-errors)
 
--  **8.3 [Runtime Errors](#83-runtime-errors)**
+[8.3 Runtime Errors](#83-runtime-errors)
 
--  **8.4 [Semantic Errors](#84-semantic-errors)**
+[8.4 Semantic Errors](#84-semantic-errors)
 
--  **8.5 [Design Errors](#85-design-errors)**
+[8.5 Design Errors](#85-design-errors)
 
--  **8.6 [Validation Errors](#86-validation-errors)**
+[8.6 Validation Errors](#86-validation-errors)
 
--  **8.7 [Other Bugs](#87-other-bugs)**
+[8.7 Other Bugs](#87-other-bugs)
   
-- **8.8 [Validation Checking Errors](#87-validation-testing-errors)**
+[8.8 Validation Checking Errors](#87-validation-testing-errors)
 
--  **8.9 [Bugs Unresolved](#88-bugs-unresolved)**
+[8.9 Bugs Unresolved](#88-bugs-unresolved)
 
   ### 8.1 Syntax Errors
 
-  -  **Bug:** Incorrect spelling of module name error occured when I was importing the first module in the project. The module name was misspelled in the import statement. What had happened was that I had pluralised the app name (gig_reviews) and then created the class name (GigReview) using the singular form of the model name. This caused the error when trying to *migrate* the module to the database.
+  -  **Bug:** Incorrect spelling of *module name error* occured when I was importing the first module in the project. The module name was misspelled in the import statement. What had happened was that I had pluralised the app name *(gig_reviews)* and then created the class name *(GigReview)* using the singular form of the model name. This caused the error when trying to *migrate* the modal to the database.
 
 -  **Fix:** Corrected the spelling of the class module name in app.py, admin.py and urls.py to correspond with the app pluralisation and the class singular.
 
