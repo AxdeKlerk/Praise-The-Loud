@@ -2,13 +2,12 @@
 {% load static %}
 {% load cloudinary %}
 
-{% block title %}{{ venue.name }}'s Profile{% endblock %}
+{% block title %}{{ venue.name }}{% endblock %}
 
 {% block content %}
 <div class="container search-item py-4">
   <div class="row mx-auto justify-content-center">
     <div class="col-12 text-center">
-      <h1>{{ venue.name }}'s Public Profile</h1>
       {% if venue.logo %}
         <img src="{{ venue.logo.url }}" alt="{{ venue.name }}'s logo" class="img-fluid mb-3">
       {% else %}
