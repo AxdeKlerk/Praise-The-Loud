@@ -78,16 +78,20 @@ The ERD was designed using [draw.io](https://app.diagrams.net/) to show the rela
 ![image](https://github.com/user-attachments/assets/1af79206-59d2-4762-8de9-dcd21d638399)
 
 ### 2.2 Wireframes
-The wireframes were drawn using Balsamic. Both the larger screen and the mobile version were created at the same time. This allowed for a greater design initiative which took into account the overall layout of the website and how I wanted it to look on both screens. The wireframes were used throughout the design of the website and went through various iterations until I was happy with the final product.
+The wireframes were drawn using Balsamic. Both the larger screen and the mobile version were created at the same time. This allowed for a greater design initiative which took into account the overall layout of the website and how I wanted it to look on both screens. The wireframes were used throughout the design of the website and went through various iterations until the final product was decided upon.
  
-![image](https://github.com/user-attachments/assets/21eeea6a-e21f-4bbb-a1ca-bf72876d2029)
+![Wireframes for both Mobile and Larger Screens](praise_the_loud/Images/wireframes-v2.png)
 
 ### 2.3 Colour Palette
 The colour palette chosen is the typical colour scheme of the rock and metal scene: red, white and black. However, I change the 'white' for a softer shade of light grey (#F5F5F5) so that it wasn’t so stark on the eyes and doesn't cause blurring and bleeding into the black or red. The red (#F50000) was chosen to reduce the brightness of the red and a dark grey (#5C5C5C) was chosen for the navigation bar so that it had prominance on the black background. 
 
-The colours chosen from using this pallet [coolors.co](https://coolors.co/)
+The colours chosen from using this pallet from [coolors.co](https://coolors.co/) ![colour-pallet](praise_the_loud/Images/colour-pallet.png) 
 
 ### 2.4 Typography
+
+The typography was chosen from *Google Fonts*. All headings are in 'Rock Salt' and the remainder of the text in the both uses 'Comic Neue', with sans-serif as the fall back. The desired effect was to mirror a blackboard style handwriting to give the idea that everything is handwritten and personal, echoing the spirit of the site as seen here in the About page snip:
+
+![About Page Snip](praise_the_loud/Images/about-page-snip.jpg)
 
 ### 2.5 Agile Methodologies
 
