@@ -244,25 +244,29 @@ Although not censored, following the anarchic politics of the genre's community 
 
 This section outlines the full process for deploying this project from *GitHub* to your local machine using *VS Code*, and then hosting it live on *Heroku*.
 
-### 4.3.1 Create a GitHub Repository
+#### Create a GitHub Repository
+
 - Go to *GitHub* and click the "+" icon to create a new repository
 - Name the repository and optionally add a description
 - Choose "Public" or "Private"
 - Do not initialize with a README, .gitignore, or license
 - Click "Create repository"
 
-### 4.3.2 Clone the Repository to VS Code
+#### Clone the Repository to VS Code
+
 - Open *VS Code* and its terminal
 - Navigate to the folder where you want your project
 - Copy the repository's URL from *GitHub* and use the "Clone Git Repository" option in *VS Code*
 - Open the project folder in *VS Code*
 - 
-### 4.3.3 Create and Activate a Virtual Environment
+#### Create and Activate a Virtual Environment
+
 - In your terminal, create a virtual environment inside your project folder
 - Activate the environment depending on your system (*Windows*, *Mac*, or *Linux*)
 - Your terminal prompt will change to show the environment is active
 
-### 4.3.4 Install Project Dependencies
+#### Install Project Dependencies
+
 - Use the requirements.txt file to install all necessary *Python* packages:
 
     -  *Django* – Core web framework for building the project
@@ -276,26 +280,31 @@ This section outlines the full process for deploying this project from *GitHub* 
 
 - If this file doesn’t exist yet, install your packages manually and then generate the file
 
-### 4.3.5 Prepare the Project for Heroku
+#### Prepare the Project for Heroku
+
 - Create a "Procfile" at the root of your project with the necessary *Heroku* command to run the app
 - Ensure "gunicorn", "dj-database-url", and "psycopg2-binary" are installed
 - Update your "requirements.txt" file with any new packages
 - Commit all changes to *Git*
 
-### 4.3.6 Set Up a Heroku Account and CLI
+#### Set Up a Heroku Account and CLI
+
 - Create an account at *Heroku.com*
 - Download and install the *Heroku* CLI for your operating system
 - Use the CLI to log into your *Heroku* account
 
-### 4.3.7 Create a Heroku App
+#### Create a Heroku App
+
 - Use the *Heroku* CLI to create a new app with a unique name
 - *Heroku* will generate a remote *Git* URL for your project
 
-### 4.3.8 Push Your Project to Heroku
+#### Push Your Project to Heroku
+
 - Add *Heroku* as a *Git* remote if it wasn’t automatically added
 - Push your local codebase to *Heroku*’s remote repository
 
-### 4.3.9 Configure Environment Variables on Heroku
+#### Configure Environment Variables on Heroku
+
 - Go to your *Heroku* Dashboard and open your app
 - Under "Settings", click "Reveal Config Vars"
 - Add the following variables:
@@ -304,15 +313,16 @@ This section outlines the full process for deploying this project from *GitHub* 
     - "ALLOWED_HOSTS" = your *Heroku* app's URL
     - Add any additional variables like database URLs, *Cloudinary* settings, or email credentials as needed
 
-### 4.3.10 Final Project Setup on Heroku
+#### Final Project Setup on Heroku
+
 - Run your database migrations from the *Heroku* CLI
 - Create a "superuser" account to access the *Django* admin panel
 - "Collectstatic" files if not done automatically
 
-### 4.3.11 Open Your Live Site
+#### Open Your Live Site
+
 - Use the *Heroku* CLI or browser to open your app
 - Your project is now live and hosted at "your-app-name.herokuapp.com"
-
 
 ### 4.4 Future Devlopments
 
