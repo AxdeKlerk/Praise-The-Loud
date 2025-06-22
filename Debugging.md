@@ -5,7 +5,6 @@ Below are the various bugs that I encountered along the way and how I fixed them
 
 For clarity and ease of use, I have broken the bugs down into the following categories:
 
-
 [8.1 Syntax Errors](#81-syntax-errors)
 
 [8.2 Logic Errors](#82-logic-errors)

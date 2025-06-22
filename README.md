@@ -2,36 +2,96 @@
 
 [insert responsive images] 
 
-## 1. Introduction
+# Table of Contents
 
-## 2. Aim and Purpose
+<details><summary>1 Introduction</summary>
 
-## 3. Target Audience
+[1.1 Project Goal](#project-goal)  
+[1.2 Target Audience](#target-audience)  
+[1.2.1 User Stories](#user-stories)  
+[1.3 Site Purpose](#site-purpose) 
+</details>
 
-## 4. User Stories
+<details><summary>2 Planning and Development</summary> 
 
-## 5. Goals
+[2.1 Entity Relationship Diagram](#erd)  
+[2.2 Wireframes](#wireframes)  
+[2.3 Colour Palette]()  
+[2.4 Typography]()  
+[2.5 Agile Metodologies]()
+</details>
 
-## 6. Planning and Development
+<details><summary>3 Features</summary>
 
-### 6.1 ERD (Entity Relationship Diagram)
+[3.1 Home Page](#home-page)  
+[3.1.1 Navbar](#navbar)  
+[3.1.1.1 User Greeting](#user-greeting)  
+[3.2 About Page](#about-page)  
+[3.3 Wall of Chaos](#wall-of-chaos)  
+[3.3.1 Chaos Cards](#chaos-cards)  
+[3.3.1.2 Author's Page](#author's-page)  
+[3.3.1.3 Fan's Profile Page](#fan's-profile-page)  
+[3.3.1.4 Venue's Page](#venue's-page)  
+[3.4 Signup Page](#signup-page)  
+[3.4.1 Help Text and Error Messages](#help-text-and-error-messages)  
+[3.5 Login Page](#login-page)  
+[3.6 Profile Page](#profile-page)  
+[3.6.1 Update Profile Page and form](#update-profile-and-form)  
+[3.6.2 Update Profile Photo](#update-profile-photo)  
+[3.6.3 Delete Profile Function](#delete-profile-function)  
+[3.6.4 Manage Reviews Button and Update Form](#manage-reviews-button-and-update-form)  
+[3.6.4.1 Review Update and Cancel Buttons and Functionality](#review-update-and-cancel-buttons-and-functionality)  
+[3.7 New Gig Review Page and Form](#new-gig-review-page-and-form)  
+[3.8 Logout Page](#logout-page)  
+[3.9 The Contact Page and Forms](#the-contact-page-and-forms)  
+[3.9.1 Fan Form](#fan-form)  
+[3.9.2 Artist Form](#artist-form)  
+[3.9.3 Venue Form](#venue-form)  
+[3.10 The Search Bar and Functionality](#the-search-bar-and-functionality)  
+[3.10.1 Search Results](#search-results)  
+[3.10.2 Artist Results](#artist-results)  
+[3.10.3 Venue Results](#venue-results)  
+[3.10.4 No Results](#no-results)
+</details>
+
+<details>
+<summary>4 Debugging, Testing, Deployment and Future Developments</summary>
+
+[4.1 Debugging](#debugging)  
+[4.2 Testing](#testing)  
+[4.3 Deployment](#deployment)  
+[4.4 Future Devlopments](#future-developments)
+</details>
+
+<details><summary>5 Credits and Acknowledgements</summary>
+
+[5.1 Credits](#credits)  
+[5.2 Acknowledgements](#acknowledgements)
+</details>
+
+
+## 2. Planning and Development
+
+### 2.1 ERD (Entity Relationship Diagram)
 The ERD was designed using [draw.io](https://app.diagrams.net/) to show the relationship between the different entities in the database.
 
 ![image](https://github.com/user-attachments/assets/1af79206-59d2-4762-8de9-dcd21d638399)
 
-### 6.2 Wireframes
+### 2.2 Wireframes
 The wireframes were drawn using Balsamic. Both the larger screen and the mobile version were created at the same time. This allowed for a greater design initiative which took into account the overall layout of the website and how I wanted it to look on both screens. The wireframes were used throughout the design of the website and went through various iterations until I was happy with the final product.
  
 ![image](https://github.com/user-attachments/assets/21eeea6a-e21f-4bbb-a1ca-bf72876d2029)
 
-### 6.3 Colour Palette
+### 2.3 Colour Palette
 The colour palette chosen is the typical colour scheme of the rock and metal scene: red, white and black. However, I change the 'white' for a softer shade of light grey (#F5F5F5) so that it wasn’t so stark on the eyes and doesn't cause blurring and bleeding into the black or red. The red (#F50000) was chosen to reduce the brightness of the red and a dark grey (#5C5C5C) was chosen for the navigation bar so that it had prominance on the black background. 
 
 The colours chosen from using this pallet [coolors.co](https://coolors.co/)
 
-### 6.4 Typography
+### 2.4 Typography
 
-## 7. Features
+### 2.5 Agile Methodologies
+
+## 3. Features
 
 ### 7.1 The Home Page
 
@@ -47,7 +107,7 @@ The colours chosen from using this pallet [coolors.co](https://coolors.co/)
 
 ### 7.7 The Footer
 
-#### 7.7.1 The Contact Modal
+#### 7.7.1 The Contact
 
 ## 8. Debugging
 
@@ -78,14 +138,14 @@ This section outlines the full process for deploying this project from GitHub to
 ### 10.4 Install Project Dependencies
 - Use the requirements.txt file to install all necessary *Python* packages:
 
-  1. *Django* – Core web framework for building the project
-  2. *Gunicorn* – WSGI HTTP server for running *Django* on *Heroku*
-  3. *dj-database-url* – Parses the *Heroku* database URL into *Django* database settings
-  4. *psycopg2-binary* – *PostgreSQL* database adapter for *Python*
-  5. *whitenoise* – Serves static files efficiently in production
-  6. *cloudinary* – Handles image uploads and storage
-  7. *django-cloudinary-storage* – Integrates *Cloudinary* with *Django*'s media and static file handling
-  8. *django-allauth* – (Optional) For user authentication, if used
+    -  *Django* – Core web framework for building the project
+    -  *Gunicorn* – WSGI HTTP server for running *Django* on *Heroku*
+    - *dj-database-url* – Parses the *Heroku* database URL into *Django* database settings
+    -  *psycopg2-binary* – *PostgreSQL* database adapter for *Python*
+    -  *whitenoise* – Serves static files efficiently in production
+    -  *cloudinary* – Handles image uploads and storage
+    -  *django-cloudinary-storage* – Integrates *Cloudinary* with *Django*'s media and static file handling
+    - *django-allauth* – (Optional) For user authentication, if used
 
 - If this file doesn’t exist yet, install your packages manually and then generate the file
 
@@ -126,7 +186,7 @@ This section outlines the full process for deploying this project from GitHub to
 - Use the *Heroku* CLI or browser to open your app
 - Your project is now live and hosted at "your-app-name.herokuapp.com"
 
-## 11. Furute Development
+## 11. Future Development
 
 ## 12. Credits
 
