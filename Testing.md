@@ -247,18 +247,16 @@ Julie submitted a review but said the submit button behaved oddly, and her uploa
 **Review Submission**
 
 - [x] Review form should accept and store text input
-- [ ] Review form should provide a clear character limit notice (e.g. "Max 1000 characters")
 - [x] Review form should allow enough text to feel complete without being too long
 - [x] Image uploads should scale correctly for mobile
 - [x] Users should be able to select a band from a list
-- [ ] Band list should be comprehensive or allow suggestions. All known bands (like “Lesbian Bed Death” and “Brave Revival”) are included in the dropdown list
 - [x] Review submission button should be consistently responsive
 - [x] Image upload should work smoothly without memory issues
 
 **Actional Criteria**
 
 **Profile Setup**
-- [ ] Add validation feedback for username errors (e.g. if spaces are included)
+- [x] Add validation feedback for username errors (e.g. if spaces are included)
 - [x] Ensure the profile creation page clearly highlights and explains any input errors
 
 **Review Submission**
@@ -267,7 +265,6 @@ Julie submitted a review but said the submit button behaved oddly, and her uploa
 - [x] Ensure uploaded images are automatically resized or scaled down for mobile viewing
 - [x] Investigate and fix memory-related issues with photo uploads (possibly related to file size or client-side limitations)
 - [x] Improve feedback or retry logic when review submission fails or button misbehaves
-- [ ] Add a feature or form to allow users to suggest missing bands (optional, depending on admin workflow)
 
 These were then turned into actionable criteria for future testing as *'Github Issues'* and *'Issues'* in the project repository.
   
