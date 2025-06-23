@@ -1,6 +1,6 @@
 # Praise-The-Loud
 
-[insert responsive images] 
+![Landing Page](praise_the_loud/Images/Features/home-page-2.jpg)
 
 # Table of Contents
 
@@ -53,6 +53,7 @@
 [3.10.3 Venue Results](#venue-results)  
 [3.10.4 No Results](#no-results)
 [3.11 Footer](#footer)
+[3.12 404 and 500 Error Pages](#312-404-and-500-error-pages)
 </details>
 
 <details>
@@ -356,6 +357,14 @@ The footer is simply the copyright for the site. No additional promotion, sponso
 
 ![Footer](praise_the_loud/Images/Features/footer.jpg)
 
+### 3.12 404 and 500 Error Pages
+
+Both the 404 and 500 error pages display error messages with the same level of humour carried throught the site. However, they are diffferent as they address the user error (404) and the serever error (500) differently making it clear where the error lies and what to do to correct them.
+
+![404 Error Page](praise_the_loud/Images/Features/404-page.jpg)
+
+![500 Error Page](praise_the_loud/Images/Features/505-page.jpg)
+
 ## 4 Debugging, Testing, Deployment and Future Developments
 
 ### 4.1 Debugging
@@ -508,17 +517,18 @@ The following resources were used to help with the development of the website:
 - [CSS](https://en.wikipedia.org/wiki/CSS) - used for main content styling
 - [Django](https://simple.wikipedia.org/wiki/Django_(web_framework)) - used for the backend of the website
 - [draw.io](https://app.diagrams.net/) for the ERD
-- [Google Fonts]() - for typology
-- [Google Images]() - for the band and venue logos
+- [Google Fonts](https://fonts.google.com/) - for typology
+- [Google Images](https://images.google.co.uk/) - for the band and venue logos
 - [HTML](https://en.wikipedia.org/wiki/HTML) - used to build main site content
 - [JavaScript](https://simple.wikipedia.org/wiki/JavaScript) - used for all interactivity within the website
-- [JSHint]() for Javascript validation
-- [Lighthouse]() - for the performance and accessibility testing
-- [MSWord]() - used for grammar and spelling checking
-- [Perplexity]() - An AI tool used for general queries and learning
+- [JSHint](https://jshint.com/) for Javascript validation
+- [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview) - for the performance and accessibility testing
+- [MSWord](https://www.microsoft.com/en-us/microsoft-365/word) - used for grammar and spelling checking
+- [Perplexity](https://www.perplexity.ai/) - An AI tool used for general queries and learning
 - [Python](https://simple.wikipedia.org/wiki/Python_(programming_language)) - used for the backend of the website
-- [Slack Edit]() - for markdown references
-- [Slack Overflow]() - for general queries
+- [Responsive Viewer](https://responsiveviewer.org/)- used for responsive screen testing
+- [Slack Edit](https://stackedit.io/) - for markdown references
+- [Slack Overflow](https://stackoverflow.com/questions) - for general queries
 - [W3schools](https://www.w3schools.com/) a constant source of reference for all html, CSS, JavaScript, BootStrap and Django explanations
 - [W3C Markup Validation Service](https://validator.w3.org/) for the html validation
 - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) for the CSS validation

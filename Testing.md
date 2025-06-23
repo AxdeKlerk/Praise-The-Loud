@@ -435,7 +435,29 @@ Both the Artist and Venue search results were tested with the letter 'o'.
 
 ##### 9.3.4 Responsive Testing
 
+The video below shows a walk through of the resposive design from 320px to 1440px (max-width). This was captures using a *Thinkpad*.
+
 <a href="https://www.loom.com/share/072b48ab6a764abfabc4c80485969133?sid=cd73abe2-9e82-46ed-b8c0-dedd9a8b72b1" target="_blank">Watch responsive video</a>
+
+**Macbook**
+
+![Macbook](praise_the_loud/Images/Testing/Responsive/macbook.png)
+
+**iPad Air**
+
+![iPad Air](praise_the_loud/Images/Testing/Responsive/ipad-air.png)
+
+**iPhone 14 Pro Max**
+
+![iPhone 14 Pro Max](praise_the_loud/Images/Testing/Responsive/ipone-14-pro.png)
+
+**Pixel 7 Plus**
+
+![Pixel 7 Plus](praise_the_loud/Images/Testing/Responsive/pixel-7-plus.png)
+
+**Pixelbook**
+
+![Pixelbook](praise_the_loud/Images/Testing/Responsive/pixel-7-plus.png)
 
 ##### 9.3.5 JSHint
 

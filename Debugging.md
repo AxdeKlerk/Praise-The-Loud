@@ -299,7 +299,7 @@ This pointed to line 88 in the rendered source of my homepage. The layout still 
 
 -  **Lesson Learned:** Even when templates are rendering the same data, layout inconsistencies can easily sneak in if markup and class structure aren’t unified. Using a shared partial not only solved the inconsistency but also cleaned up my code. It’s better to centralize layout logic when the content structure is reused across multiple views.
 
-### 8.7 Validation testing Errors
+### 8.8 Validation Checking Errors
 
 -  **Bug:** When I ran the sign-up page through the *W3C* HTML validation checker, I received an error saying:
 
@@ -347,10 +347,16 @@ This made sure that the form fields rendered with unique IDs.
 
   -  **Lesson Learned:** When rendering multiple *Django* forms on the same page — especially when they share field names — I need to use the *prefix* argument to avoid duplicate id attributes and *HTML* validation issues.
 
-### 8.8 Bugs Unresolved
+### 8.9 Bugs Unresolved
 
 -  **Bug:** I wanted to change the highlight colour that appears when selecting or hovering over options in a native *select* dropdown. My goal was to make the selection styling match the custom colour scheme used across the rest of the site.
 
 -  **Fix:** This could not be fixed using standard *CSS*. Most modern browsers (especially *Chrome*, *Safari*, and *Firefox*) render *select* dropdowns and their option lists using native OS UI components, which are not styleable via *CSS*. I considered rebuilding the dropdown as a fully custom component using *JavaScript* and *HTML*, but chose not to pursue this due to the added complexity and time constraints.
 
 -  **Lesson Learner** Some UI elements like native *select* options are outside the scope of *CSS* styling due to how browsers and operating systems render them. In these cases, it’s better to accept the default behaviour or switch to a fully custom solution — which may not be worth it if the rest of the experience is consistent and functional.
+  
+- **Bug:** At different screen sizes that are not the 'Home' page or the 'About' page, the search display in the navbar changes from a button selecter for 'Artist' and 'Venue' with the input bar directly beside it, and the 'Search' button to the right to just the 'Search' button in th emiddle or to the far right of the screen.
+
+- **Fix:** Unfortunately due to the lack of time and scope of this project this could not be fixed in time for submission.
+
+- **Lesson Learned:** Do not over scope as important elements of the UX design could be left unresolved when working to deadlines. Although it is annoying to the designer, none of the friends and family picked it up so it has not distracted from the overall experience and could be considered a 'tweak' in a real world evironment (one that would be costly to fix in both time and financial resources if this was to be delivered to a client as the final product, who then rejected it as complete).
