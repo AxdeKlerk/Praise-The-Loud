@@ -351,12 +351,18 @@ This made sure that the form fields rendered with unique IDs.
 
 -  **Bug:** I wanted to change the highlight colour that appears when selecting or hovering over options in a native *select* dropdown. My goal was to make the selection styling match the custom colour scheme used across the rest of the site.
 
--  **Fix:** This could not be fixed using standard *CSS*. Most modern browsers (especially *Chrome*, *Safari*, and *Firefox*) render *select* dropdowns and their option lists using native OS UI components, which are not styleable via *CSS*. I considered rebuilding the dropdown as a fully custom component using *JavaScript* and *HTML*, but chose not to pursue this due to the added complexity and time constraints.
+-  **Unresolved:** This could not be fixed using standard *CSS*. Most modern browsers (especially *Chrome*, *Safari*, and *Firefox*) render *select* dropdowns and their option lists using native OS UI components, which are not styleable via *CSS*. I considered rebuilding the dropdown as a fully custom component using *JavaScript* and *HTML*, but chose not to pursue this due to the added complexity and time constraints.
 
 -  **Lesson Learner** Some UI elements like native *select* options are outside the scope of *CSS* styling due to how browsers and operating systems render them. In these cases, it’s better to accept the default behaviour or switch to a fully custom solution — which may not be worth it if the rest of the experience is consistent and functional.
   
 - **Bug:** At different screen sizes that are not the 'Home' page or the 'About' page, the search display in the navbar changes from a button selecter for 'Artist' and 'Venue' with the input bar directly beside it, and the 'Search' button to the right to just the 'Search' button in th emiddle or to the far right of the screen.
 
-- **Fix:** Unfortunately due to the lack of time and scope of this project this could not be fixed in time for submission.
+- **Unresolved:** Unfortunately due to the lack of time and scope of this project this could not be fixed in time for submission.
 
 - **Lesson Learned:** Do not over scope as important elements of the UX design could be left unresolved when working to deadlines. Although it is annoying to the designer, none of the friends and family picked it up so it has not distracted from the overall experience and could be considered a 'tweak' in a real world evironment (one that would be costly to fix in both time and financial resources if this was to be delivered to a client as the final product, who then rejected it as complete).
+
+- **Bug:** At some point during the building of the website and committing to *Github*, *Github* started to attempt to deploy dynamically. This caused an automated failure and triggered email notifications as seen here:
+
+![Automated Testing Bug in Github](praise_the_loud/Images/git-auto-bug.jpg)
+
+- **Unresolved:** I spoke to my mentor about this and he said that it was something to do with the *Code Institute* CLI and I shouldn#y worry about it for my project.
