@@ -552,3 +552,7 @@ My study mates on my course - *Steve Powell*, *Robert Lewis* and *Jordan Acomba*
 ![Red rock horns image](praise_the_loud/Images/red-horns.png)
  
      Stay Loud
+
+---
+
+_Last updated for portfolio showcase: September 2025_
