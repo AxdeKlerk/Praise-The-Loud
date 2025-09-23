@@ -1,3 +1,15 @@
+![Merit Badge](https://img.shields.io/badge/Project%20Grade-Merit-gold?style=for-the-badge)
+
+## 🎉 Project Outcome
+
+This project was officially assessed and achieved a **Merit**.  
+
+It represents weeks of careful planning, coding, debugging, and documenting — from tackling stubborn template bugs to structuring a full set of user stories and tests.  
+
+The result is proof that staying organised, keeping scope realistic, and persisting through the tricky bits pays off.  
+
+Next step: take this solid foundation and aim even higher on the next project.
+
 # Praise-The-Loud
 
 ![Landing Page](praise_the_loud/Images/Features/home-page-2.jpg)
