@@ -366,3 +366,12 @@ This made sure that the form fields rendered with unique IDs.
 ![Automated Testing Bug in Github](praise_the_loud/Images/git-auto-bug.jpg)
 
 - **Unresolved:** I spoke to my mentor about this and he said that it was something to do with the *Code Institute* CLI and I shouldn#y worry about it for my project.
+
+### 8.10 Project Reflection
+
+- **Bug:** Tendency to over-scope and push for “just one more feature,” which risked delays and complexity.  
+
+- **Fix:** Focused on core functionality and cut back on extras (e.g. keeping the contact form simple, limiting gallery features). Maintained consistent documentation (DEBUGGING.md, TESTING.md) to stay organised.  
+
+- **Lesson Learned:** Scope control is as important as code debugging. By simplifying and sticking to essentials, the project reached completion with a strong outcome — a Merit. Future projects can build on this foundation with clearer prioritisation and confidence.
+
