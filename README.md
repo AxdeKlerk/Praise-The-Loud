@@ -1,4 +1,5 @@
-![Merit Badge](https://img.shields.io/badge/Project%20Grade-Merit-brightgreen?style=for-the-badge)
+![Merit Badge](https://img.shields.io/badge/Project%20Grade-Merit-brightgreen?style=for-the-badge) ![Django](https://img.shields.io/badge/Framework-Django-red?style=for-the-badge&logo=django&logoColor=white) ![Bootstrap](https://img.shields.io/badge/Frontend-Bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white) ![Heroku](https://img.shields.io/badge/Deployment-Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white) ![Cloudinary](https://img.shields.io/badge/Media-Cloudinary-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white)
+
 
 ## 🎉 Project Outcome
 
