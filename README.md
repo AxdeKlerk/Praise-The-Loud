@@ -1,4 +1,4 @@
-![Merit Badge](https://img.shields.io/badge/Project%20Grade-Merit-gold?style=for-the-badge)
+![Merit Badge](https://img.shields.io/badge/Project%20Grade-Merit-brightgreen?style=for-the-badge)
 
 ## 🎉 Project Outcome
 
