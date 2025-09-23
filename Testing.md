@@ -463,5 +463,29 @@ The video below shows a walk through of the resposive design from 320px to 1440p
 
 ![JSHint](praise_the_loud/Images/Testing/JSHint.png)
 
+#### 9.3.5 Project Outcome
+
+**User Story**  
+As a student, I want to record the final outcome of the project so that I have a clear reference point for my results and can reflect on the journey.
+
+**What Was Tested**  
+The entire project was reviewed, submitted, and formally assessed. The result achieved was a **Merit**.
+
+**Acceptance Criteria**  
+- [x] Project submitted on time  
+- [x] All required features implemented  
+- [x] Debugging and testing documentation completed  
+- [x] Formal assessment outcome received  
+
+**Tasks Completed**  
+- [x] Built and refined the project features step by step  
+- [x] Logged bugs and fixes in DEBUGGING.md  
+- [x] Documented user stories and test cases in TESTING.md  
+- [x] Submitted the final project for assessment  
+
+**Notes**  
+The project was awarded a **Merit**. This reflects strong work across design, functionality, and documentation. Areas for potential improvement include deeper polish in UI and additional features that were scoped out for simplicity. Overall, the result is a success and a solid foundation for future projects.
+
+
 
 
